@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:i_store/classes/categories.dart';
 import 'package:i_store/constant/constant.dart';
+import 'package:i_store/widgets/category_item.dart';
+import 'package:i_store/widgets/header_bar.dart';
 
 class InitialScreen extends StatefulWidget {
   @override
@@ -12,91 +15,86 @@ class InitialScreen extends StatefulWidget {
 class _InitialScreenState extends State<InitialScreen> {
   @override
   void initState() {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
-
     super.initState();
   }
 
   int selectedIndex = 0;
+  int pageIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(5),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              margin: EdgeInsets.all(10),
-              child: ListTile(
-                contentPadding: EdgeInsets.zero,
-                leading: Icon(
-                  CupertinoIcons.list_bullet_indent,
-                  size: 30,
-                  color: Colors.black54,
-                ),
-                title: Text(
-                  "$appTitle",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black54,
-                    fontSize: 32,
-                    fontWeight: FontWeight.w900,
-                  ),
-                ),
-                trailing: IconButton(
-                  onPressed: null,
-                  icon: Icon(
-                    Icons.search,
-                    size: 30,
-                    color: Colors.black54,
-                  ),
-                ),
-              ),
-            ),
+            HeaderBar(),
             Container(
               height: 25,
               margin: EdgeInsets.symmetric(vertical: 10),
               child: ListView.builder(
+                padding: EdgeInsets.symmetric(horizontal: 5),
                 physics: BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 itemCount: categoriesList.length,
                 itemBuilder: (context, index) {
-                  String category = categoriesList[index];
-                  return GestureDetector(
+                  Categories category = categoriesList[index];
+                  return CategoryItem(
+                    category: category,
+                    state: selectedIndex == index,
                     onTap: () {
                       setState(() {
                         selectedIndex = index;
                       });
                     },
-                    child: AnimatedContainer(
-                      duration: Duration(milliseconds: 1000),
-                      curve: Curves.linearToEaseOut,
-                      alignment: Alignment.center,
-                      margin: EdgeInsets.symmetric(horizontal: 10),
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: selectedIndex == index ? Colors.black54 : Colors.transparent,
-                            width: 2,
-                          ),
-                        ),
-                      ),
-                      child: Text(
-                        "$category",
-                        style: TextStyle(
-                          color: selectedIndex == index ? Colors.black54 : Colors.black26,
-                          fontWeight: FontWeight.w900,
-                        ),
+                  );
+                },
+              ),
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height * 0.65,
+              margin: EdgeInsets.symmetric(vertical: 10),
+              child: PageView.builder(
+                onPageChanged: (index) {
+                  setState(() {
+                    pageIndex = index;
+                  });
+                },
+                controller: PageController(
+                  initialPage: pageIndex,
+                  viewportFraction: 0.75,
+                  keepPage: false,
+                ),
+                itemCount: 10,
+                itemBuilder: (context, index) {
+                  bool state = pageIndex == index;
+                  return AnimatedContainer(
+                    alignment: Alignment.center,
+                    duration: Duration(milliseconds: 500),
+                    curve: Curves.linearToEaseOut,
+                    margin: EdgeInsets.only(
+                      right: 8,
+                      left: 2,
+                      top: 1,
+                      bottom: state ? 0 : 75,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.black26,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Text(
+                      "$appTitle",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w900,
+                        fontSize: 20,
                       ),
                     ),
                   );
                 },
               ),
             ),
-            Container(),
           ],
         ),
       ),
