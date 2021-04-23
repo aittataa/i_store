@@ -80,7 +80,7 @@ class _InitialScreenState extends State<InitialScreen> {
                       bottom: state ? 0 : 75,
                     ),
                     decoration: BoxDecoration(
-                      color: Colors.black26,
+                      color: Color(getRandomColor),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Text(
