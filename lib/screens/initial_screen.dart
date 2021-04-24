@@ -31,14 +31,15 @@ class _InitialScreenState extends State<InitialScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+      body: Stack(
         children: [
-          HeaderBar(),
           Expanded(
             child: ListView(
               physics: BouncingScrollPhysics(),
               children: [
+                SizedBox(
+                  height: 100,
+                ),
                 Container(
                   height: 25,
                   margin: EdgeInsets.symmetric(vertical: 10),
@@ -121,6 +122,7 @@ class _InitialScreenState extends State<InitialScreen> {
               ],
             ),
           ),
+          HeaderBar(),
         ],
       ),
     );
