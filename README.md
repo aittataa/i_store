@@ -1,6 +1,6 @@
 # i_store
 
-Ecomerce App Store
+iStore Ecomerce App Store
 
 ## Getting Started
 
