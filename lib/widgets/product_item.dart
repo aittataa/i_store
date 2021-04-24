@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:i_store/constant/constant.dart';
 
 class ProductItem extends StatelessWidget {
   @override
@@ -9,13 +10,7 @@ class ProductItem extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black12,
-            blurRadius: 20,
-            spreadRadius: -20,
-          ),
-        ],
+        boxShadow: [boxShadow],
       ),
       child: Column(
         children: [

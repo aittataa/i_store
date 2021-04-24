@@ -8,6 +8,13 @@ Color mainColor = Color(0xFFF0F0F0);
 
 get getRandomColor => Color(Random().nextInt(0xFFFFFFFF)).withAlpha(0xFF).value;
 
+final boxShadow = BoxShadow(
+  color: Colors.black12,
+  blurRadius: 20,
+  spreadRadius: -20,
+  offset: Offset(0, 10),
+);
+
 List<Categories> categoriesList = [
   Categories(id: 1, title: "All"),
   Categories(id: 1, title: "Phone"),

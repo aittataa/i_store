@@ -71,7 +71,6 @@ class SliderShape extends StatelessWidget {
                 child: Text(
                   "50000 DH",
                   softWrap: false,
-                  textAlign: TextAlign.end,
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w900,

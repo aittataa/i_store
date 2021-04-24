@@ -8,7 +8,6 @@ class SplitTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       dense: true,
-      minVerticalPadding: 0,
       leading: Container(
         width: 10,
         decoration: BoxDecoration(
@@ -24,6 +23,20 @@ class SplitTitle extends StatelessWidget {
           fontSize: 18,
         ),
       ),
+      // trailing: Container(
+      //   padding: EdgeInsets.all(5),
+      //   decoration: BoxDecoration(
+      //     color: Colors.black54,
+      //     borderRadius: BorderRadius.circular(5),
+      //   ),
+      //   child: Text(
+      //     "More",
+      //     style: TextStyle(
+      //       color: Colors.white,
+      //       fontWeight: FontWeight.bold,
+      //     ),
+      //   ),
+      // ),
     );
   }
 }
