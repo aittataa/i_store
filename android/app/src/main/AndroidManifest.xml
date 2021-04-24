@@ -2,7 +2,7 @@
     package="com.istore.i_store">
    <application
         android:label="iStore"
-        android:icon="@mipmap/app_icon">
+        android:icon="@mipmap/app_icon_round">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

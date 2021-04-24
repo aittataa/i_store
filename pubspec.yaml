@@ -12,14 +12,14 @@ dependencies:
   google_fonts: ^2.0.0
 
 dev_dependencies:
-  flutter_launcher_icons: ^0.9.0
+  #flutter_launcher_icons: ^0.9.0
   flutter_test:
     sdk: flutter
 
-flutter_icons:
-  android: true
-  ios: true
-  image_path: "images/icon.png"
+#flutter_icons:
+  #android: "app_icon_round"
+  #ios: true
+  #image_path: "images/app_icon_round.png"
 
 flutter:
   uses-material-design: true
