@@ -4,10 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:i_store/classes/categories.dart';
 
 const appTitle = "iStore";
-
-//Color backColor1 = Color(0xFFF5F6FA);
-Color backColor = Color(0xFFF0F0F0);
-Color mainColor = Colors.lightBlue;
+Color mainColor = Color(0xFFF0F0F0);
 
 get getRandomColor => Color(Random().nextInt(0xFFFFFFFF)).withAlpha(0xFF).value;
 

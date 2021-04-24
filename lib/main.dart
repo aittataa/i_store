@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       color: mainColor,
       theme: ThemeData.dark().copyWith(
         primaryColor: mainColor,
-        scaffoldBackgroundColor: backColor,
+        scaffoldBackgroundColor: mainColor,
       ),
       home: InitialScreen(),
     );
