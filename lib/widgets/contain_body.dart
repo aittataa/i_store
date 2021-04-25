@@ -31,7 +31,7 @@ class _ContainBodyState extends State<ContainBody> {
         physics: BouncingScrollPhysics(),
         children: [
           SizedBox(
-            height: 100,
+            height: 75,
           ),
           Container(
             height: 25,
