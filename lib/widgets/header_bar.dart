@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:i_store/constant/constant.dart';
+import 'package:i_store/screens/details_screen.dart';
 
 class HeaderBar extends StatelessWidget {
   @override
@@ -20,6 +21,12 @@ class HeaderBar extends StatelessWidget {
           ],
         ),
         child: ListTile(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => DetailsScreen()),
+            );
+          },
           dense: true,
           contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
           leading: Icon(
