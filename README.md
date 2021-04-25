@@ -1,6 +1,6 @@
 # i_store
 
-iStore Ecomerce App Store
+iStore Ecomerce App Store Module
 
 ## Getting Started
 
