@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:i_store/constant/constant.dart';
 
 class SplitTitle extends StatelessWidget {
   final String title;
@@ -11,7 +10,7 @@ class SplitTitle extends StatelessWidget {
       leading: Container(
         width: 10,
         decoration: BoxDecoration(
-          color: Color(getRandomColor),
+          color: Colors.black54,
           borderRadius: BorderRadius.circular(10),
         ),
       ),
@@ -23,20 +22,6 @@ class SplitTitle extends StatelessWidget {
           fontSize: 18,
         ),
       ),
-      // trailing: Container(
-      //   padding: EdgeInsets.all(5),
-      //   decoration: BoxDecoration(
-      //     color: Colors.black54,
-      //     borderRadius: BorderRadius.circular(5),
-      //   ),
-      //   child: Text(
-      //     "More",
-      //     style: TextStyle(
-      //       color: Colors.white,
-      //       fontWeight: FontWeight.bold,
-      //     ),
-      //   ),
-      // ),
     );
   }
 }

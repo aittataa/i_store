@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:i_store/constant/constant.dart';
 
 class SliderShape extends StatelessWidget {
   const SliderShape({this.state});
@@ -12,85 +11,78 @@ class SliderShape extends StatelessWidget {
       duration: Duration(milliseconds: 500),
       curve: Curves.linearToEaseOut,
       margin: EdgeInsets.fromLTRB(2, 1, 8, state ? 0 : 75),
+      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
       decoration: BoxDecoration(
-        color: Color(getRandomColor),
         borderRadius: BorderRadius.circular(10),
         image: DecorationImage(
           image: AssetImage("images/app_icon.png"),
           fit: BoxFit.cover,
         ),
       ),
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-        decoration: BoxDecoration(
-          color: Color(getRandomColor).withOpacity(0.5),
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            ListTile(
-              dense: true,
-              contentPadding: EdgeInsets.zero,
-              title: Text(
-                "iPhone 13",
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          ListTile(
+            dense: true,
+            contentPadding: EdgeInsets.zero,
+            title: Text(
+              "iPhone 13",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+            subtitle: Text(
+              "Phone",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            trailing: Container(
+              padding: EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                color: Colors.white54,
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                CupertinoIcons.heart_fill,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          ListTile(
+            dense: true,
+            contentPadding: EdgeInsets.zero,
+            leading: Container(
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: Colors.white54,
+                borderRadius: BorderRadius.circular(5),
+              ),
+              child: Text(
+                "50000 DH",
+                softWrap: false,
                 style: TextStyle(
                   color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                ),
-              ),
-              subtitle: Text(
-                "Phone",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              trailing: Container(
-                padding: EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                  color: Colors.white54,
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(
-                  CupertinoIcons.heart_fill,
-                  color: Colors.white,
+                  fontWeight: FontWeight.w900,
                 ),
               ),
             ),
-            ListTile(
-              dense: true,
-              contentPadding: EdgeInsets.zero,
-              leading: Container(
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Colors.white54,
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: Text(
-                  "50000 DH",
-                  softWrap: false,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w900,
-                  ),
-                ),
+            trailing: Container(
+              padding: EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(5),
               ),
-              trailing: Container(
-                padding: EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: Icon(
-                  CupertinoIcons.arrow_right,
-                  color: Colors.black54,
-                ),
+              child: Icon(
+                CupertinoIcons.arrow_right,
+                color: Colors.black54,
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
