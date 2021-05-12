@@ -116,7 +116,6 @@ class DetailsScreen extends StatelessWidget {
                       child: Container(
                         margin: EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          color: Color(getRandomColor),
                           borderRadius: BorderRadius.circular(10),
                           image: DecorationImage(
                             image: AssetImage("images/app_icon.png"),

@@ -1,12 +1,10 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:i_store/classes/categories.dart';
 
 const appTitle = "iStore";
 Color mainColor = Color(0xFFF0F0F0);
 
-get getRandomColor => Color(Random().nextInt(0xFFFFFFFF)).withAlpha(0xFF).value;
+//get getRandomColor => Color(Random().nextInt(0xFFFFFFFF)).withAlpha(0xFF).value;
 
 final boxShadow = BoxShadow(
   color: Colors.black12,

@@ -8,7 +8,7 @@ class HeaderBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
-        margin: EdgeInsets.only(top: 15, left: 10, right: 10),
+        margin: EdgeInsets.only(top: 10, left: 10, right: 10),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
