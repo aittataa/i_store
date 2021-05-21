@@ -21,10 +21,13 @@ class _InitialScreenState extends State<InitialScreen> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
-        leading: Icon(
-          CupertinoIcons.list_bullet_indent,
-          color: Colors.black54,
-          size: 30,
+        leading: IconButton(
+          onPressed: null,
+          iconSize: 27,
+          icon: Icon(
+            CupertinoIcons.list_bullet_indent,
+            color: Colors.black54,
+          ),
         ),
         centerTitle: true,
         title: Text(
@@ -39,32 +42,15 @@ class _InitialScreenState extends State<InitialScreen> {
         actions: [
           IconButton(
             onPressed: null,
+            iconSize: 27,
             icon: Icon(
               CupertinoIcons.cart_fill,
               color: Colors.black54,
-              size: 30,
             ),
           ),
         ],
       ),
-      body: Stack(
-        children: [
-          ContainBody(),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              // NavigationBar(
-              //   index: currentIndex,
-              //   onTap: (index) {
-              //     setState(() {
-              //       currentIndex = index;
-              //     });
-              //   },
-              // ),
-            ],
-          ),
-        ],
-      ),
+      body: ContainBody(),
       bottomNavigationBar: NavigationBar(
         index: currentIndex,
         onTap: (index) {

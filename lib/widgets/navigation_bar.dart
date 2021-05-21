@@ -9,12 +9,12 @@ class NavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      //margin: EdgeInsets.all(5),
-      //padding: EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
         color: Color(0xff555555),
-        //borderRadius: BorderRadius.circular(10),
-        //boxShadow: [Constant.boxShadow],
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(15),
+          topRight: Radius.circular(15),
+        ),
       ),
       child: BottomNavigationBar(
         onTap: onTap,

@@ -21,42 +21,40 @@ class _ContainBodyState extends State<ContainBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView(
-        physics: BouncingScrollPhysics(),
-        children: [
-          Container(
-            height: 25,
-            margin: EdgeInsets.symmetric(vertical: 10),
-            child: ListView.builder(
-              padding: EdgeInsets.symmetric(horizontal: 5),
-              physics: BouncingScrollPhysics(),
-              scrollDirection: Axis.horizontal,
-              itemCount: categoriesList.length,
-              itemBuilder: (context, index) {
-                Categories category = categoriesList[index];
-                return CategoryItem(
-                  category: category,
-                  state: Constant.selectedIndex == index,
-                  onTap: () {
-                    setState(() {
-                      Constant.selectedIndex = index;
-                    });
-                  },
-                );
-              },
-            ),
-          ),
-          SliderBar(
-            myIndex: Constant.pageIndex,
-            onPageChanged: (index) {
-              setState(() => Constant.pageIndex = index);
+    return ListView(
+      physics: BouncingScrollPhysics(),
+      children: [
+        Container(
+          height: 25,
+          margin: EdgeInsets.symmetric(vertical: 10),
+          child: ListView.builder(
+            padding: EdgeInsets.symmetric(horizontal: 5),
+            physics: BouncingScrollPhysics(),
+            scrollDirection: Axis.horizontal,
+            itemCount: categoriesList.length,
+            itemBuilder: (context, index) {
+              Categories category = categoriesList[index];
+              return CategoryItem(
+                category: category,
+                state: Constant.selectedIndex == index,
+                onTap: () {
+                  setState(() {
+                    Constant.selectedIndex = index;
+                  });
+                },
+              );
             },
           ),
-          HorizontalShape(),
-          VerticalShape(),
-        ],
-      ),
+        ),
+        SliderBar(
+          myIndex: Constant.pageIndex,
+          onPageChanged: (index) {
+            setState(() => Constant.pageIndex = index);
+          },
+        ),
+        HorizontalShape(),
+        VerticalShape(),
+      ],
     );
   }
 }
