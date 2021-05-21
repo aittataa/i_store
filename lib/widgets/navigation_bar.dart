@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:i_store/constant/messages.dart';
 
 class NavigationBar extends StatelessWidget {
   final int index;
@@ -8,18 +9,12 @@ class NavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 10, left: 10, right: 10),
-      padding: EdgeInsets.symmetric(horizontal: 10),
+      //margin: EdgeInsets.all(5),
+      //padding: EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
         color: Color(0xff555555),
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black12,
-            blurRadius: 90,
-            spreadRadius: -15,
-          ),
-        ],
+        //borderRadius: BorderRadius.circular(10),
+        //boxShadow: [Constant.boxShadow],
       ),
       child: BottomNavigationBar(
         onTap: onTap,
@@ -33,22 +28,22 @@ class NavigationBar extends StatelessWidget {
         showUnselectedLabels: false,
         items: [
           BottomNavigationBarItem(
-            label: "Home",
+            label: Messages.LABEL_HOME,
             icon: Icon(CupertinoIcons.house_alt),
             activeIcon: Icon(CupertinoIcons.house_alt_fill),
           ),
           BottomNavigationBarItem(
-            label: "Categories",
+            label: Messages.LABEL_CATEGORIES,
             icon: Icon(CupertinoIcons.layers_alt),
             activeIcon: Icon(CupertinoIcons.layers_alt_fill),
           ),
           BottomNavigationBarItem(
-            label: "Products",
+            label: Messages.LABEL_PRODUCTS,
             icon: Icon(CupertinoIcons.bag),
             activeIcon: Icon(CupertinoIcons.bag_fill),
           ),
           BottomNavigationBarItem(
-            label: "Profile",
+            label: Messages.LABEL_PROFILE,
             icon: Icon(CupertinoIcons.person_alt_circle),
             activeIcon: Icon(CupertinoIcons.person_alt_circle_fill),
           ),

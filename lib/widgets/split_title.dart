@@ -22,6 +22,17 @@ class SplitTitle extends StatelessWidget {
           fontSize: 18,
         ),
       ),
+      trailing: Container(
+        padding: EdgeInsets.all(5),
+        decoration: BoxDecoration(
+          color: Colors.black54,
+          shape: BoxShape.circle,
+        ),
+        child: Icon(
+          Icons.chevron_right,
+          color: Colors.white,
+        ),
+      ),
     );
   }
 }

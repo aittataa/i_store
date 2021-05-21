@@ -1,27 +1,32 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:i_store/constant/constant.dart';
+import 'package:i_store/constant/messages.dart';
 
 class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 10, top: 10, right: 10),
+      padding: EdgeInsets.only(top: 10, left: 10, right: 10),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [boxShadow],
+        borderRadius: BorderRadius.circular(25),
       ),
       child: Column(
         children: [
           Expanded(
             child: Container(
+              alignment: Alignment.topLeft,
+              padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25),
                 image: DecorationImage(
-                  image: AssetImage("images/app_icon.png"),
+                  image: AssetImage(Messages.APP_ICON),
                   fit: BoxFit.cover,
                 ),
+              ),
+              child: Icon(
+                CupertinoIcons.heart_fill,
+                color: Colors.white,
               ),
             ),
           ),
@@ -62,7 +67,7 @@ class ProductItem extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Icon(
-                        CupertinoIcons.arrow_right,
+                        CupertinoIcons.cart_fill,
                         color: Colors.white,
                       ),
                     ),

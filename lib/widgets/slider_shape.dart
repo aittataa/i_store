@@ -77,7 +77,7 @@ class SliderShape extends StatelessWidget {
                 borderRadius: BorderRadius.circular(5),
               ),
               child: Icon(
-                CupertinoIcons.arrow_right,
+                CupertinoIcons.cart_fill,
                 color: Colors.black54,
               ),
             ),

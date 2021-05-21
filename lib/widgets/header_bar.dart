@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:i_store/constant/constant.dart';
-import 'package:i_store/screens/details_screen.dart';
+import 'package:i_store/constant/messages.dart';
 
 class HeaderBar extends StatelessWidget {
   @override
@@ -12,30 +12,18 @@ class HeaderBar extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black12,
-              blurRadius: 90,
-              spreadRadius: -15,
-            ),
-          ],
+          boxShadow: [Constant.boxShadow],
         ),
         child: ListTile(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => DetailsScreen()),
-            );
-          },
           dense: true,
-          contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
           leading: Icon(
             CupertinoIcons.list_bullet_indent,
-            size: 30,
             color: Colors.black54,
+            size: 30,
           ),
           title: Text(
-            "$appTitle",
+            Messages.APP_TITLE,
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.black54,
@@ -44,7 +32,7 @@ class HeaderBar extends StatelessWidget {
             ),
           ),
           trailing: Icon(
-            Icons.search,
+            CupertinoIcons.cart_fill,
             color: Colors.black54,
             size: 30,
           ),

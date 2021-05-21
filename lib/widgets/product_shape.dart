@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:i_store/constant/constant.dart';
+import 'package:i_store/constant/messages.dart';
 
 class ProductShape extends StatelessWidget {
   @override
@@ -11,18 +11,23 @@ class ProductShape extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(25),
-        boxShadow: [boxShadow],
       ),
       child: Row(
         children: [
           Expanded(
             child: Container(
+              alignment: Alignment.topLeft,
+              padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25),
                 image: DecorationImage(
-                  image: AssetImage("images/app_icon.png"),
+                  image: AssetImage(Messages.APP_ICON),
                   fit: BoxFit.cover,
                 ),
+              ),
+              child: Icon(
+                CupertinoIcons.heart_fill,
+                color: Colors.white,
               ),
             ),
           ),
@@ -63,7 +68,7 @@ class ProductShape extends StatelessWidget {
                         borderRadius: BorderRadius.circular(5),
                       ),
                       child: Icon(
-                        CupertinoIcons.arrow_right,
+                        CupertinoIcons.cart_fill,
                         color: Colors.white,
                       ),
                     ),
