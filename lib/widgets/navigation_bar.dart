@@ -10,17 +10,17 @@ class NavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Color(0xff555555),
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(15),
-          topRight: Radius.circular(15),
-        ),
-      ),
+          //color: Color(0xff555555),
+          //borderRadius: BorderRadius.only(
+          //  topLeft: Radius.circular(15),
+          //  topRight: Radius.circular(15),
+          //),
+          ),
       child: BottomNavigationBar(
         onTap: onTap,
-        elevation: 0,
+        elevation: 1,
         currentIndex: index,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Color(0xff555555),
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white54,

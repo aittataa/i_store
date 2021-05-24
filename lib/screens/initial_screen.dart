@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:i_store/constant/messages.dart';
 import 'package:i_store/widgets/contain_body.dart';
-import 'package:i_store/widgets/navigation_bar.dart';
 
 class InitialScreen extends StatefulWidget {
   @override
@@ -23,7 +22,6 @@ class _InitialScreenState extends State<InitialScreen> {
         ),
         leading: IconButton(
           onPressed: null,
-          iconSize: 27,
           icon: Icon(
             CupertinoIcons.list_bullet_indent,
             color: Colors.black54,
@@ -42,7 +40,6 @@ class _InitialScreenState extends State<InitialScreen> {
         actions: [
           IconButton(
             onPressed: null,
-            iconSize: 27,
             icon: Icon(
               CupertinoIcons.cart_fill,
               color: Colors.black54,
@@ -51,14 +48,14 @@ class _InitialScreenState extends State<InitialScreen> {
         ],
       ),
       body: ContainBody(),
-      bottomNavigationBar: NavigationBar(
-        index: currentIndex,
-        onTap: (index) {
-          setState(() {
-            currentIndex = index;
-          });
-        },
-      ),
+      // bottomSheet: NavigationBar(
+      //   index: currentIndex,
+      //   onTap: (index) {
+      //     setState(() {
+      //       currentIndex = index;
+      //     });
+      //   },
+      // ),
     );
   }
 }
