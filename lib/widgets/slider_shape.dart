@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:i_store/classes/product.dart';
 
 class SliderShape extends StatelessWidget {
-  const SliderShape({this.state});
+  const SliderShape({this.state, this.product});
   final bool state;
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
@@ -13,41 +15,32 @@ class SliderShape extends StatelessWidget {
       margin: EdgeInsets.fromLTRB(2, 1, 8, state ? 0 : 75),
       padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
       decoration: BoxDecoration(
+        color: Colors.white,
         borderRadius: BorderRadius.circular(10),
         image: DecorationImage(
-          image: AssetImage("images/app_icon.png"),
-          fit: BoxFit.cover,
+          image: NetworkImage("${product.image}"),
         ),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           ListTile(
-            dense: true,
             contentPadding: EdgeInsets.zero,
-            title: Text(
-              "iPhone 13",
+            leading: Text(
+              "${product.model}",
               style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
-            ),
-            subtitle: Text(
-              "Phone",
-              style: TextStyle(
-                color: Colors.white,
+                color: Colors.black54,
                 fontWeight: FontWeight.bold,
               ),
             ),
             trailing: Container(
               padding: EdgeInsets.all(5),
               decoration: BoxDecoration(
-                color: Colors.white54,
+                color: Colors.black54,
                 shape: BoxShape.circle,
               ),
               child: Icon(
-                CupertinoIcons.heart_fill,
+                CupertinoIcons.heart,
                 color: Colors.white,
               ),
             ),
@@ -58,11 +51,11 @@ class SliderShape extends StatelessWidget {
             leading: Container(
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: Colors.white54,
+                color: Colors.black54,
                 borderRadius: BorderRadius.circular(5),
               ),
               child: Text(
-                "50000 DH",
+                "${product.price.toStringAsFixed(2)} \$",
                 softWrap: false,
                 style: TextStyle(
                   color: Colors.white,
@@ -73,12 +66,12 @@ class SliderShape extends StatelessWidget {
             trailing: Container(
               padding: EdgeInsets.all(5),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Colors.black54,
                 borderRadius: BorderRadius.circular(5),
               ),
               child: Icon(
                 CupertinoIcons.cart_fill,
-                color: Colors.black54,
+                color: Colors.white,
               ),
             ),
           ),

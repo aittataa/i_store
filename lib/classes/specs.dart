@@ -21,29 +21,29 @@ class Specs {
     this.camera,
   });
 
-  Specs.fromJson(Map<String, dynamic> json) {
-    body = json['body'];
-    memory = json['memory'];
-    battery = json['battery'];
-    chipset = json['chipset'];
-    display = json['display'];
-    features = json['features'];
-    platform = json['platform'];
-    camera = json['camera'] != null ? new Camera.fromJson(json['camera']) : null;
+  factory Specs.fromJson(Map<String, dynamic> json) {
+    return Specs(
+      body: json["body"],
+      memory: json["memory"],
+      battery: json["battery"],
+      chipset: json["chipset"],
+      display: json["display"],
+      features: json["features"],
+      platform: json["platform"],
+      camera: json['camera'] != null ? Camera.fromJson(json['camera']) : null,
+    );
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['body'] = this.body;
-    data['memory'] = this.memory;
-    data['battery'] = this.battery;
-    data['chipset'] = this.chipset;
-    data['display'] = this.display;
-    data['features'] = this.features;
-    data['platform'] = this.platform;
-    if (this.camera != null) {
-      data['camera'] = this.camera.toJson();
-    }
-    return data;
-  }
+  // Map<String, dynamic> toJson() {
+  //   return {
+  //     "body": body,
+  //     "camera": camera.toJson(),
+  //     "memory": memory,
+  //     "battery": battery,
+  //     "chipset": chipset,
+  //     "display": display,
+  //     "features": features,
+  //     "platform": platform,
+  //   };
+  // }
 }

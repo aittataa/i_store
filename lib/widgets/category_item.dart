@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:i_store/classes/categories.dart';
 
 class CategoryItem extends StatelessWidget {
   final bool state;
-  final Categories category;
+  final String category;
   final Function onTap;
   const CategoryItem({this.category, this.state, this.onTap});
 
@@ -26,7 +25,7 @@ class CategoryItem extends StatelessWidget {
           ),
         ),
         child: Text(
-          "${category.title}",
+          "$category",
           style: TextStyle(
             color: state ? Colors.black54 : Colors.black26,
             fontWeight: FontWeight.w900,

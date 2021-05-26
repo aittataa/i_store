@@ -39,7 +39,7 @@ class _InitialScreenState extends State<InitialScreen> {
         ),
         actions: [
           IconButton(
-            onPressed: null,
+            onPressed: () async {},
             icon: Icon(
               CupertinoIcons.cart_fill,
               color: Colors.black54,

@@ -1,16 +1,14 @@
-import 'dart:convert';
-
 import 'specs.dart';
 
-Product productFromJson(String str) => Product.fromJson(jsonDecode(str));
+//Product productFromJson(String str) => Product.fromJson(json.decode(str));
 
-String productToJson(Product data) => jsonEncode(data.toJson());
+// String productToJson(Product data) => json.encode(data.toJson());
 
 class Product {
   int id;
   String model;
   String image;
-  double price;
+  int price;
   String manufacturer;
   String description;
   int stock;
@@ -27,29 +25,29 @@ class Product {
     this.specs,
   });
 
-  Product.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    manufacturer = json['manufacturer'];
-    model = json['model'];
-    image = json['image'];
-    price = json['price'];
-    description = json['description'];
-    specs = json['specs'] != null ? new Specs.fromJson(json['specs']) : null;
-    stock = json['stock'];
+  factory Product.fromJson(Map<String, dynamic> json) {
+    return Product(
+      id: json["id"],
+      model: json["model"],
+      image: json["image"],
+      price: json["price"],
+      manufacturer: json["manufacturer"],
+      description: json["description"],
+      stock: json["stock"],
+      specs: json['specs'] != null ? Specs.fromJson(json['specs']) : null,
+    );
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['manufacturer'] = this.manufacturer;
-    data['model'] = this.model;
-    data['image'] = this.image;
-    data['price'] = this.price;
-    data['description'] = this.description;
-    data['stock'] = this.stock;
-    if (this.specs != null) {
-      data['specs'] = this.specs.toJson();
-    }
-    return data;
-  }
+  // Map<String, dynamic> toJson() {
+  //   return {
+  //     "id": id,
+  //     "manufacturer": manufacturer,
+  //     "model": model,
+  //     "image": image,
+  //     "price": price,
+  //     "description": description,
+  //     "specs": specs.toJson(),
+  //     "stock": stock,
+  //   };
+  // }
 }

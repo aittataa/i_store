@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:i_store/constant/messages.dart';
+import 'package:i_store/classes/product.dart';
+import 'package:i_store/constant/constant.dart';
 
 class ProductShape extends StatelessWidget {
+  final Product product;
+  const ProductShape({this.product});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,15 +23,12 @@ class ProductShape extends StatelessWidget {
               alignment: Alignment.topLeft,
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25),
-                image: DecorationImage(
-                  image: AssetImage(Messages.APP_ICON),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              child: Icon(
-                CupertinoIcons.heart_fill,
                 color: Colors.white,
+                borderRadius: BorderRadius.circular(25),
+                boxShadow: [Constant.boxShadow],
+                image: DecorationImage(
+                  image: NetworkImage(product.image),
+                ),
               ),
             ),
           ),
@@ -39,23 +40,27 @@ class ProductShape extends StatelessWidget {
                 children: [
                   ListTile(
                     title: Text(
-                      "iPhone 13",
+                      "${product.model}",
                       style: TextStyle(
                         color: Colors.black54,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    subtitle: Text(
-                      "iPhone",
-                      style: TextStyle(
+                    trailing: Container(
+                      padding: EdgeInsets.all(5),
+                      decoration: BoxDecoration(
                         color: Colors.black54,
-                        fontWeight: FontWeight.bold,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(
+                        CupertinoIcons.heart,
+                        color: Colors.white,
                       ),
                     ),
                   ),
                   ListTile(
                     title: Text(
-                      "5000 DH",
+                      "${product.price.toStringAsFixed(2)} \$",
                       style: TextStyle(
                         color: Colors.black54,
                         fontWeight: FontWeight.w900,

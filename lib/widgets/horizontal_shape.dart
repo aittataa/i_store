@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:i_store/constant/constant.dart';
+import 'package:i_store/classes/product.dart';
 import 'package:i_store/constant/messages.dart';
 import 'package:i_store/widgets/product_shape.dart';
 import 'package:i_store/widgets/split_title.dart';
 
 class HorizontalShape extends StatelessWidget {
+  final List<Product> myList;
+  const HorizontalShape({this.myList});
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -16,9 +18,10 @@ class HorizontalShape extends StatelessWidget {
           height: MediaQuery.of(context).size.height * 0.25,
           child: PageView.builder(
             physics: BouncingScrollPhysics(),
-            itemCount: Constant.itemCount,
+            itemCount: myList.length,
             itemBuilder: (context, index) {
-              return ProductShape();
+              Product product = myList[index];
+              return ProductShape(product: product);
             },
           ),
         ),

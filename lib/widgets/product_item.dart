@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:i_store/constant/messages.dart';
+import 'package:flutter/widgets.dart';
+import 'package:i_store/classes/product.dart';
+import 'package:i_store/constant/constant.dart';
 
 class ProductItem extends StatelessWidget {
+  final Product product;
+  const ProductItem({this.product});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,15 +22,12 @@ class ProductItem extends StatelessWidget {
               alignment: Alignment.topLeft,
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [Constant.boxShadow],
                 borderRadius: BorderRadius.circular(25),
                 image: DecorationImage(
-                  image: AssetImage(Messages.APP_ICON),
-                  fit: BoxFit.cover,
+                  image: NetworkImage(product.image),
                 ),
-              ),
-              child: Icon(
-                CupertinoIcons.heart_fill,
-                color: Colors.white,
               ),
             ),
           ),
@@ -37,14 +38,8 @@ class ProductItem extends StatelessWidget {
                 children: [
                   ListTile(
                     title: Text(
-                      "iPhone 13",
-                      style: TextStyle(
-                        color: Colors.black54,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    subtitle: Text(
-                      "iPhone",
+                      "${product.model}",
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.black54,
                         fontWeight: FontWeight.bold,
@@ -54,7 +49,7 @@ class ProductItem extends StatelessWidget {
                   ListTile(
                     contentPadding: EdgeInsets.zero,
                     title: Text(
-                      "5000 DH",
+                      "${product.price.toStringAsFixed(2)} \$",
                       style: TextStyle(
                         color: Colors.black54,
                         fontWeight: FontWeight.w900,

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:i_store/classes/product.dart';
 import 'package:i_store/constant/constant.dart';
 import 'package:i_store/constant/messages.dart';
 import 'package:i_store/widgets/product_item.dart';
 import 'package:i_store/widgets/split_title.dart';
 
 class VerticalShape extends StatelessWidget {
+  final List<Product> myList;
+  const VerticalShape({this.myList});
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -22,9 +25,10 @@ class VerticalShape extends StatelessWidget {
               crossAxisCount: 1,
               childAspectRatio: 1.5,
             ),
-            itemCount: Constant.itemCount,
+            itemCount: myList.length,
             itemBuilder: (context, index) {
-              return ProductItem();
+              Product product = myList[index];
+              return ProductItem(product: product);
             },
           ),
         ),

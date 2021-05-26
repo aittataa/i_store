@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:i_store/constant/constant.dart';
+import 'package:i_store/classes/product.dart';
 import 'package:i_store/widgets/slider_shape.dart';
 
 class SliderBar extends StatelessWidget {
   final int myIndex;
+  final List<Product> myList;
   final Function onPageChanged;
-  const SliderBar({this.myIndex, this.onPageChanged});
+  const SliderBar({this.myIndex, this.myList, this.onPageChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -15,10 +16,14 @@ class SliderBar extends StatelessWidget {
       child: PageView.builder(
         onPageChanged: onPageChanged,
         controller: PageController(initialPage: myIndex, viewportFraction: 0.75),
-        itemCount: Constant.itemCount,
+        itemCount: myList.length,
         itemBuilder: (context, index) {
           bool state = myIndex == index;
-          return SliderShape(state: state);
+          Product product = myList[index];
+          return SliderShape(
+            product: product,
+            state: state,
+          );
         },
       ),
     );

@@ -9,17 +9,19 @@ class Camera {
     this.features,
   });
 
-  Camera.fromJson(Map<String, dynamic> json) {
-    main = json['main'];
-    selfie = json['selfie'];
-    features = json['features'];
+  factory Camera.fromJson(Map<String, dynamic> json) {
+    return Camera(
+      main: json["main"],
+      selfie: json["selfie"],
+      features: json["features"],
+    );
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['main'] = this.main;
-    data['selfie'] = this.selfie;
-    data['features'] = this.features;
-    return data;
+    return {
+      "main": main,
+      "selfie": selfie,
+      "features": features,
+    };
   }
 }
