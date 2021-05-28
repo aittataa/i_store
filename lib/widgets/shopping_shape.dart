@@ -33,7 +33,7 @@ class ShoppingShape extends StatelessWidget {
           ),
         ),
         trailing: Text(
-          "${product.price.toStringAsFixed(2)} \$",
+          "\$${product.price.toStringAsFixed(2)}",
           style: TextStyle(
             color: Colors.black54,
             fontWeight: FontWeight.w900,

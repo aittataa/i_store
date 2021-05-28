@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:i_store/api_service/api_controller.dart';
 import 'package:i_store/classes/product.dart';
+import 'package:i_store/screens/details_screen.dart';
 import 'package:i_store/widgets/slider_shape.dart';
 
 class SliderBar extends StatelessWidget {
+  final ApiController controller;
   final int myIndex;
   final List<Product> myList;
   final Function onPageChanged;
-  const SliderBar({this.myIndex, this.myList, this.onPageChanged});
+  const SliderBar({this.controller, this.myIndex, this.myList, this.onPageChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +26,17 @@ class SliderBar extends StatelessWidget {
           return SliderShape(
             product: product,
             state: state,
+            onTap: () async {
+              Product myProduct = await controller.getByID(product.id);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailsScreen(
+                    product: myProduct,
+                  ),
+                ),
+              );
+            },
           );
         },
       ),

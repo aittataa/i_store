@@ -9,6 +9,7 @@ class ProductShape extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool fav = product.id % 2 == 0;
     return Container(
       margin: EdgeInsets.all(10),
       padding: EdgeInsets.only(left: 10, top: 10, bottom: 10),
@@ -53,14 +54,14 @@ class ProductShape extends StatelessWidget {
                         shape: BoxShape.circle,
                       ),
                       child: Icon(
-                        CupertinoIcons.heart,
-                        color: Colors.white,
+                        fav ? CupertinoIcons.heart_fill : CupertinoIcons.heart,
+                        color: fav ? Colors.red : Colors.white,
                       ),
                     ),
                   ),
                   ListTile(
                     title: Text(
-                      "${product.price.toStringAsFixed(2)} \$",
+                      "\$${product.price.toStringAsFixed(2)}",
                       style: TextStyle(
                         color: Colors.black54,
                         fontWeight: FontWeight.w900,

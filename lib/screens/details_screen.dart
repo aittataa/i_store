@@ -1,12 +1,52 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:i_store/classes/product.dart';
 import 'package:i_store/constant/constant.dart';
+import 'package:i_store/screens/shopping_screen.dart';
 
 class DetailsScreen extends StatelessWidget {
+  final Product product;
+  const DetailsScreen({this.product});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: Icon(
+            CupertinoIcons.back,
+            color: Colors.black54,
+          ),
+        ),
+        centerTitle: true,
+        title: Text(
+          "${product.model}",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.black54,
+            fontWeight: FontWeight.w900,
+          ),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ShoppingScreen(),
+                ),
+              );
+            },
+            icon: Icon(
+              CupertinoIcons.cart_fill,
+              color: Colors.black54,
+            ),
+          ),
+        ],
+      ),
       body: Stack(
         children: [
           Column(
@@ -53,55 +93,25 @@ class DetailsScreen extends StatelessWidget {
           ),
           Column(
             children: [
-              SafeArea(
-                child: Container(
-                  padding: EdgeInsets.only(top: 10, left: 5, right: 5),
-                  child: Column(
-                    children: [
-                      ListTile(
-                        dense: true,
-                        contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                        leading: Icon(
-                          CupertinoIcons.left_chevron,
-                          color: Colors.black54,
-                          size: 30,
-                        ),
-                        trailing: Container(
-                          padding: EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                            color: Colors.black54,
-                            shape: BoxShape.circle,
-                          ),
-                          child: Icon(
-                            CupertinoIcons.heart_fill,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
               Expanded(
+                flex: 2,
                 child: Row(
                   children: [
                     Expanded(
                       child: Container(
                         margin: EdgeInsets.all(10),
                         child: ListTile(
-                          dense: true,
                           contentPadding: EdgeInsets.zero,
                           title: Text(
-                            "iPhone 13",
+                            "${product.model}",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.black54,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
+                              fontWeight: FontWeight.w900,
                             ),
                           ),
                           subtitle: Text(
-                            "Phone",
+                            "${product.manufacturer}",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.black54,
@@ -112,13 +122,12 @@ class DetailsScreen extends StatelessWidget {
                       ),
                     ),
                     Expanded(
-                      flex: 2,
                       child: Container(
                         margin: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           image: DecorationImage(
-                            image: AssetImage("images/app_icon.png"),
+                            image: NetworkImage("${product.image}"),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -128,10 +137,8 @@ class DetailsScreen extends StatelessWidget {
                 ),
               ),
               Expanded(
-                flex: 2,
-                child: Container(
-                    //color: Colors.red,
-                    ),
+                flex: 3,
+                child: Container(),
               ),
             ],
           ),

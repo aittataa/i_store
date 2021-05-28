@@ -15,4 +15,8 @@ class ApiController extends GetxController {
     var products = await ApiManager.getData();
     if (products != null) productsList.value = products;
   }
+
+  getByID(int id) async {
+    return await ApiManager.getByID(id);
+  }
 }

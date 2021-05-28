@@ -88,16 +88,14 @@ class ShoppingScreen extends StatelessWidget {
           trailing: Obx(() {
             final List<Product> myList = controller.productsList;
             final double balance = myList.fold(0, (a, b) => a + b.price).toDouble();
-            if (balance.isGreaterThan(0))
-              return Text(
-                "$balance \$",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w900,
-                ),
-              );
-            else
-              return SizedBox();
+            final bool isNotEmpty = balance.isGreaterThan(0);
+            return Text(
+              isNotEmpty ? "\$${balance.toStringAsFixed(2)}" : "\$0.00",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w900,
+              ),
+            );
           }),
         ),
       ),

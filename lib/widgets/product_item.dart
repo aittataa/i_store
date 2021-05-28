@@ -48,7 +48,7 @@ class ProductItem extends StatelessWidget {
               ListTile(
                 contentPadding: EdgeInsets.zero,
                 title: Text(
-                  "${product.price.toStringAsFixed(2)} \$",
+                  "\$${product.price.toStringAsFixed(2)}",
                   style: TextStyle(
                     color: Colors.black54,
                     fontWeight: FontWeight.w900,
