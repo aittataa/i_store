@@ -27,7 +27,7 @@ class ProductShape extends StatelessWidget {
                 borderRadius: BorderRadius.circular(25),
                 boxShadow: [Constant.boxShadow],
                 image: DecorationImage(
-                  image: NetworkImage(product.image),
+                  image: NetworkImage("${product.image}"),
                 ),
               ),
             ),

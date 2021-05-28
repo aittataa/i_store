@@ -7,13 +7,14 @@ import 'package:i_store/constant/constant.dart';
 class ProductItem extends StatelessWidget {
   final Product product;
   const ProductItem({this.product});
+
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(top: 10, left: 10, right: 10),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(25),
+        borderRadius: BorderRadius.circular(15),
       ),
       child: Column(
         children: [
@@ -24,52 +25,48 @@ class ProductItem extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.white,
                 boxShadow: [Constant.boxShadow],
-                borderRadius: BorderRadius.circular(25),
+                borderRadius: BorderRadius.circular(15),
                 image: DecorationImage(
-                  image: NetworkImage(product.image),
+                  image: NetworkImage("${product.image}"),
                 ),
               ),
             ),
           ),
-          Expanded(
-            child: Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ListTile(
-                    title: Text(
-                      "${product.model}",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.black54,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              ListTile(
+                title: Text(
+                  "${product.model}",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black54,
+                    fontWeight: FontWeight.bold,
                   ),
-                  ListTile(
-                    contentPadding: EdgeInsets.zero,
-                    title: Text(
-                      "${product.price.toStringAsFixed(2)} \$",
-                      style: TextStyle(
-                        color: Colors.black54,
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
-                    trailing: Container(
-                      padding: EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                        color: Colors.black54,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Icon(
-                        CupertinoIcons.cart_fill,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
-            ),
+              ListTile(
+                contentPadding: EdgeInsets.zero,
+                title: Text(
+                  "${product.price.toStringAsFixed(2)} \$",
+                  style: TextStyle(
+                    color: Colors.black54,
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+                trailing: Container(
+                  padding: EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                    color: Colors.black54,
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  child: Icon(
+                    CupertinoIcons.cart_fill,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),

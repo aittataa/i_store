@@ -10,7 +10,6 @@ class InitialScreen extends StatefulWidget {
 }
 
 class _InitialScreenState extends State<InitialScreen> {
-  int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +17,7 @@ class _InitialScreenState extends State<InitialScreen> {
         backgroundColor: Colors.white,
         elevation: 1,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(10),
         ),
         leading: IconButton(
           onPressed: null,
@@ -48,14 +47,6 @@ class _InitialScreenState extends State<InitialScreen> {
         ],
       ),
       body: ContainBody(),
-      // bottomSheet: NavigationBar(
-      //   index: currentIndex,
-      //   onTap: (index) {
-      //     setState(() {
-      //       currentIndex = index;
-      //     });
-      //   },
-      // ),
     );
   }
 }

@@ -28,28 +28,6 @@ class _ContainBodyState extends State<ContainBody> {
       return ListView(
         physics: BouncingScrollPhysics(),
         children: [
-          // Container(
-          //   height: 25,
-          //   margin: EdgeInsets.symmetric(vertical: 10),
-          //   child: ListView.builder(
-          //     padding: EdgeInsets.symmetric(horizontal: 5),
-          //     physics: BouncingScrollPhysics(),
-          //     scrollDirection: Axis.horizontal,
-          //     itemCount: myList.length,
-          //     itemBuilder: (context, index) {
-          //       String category = myList[index].manufacturer;
-          //       return CategoryItem(
-          //         category: category,
-          //         state: Constant.selectedIndex == index,
-          //         onTap: () {
-          //           setState(() {
-          //             Constant.selectedIndex = index;
-          //           });
-          //         },
-          //       );
-          //     },
-          //   ),
-          // ),
           SliderBar(
             myIndex: Constant.pageIndex,
             myList: myList..sort((a, b) => b.price.compareTo(a.price)),

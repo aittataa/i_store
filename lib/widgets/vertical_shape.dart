@@ -10,27 +10,26 @@ class VerticalShape extends StatelessWidget {
   const VerticalShape({this.myList});
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: ListTile(
-        dense: true,
-        contentPadding: EdgeInsets.zero,
-        title: SplitTitle(title: Messages.TITLE_POPULAR),
-        subtitle: SizedBox(
-          height: MediaQuery.of(context).size.height * 0.4,
-          child: GridView.builder(
-            physics: BouncingScrollPhysics(),
-            padding: EdgeInsets.all(10),
-            scrollDirection: Axis.horizontal,
-            gridDelegate: Constant.gridDelegate(
-              crossAxisCount: 1,
-              childAspectRatio: 1.5,
-            ),
-            itemCount: myList.length,
-            itemBuilder: (context, index) {
-              Product product = myList[index];
-              return ProductItem(product: product);
-            },
+    return ListTile(
+      dense: true,
+      //tileColor: Colors.red,
+      contentPadding: EdgeInsets.zero,
+      title: SplitTitle(title: Messages.TITLE_POPULAR),
+      subtitle: SizedBox(
+        height: MediaQuery.of(context).size.height * 0.4,
+        child: GridView.builder(
+          physics: BouncingScrollPhysics(),
+          padding: EdgeInsets.all(10),
+          scrollDirection: Axis.horizontal,
+          gridDelegate: Constant.gridDelegate(
+            crossAxisCount: 1,
+            childAspectRatio: 1.5,
           ),
+          itemCount: myList.length,
+          itemBuilder: (context, index) {
+            Product product = myList[index];
+            return ProductItem(product: product);
+          },
         ),
       ),
     );
