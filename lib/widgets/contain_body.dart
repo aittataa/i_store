@@ -24,21 +24,30 @@ class _ContainBodyState extends State<ContainBody> {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      List<Product> myList = controller.productsList;
-      return ListView(
-        physics: BouncingScrollPhysics(),
-        children: [
-          SliderBar(
-            myIndex: Constant.pageIndex,
-            myList: myList..sort((a, b) => b.price.compareTo(a.price)),
-            onPageChanged: (index) {
-              setState(() => Constant.pageIndex = index);
-            },
+      final List<Product> myList = controller.productsList;
+      final bool isNotEmpty = myList.isNotEmpty;
+      if (isNotEmpty)
+        return ListView(
+          physics: BouncingScrollPhysics(),
+          children: [
+            SliderBar(
+              myIndex: Constant.pageIndex,
+              myList: myList..sort((a, b) => b.price.compareTo(a.price)),
+              onPageChanged: (index) {
+                setState(() => Constant.pageIndex = index);
+              },
+            ),
+            HorizontalShape(myList: myList),
+            VerticalShape(myList: myList),
+          ],
+        );
+      else
+        return Center(
+          child: CircularProgressIndicator(
+            backgroundColor: Colors.black54,
+            valueColor: AlwaysStoppedAnimation<Color>(mainColor),
           ),
-          HorizontalShape(myList: myList),
-          VerticalShape(myList: myList),
-        ],
-      );
+        );
     });
   }
 }

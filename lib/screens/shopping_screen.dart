@@ -4,12 +4,10 @@ import 'package:get/get.dart';
 import 'package:i_store/api_service/api_controller.dart';
 import 'package:i_store/classes/product.dart';
 import 'package:i_store/constant/constant.dart';
-import 'package:i_store/widgets/product_item.dart';
+import 'package:i_store/widgets/shopping_shape.dart';
 
-class ProductsScreen extends StatelessWidget {
+class ShoppingScreen extends StatelessWidget {
   final ApiController controller = Get.put(ApiController());
-  final String title;
-  ProductsScreen({this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +30,7 @@ class ProductsScreen extends StatelessWidget {
         ),
         centerTitle: true,
         title: Text(
-          "$title",
-          textAlign: TextAlign.center,
+          "My Cart",
           style: TextStyle(
             color: Colors.black54,
             fontWeight: FontWeight.w900,
@@ -53,18 +50,14 @@ class ProductsScreen extends StatelessWidget {
         final List<Product> myList = controller.productsList;
         final bool isNotEmpty = myList.isNotEmpty;
         if (isNotEmpty)
-          return GridView.builder(
+          return ListView.builder(
             physics: BouncingScrollPhysics(),
             padding: EdgeInsets.all(10),
             scrollDirection: Axis.vertical,
-            gridDelegate: Constant.gridDelegate(
-              crossAxisCount: 2,
-              childAspectRatio: 0.75,
-            ),
             itemCount: myList.length,
             itemBuilder: (context, index) {
               Product product = myList[index];
-              return ProductItem(product: product);
+              return ShoppingShape(product: product);
             },
           );
         else
@@ -75,6 +68,39 @@ class ProductsScreen extends StatelessWidget {
             ),
           );
       }),
+      bottomSheet: Container(
+        decoration: BoxDecoration(
+          color: Colors.black54,
+          boxShadow: [Constant.boxShadow],
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(15),
+            topRight: Radius.circular(15),
+          ),
+        ),
+        child: ListTile(
+          title: Text(
+            "Total Balance",
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          trailing: Obx(() {
+            final List<Product> myList = controller.productsList;
+            final double balance = myList.fold(0, (a, b) => a + b.price).toDouble();
+            if (balance.isGreaterThan(0))
+              return Text(
+                "$balance \$",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w900,
+                ),
+              );
+            else
+              return SizedBox();
+          }),
+        ),
+      ),
     );
   }
 }

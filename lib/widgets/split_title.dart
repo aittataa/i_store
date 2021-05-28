@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:i_store/screens/products_screen.dart';
 
 class SplitTitle extends StatelessWidget {
   final String title;
@@ -24,9 +25,14 @@ class SplitTitle extends StatelessWidget {
       ),
       trailing: GestureDetector(
         onTap: () {
-          print("hello world");
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ProductsScreen(title: title),
+            ),
+          );
         },
-        //onTap: () => Get.off(() => ProductsScreen(title: title)),
+        //onTap: () => Get.to(ProductsScreen(title: title)),
         child: Container(
           padding: EdgeInsets.all(5),
           decoration: BoxDecoration(
