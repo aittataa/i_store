@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 import 'package:i_store/api_service/api_controller.dart';
 import 'package:i_store/classes/product.dart';
 import 'package:i_store/constant/constant.dart';
+import 'package:i_store/widgets/horizontal_shape.dart';
 import 'package:i_store/widgets/slider_bar.dart';
+import 'package:i_store/widgets/vertical_shape.dart';
 
 class ContainBody extends StatefulWidget {
   @override
@@ -36,8 +38,14 @@ class _ContainBodyState extends State<ContainBody> {
                 setState(() => Constant.pageIndex = index);
               },
             ),
-            //HorizontalShape(myList: myList),
-            //VerticalShape(myList: myList),
+            HorizontalShape(
+              controller: controller,
+              myList: myList,
+            ),
+            VerticalShape(
+              controller: controller,
+              myList: myList,
+            ),
           ],
         );
       else

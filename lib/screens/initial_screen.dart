@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
-import 'package:i_store/api_service/api_controller.dart';
-import 'package:i_store/classes/product.dart';
 import 'package:i_store/constant/messages.dart';
 import 'package:i_store/screens/shopping_screen.dart';
 import 'package:i_store/widgets/contain_body.dart';
@@ -14,12 +11,12 @@ class InitialScreen extends StatefulWidget {
 }
 
 class _InitialScreenState extends State<InitialScreen> {
-  final ApiController controller = Get.put(ApiController());
-  List<Product> myList = [];
+  //final ApiController controller = Get.put(ApiController());
+  //List<Product> myList = [];
   @override
   void initState() {
     super.initState();
-    myList = controller.productsList;
+    //myList = controller.productsList;
   }
 
   @override
