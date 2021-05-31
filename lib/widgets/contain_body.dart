@@ -5,6 +5,7 @@ import 'package:i_store/classes/product.dart';
 import 'package:i_store/constant/constant.dart';
 import 'package:i_store/widgets/horizontal_shape.dart';
 import 'package:i_store/widgets/slider_bar.dart';
+import 'package:i_store/widgets/spink_indicator.dart';
 import 'package:i_store/widgets/vertical_shape.dart';
 
 class ContainBody extends StatefulWidget {
@@ -49,12 +50,13 @@ class _ContainBodyState extends State<ContainBody> {
           ],
         );
       else
-        return Center(
-          child: CircularProgressIndicator(
-            backgroundColor: Colors.black54,
-            valueColor: AlwaysStoppedAnimation<Color>(mainColor),
-          ),
-        );
+        return SpinkIndicator(size: 32);
+      // return Center(
+      //   child: CircularProgressIndicator(
+      //     backgroundColor: Colors.black54,
+      //     valueColor: AlwaysStoppedAnimation<Color>(mainColor),
+      //   ),
+      // );
     });
   }
 }

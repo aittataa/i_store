@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Constant {
   static int selectedIndex;
@@ -6,6 +7,8 @@ class Constant {
   static const int itemCount = 25;
   static const Duration duration = Duration(milliseconds: 1500);
   static const Curve curve = Curves.linearToEaseOut;
+  static final double screenWidth = Get.size.width;
+  static final double screenHeight = Get.size.height;
 
   static const boxShadow = BoxShadow(
     color: Colors.black12,

@@ -5,6 +5,7 @@ import 'package:i_store/classes/product.dart';
 
 class ApiManager {
   static const String _REST_URL = "https://the-mobile-store.herokuapp.com/api/phones";
+
   static getData() async {
     var client = http.Client();
     try {
