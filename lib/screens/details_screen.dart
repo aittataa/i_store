@@ -79,6 +79,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
         children: [
           Expanded(
             child: Container(
+              alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -89,10 +90,19 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   image: NetworkImage("${widget.product.image}"),
                 ),
               ),
+              child: ListTile(
+                title: Text(
+                  "\$${product.price.toStringAsFixed(2)}",
+                  //textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black54,
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+              ),
             ),
           ),
           Expanded(
-            flex: 2,
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 25),
               decoration: BoxDecoration(

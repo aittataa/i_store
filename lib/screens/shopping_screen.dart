@@ -5,6 +5,7 @@ import 'package:i_store/api_service/api_controller.dart';
 import 'package:i_store/classes/product.dart';
 import 'package:i_store/constant/constant.dart';
 import 'package:i_store/widgets/shopping_shape.dart';
+import 'package:i_store/widgets/spink_indicator.dart';
 
 class ShoppingScreen extends StatelessWidget {
   final ApiController controller = Get.put(ApiController());
@@ -61,14 +62,10 @@ class ShoppingScreen extends StatelessWidget {
             },
           );
         else
-          return Center(
-            child: CircularProgressIndicator(
-              backgroundColor: Colors.black54,
-              valueColor: AlwaysStoppedAnimation<Color>(mainColor),
-            ),
-          );
+          return SpinkIndicator(size: 32);
       }),
-      bottomSheet: Container(
+      bottomNavigationBar: Container(
+        margin: EdgeInsets.symmetric(horizontal: 10),
         decoration: BoxDecoration(
           color: Colors.black54,
           boxShadow: [Constant.boxShadow],
