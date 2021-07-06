@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:i_store/api_service/api_controller.dart';
 import 'package:i_store/classes/product.dart';
 import 'package:i_store/constant/messages.dart';
@@ -18,7 +19,7 @@ class HorizontalShape extends StatelessWidget {
         contentPadding: EdgeInsets.zero,
         title: SplitTitle(title: Messages.TITLE_BEST_SELLING),
         subtitle: SizedBox(
-          height: MediaQuery.of(context).size.height * 0.25,
+          height: Get.height * .25,
           child: PageView.builder(
             physics: BouncingScrollPhysics(),
             itemCount: myList.length,

@@ -16,25 +16,27 @@ class SliderShape extends StatelessWidget {
       child: AnimatedContainer(
         duration: Duration(milliseconds: 500),
         curve: Curves.linearToEaseOut,
-        margin: EdgeInsets.fromLTRB(2, 1, 8, state ? 0 : 75),
+        margin: EdgeInsets.only(left: 2, right: 8, top: 0, bottom: state ? 0 : 75),
         padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           image: DecorationImage(
             image: NetworkImage("${product.image}"),
+            fit: BoxFit.contain,
           ),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ListTile(
+              dense: true,
               contentPadding: EdgeInsets.zero,
-              leading: Text(
+              title: Text(
                 "${product.model}",
                 style: TextStyle(
                   color: Colors.black54,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w900,
                 ),
               ),
               trailing: Container(

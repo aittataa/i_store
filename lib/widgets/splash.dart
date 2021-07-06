@@ -10,7 +10,7 @@ class Splash extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
       nextScreen: InitialScreen(),
-      splash: SpinkIndicator(),
+      splash: BouncePoint(),
       curve: Constant.curve,
       backgroundColor: mainColor,
       splashTransition: SplashTransition.fadeTransition,

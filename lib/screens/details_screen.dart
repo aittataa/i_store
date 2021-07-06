@@ -38,7 +38,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
@@ -79,26 +78,53 @@ class _DetailsScreenState extends State<DetailsScreen> {
         children: [
           Expanded(
             child: Container(
-              alignment: Alignment.centerLeft,
+              padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(50),
                   bottomRight: Radius.circular(50),
                 ),
-                image: DecorationImage(
-                  image: NetworkImage("${widget.product.image}"),
-                ),
               ),
-              child: ListTile(
-                title: Text(
-                  "\$${product.price.toStringAsFixed(2)}",
-                  //textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black54,
-                    fontWeight: FontWeight.w900,
+              child: Column(
+                //crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        //border: Border.all(color: Colors.black12, width: 1.5),
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(50),
+                          topLeft: Radius.circular(50),
+                        ),
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage("${widget.product.image}"),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black12, width: 1.5),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Text(
+                      "\$${product.price.toStringAsFixed(2)}",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -291,16 +317,16 @@ class _DetailsScreenState extends State<DetailsScreen> {
           ),
         ],
       ),
-      bottomNavigationBar: Container(
-        margin: EdgeInsets.symmetric(horizontal: 10),
-        decoration: BoxDecoration(
-          color: Colors.black54,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(15),
-            topRight: Radius.circular(15),
-          ),
-        ),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 15),
         child: ListTile(
+          tileColor: Colors.black.withOpacity(.5),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(15),
+              topRight: Radius.circular(15),
+            ),
+          ),
           contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
           leading: Container(
             decoration: BoxDecoration(
@@ -325,13 +351,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 IconButton(
-                  onPressed: () {
-                    setState(() {
-                      decreaseData;
-                    });
-                  },
+                  onPressed: () => setState(() => decreaseData),
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
                   icon: Icon(
                     CupertinoIcons.minus,
+                    color: Colors.black54,
                   ),
                 ),
                 Text(
@@ -343,13 +368,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   ),
                 ),
                 IconButton(
-                  onPressed: () {
-                    setState(() {
-                      increaseData;
-                    });
-                  },
+                  onPressed: () => setState(() => increaseData),
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
                   icon: Icon(
                     CupertinoIcons.plus,
+                    color: Colors.black54,
                   ),
                 ),
               ],

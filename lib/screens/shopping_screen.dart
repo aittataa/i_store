@@ -62,7 +62,7 @@ class ShoppingScreen extends StatelessWidget {
             },
           );
         else
-          return SpinkIndicator(size: 32);
+          return BouncePoint(size: 32);
       }),
       bottomNavigationBar: Container(
         margin: EdgeInsets.symmetric(horizontal: 10),

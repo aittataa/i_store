@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:i_store/api_service/api_controller.dart';
 import 'package:i_store/classes/product.dart';
 import 'package:i_store/screens/details_screen.dart';
@@ -14,7 +15,7 @@ class SliderBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.6,
+      height: Get.height * 0.6,
       margin: EdgeInsets.symmetric(vertical: 10),
       child: PageView.builder(
         onPageChanged: onPageChanged,

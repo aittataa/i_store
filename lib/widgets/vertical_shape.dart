@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:i_store/api_service/api_controller.dart';
 import 'package:i_store/classes/product.dart';
 import 'package:i_store/constant/constant.dart';
@@ -18,7 +19,7 @@ class VerticalShape extends StatelessWidget {
       contentPadding: EdgeInsets.zero,
       title: SplitTitle(title: Messages.TITLE_POPULAR),
       subtitle: SizedBox(
-        height: MediaQuery.of(context).size.height * 0.4,
+        height: Get.height * 0.4,
         child: GridView.builder(
           physics: BouncingScrollPhysics(),
           padding: EdgeInsets.all(10),

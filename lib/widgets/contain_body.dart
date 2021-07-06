@@ -50,13 +50,7 @@ class _ContainBodyState extends State<ContainBody> {
           ],
         );
       else
-        return SpinkIndicator(size: 32);
-      // return Center(
-      //   child: CircularProgressIndicator(
-      //     backgroundColor: Colors.black54,
-      //     valueColor: AlwaysStoppedAnimation<Color>(mainColor),
-      //   ),
-      // );
+        return BouncePoint(size: 32);
     });
   }
 }
