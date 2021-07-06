@@ -5,9 +5,10 @@ import 'package:i_store/classes/product.dart';
 import 'package:i_store/constant/constant.dart';
 
 class ProductItem extends StatelessWidget {
+  final bool state;
   final Product product;
   final Function onTap;
-  const ProductItem({this.product, this.onTap});
+  const ProductItem({this.product, this.state = false, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,6 @@ class ProductItem extends StatelessWidget {
           children: [
             Expanded(
               child: Container(
-                alignment: Alignment.topLeft,
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -31,6 +31,13 @@ class ProductItem extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15),
                   image: DecorationImage(
                     image: NetworkImage("${product.image}"),
+                  ),
+                ),
+                child: Align(
+                  alignment: Alignment.topRight,
+                  child: Icon(
+                    state ? CupertinoIcons.heart_fill : CupertinoIcons.heart,
+                    color: state ? Colors.red : Colors.transparent,
                   ),
                 ),
               ),

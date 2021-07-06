@@ -5,14 +5,17 @@ import 'package:i_store/api_service/api_controller.dart';
 import 'package:i_store/classes/product.dart';
 import 'package:i_store/constant/constant.dart';
 import 'package:i_store/widgets/product_item.dart';
+import 'package:i_store/widgets/spink_indicator.dart';
 
 class ProductsScreen extends StatelessWidget {
   final ApiController controller = Get.put(ApiController());
   final String title;
   ProductsScreen({this.title});
+  static bool _isFav;
 
   @override
   Widget build(BuildContext context) {
+    _isFav = title.contains("WishList");
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -43,10 +46,18 @@ class ProductsScreen extends StatelessWidget {
           IconButton(
             onPressed: () async {},
             icon: Icon(
-              CupertinoIcons.heart_fill,
+              CupertinoIcons.cart_fill,
               color: Colors.black54,
             ),
           ),
+          if (!_isFav)
+            IconButton(
+              onPressed: () async {},
+              icon: Icon(
+                CupertinoIcons.heart_fill,
+                color: Colors.black54,
+              ),
+            ),
         ],
       ),
       body: Obx(() {
@@ -64,16 +75,11 @@ class ProductsScreen extends StatelessWidget {
             itemCount: myList.length,
             itemBuilder: (context, index) {
               Product product = myList[index];
-              return ProductItem(product: product);
+              return ProductItem(product: product, state: _isFav);
             },
           );
         else
-          return Center(
-            child: CircularProgressIndicator(
-              backgroundColor: Colors.black54,
-              valueColor: AlwaysStoppedAnimation<Color>(mainColor),
-            ),
-          );
+          return BouncePoint();
       }),
     );
   }

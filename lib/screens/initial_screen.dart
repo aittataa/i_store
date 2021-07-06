@@ -1,24 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:i_store/constant/messages.dart';
+import 'package:i_store/screens/products_screen.dart';
 import 'package:i_store/screens/shopping_screen.dart';
 import 'package:i_store/widgets/contain_body.dart';
 
-class InitialScreen extends StatefulWidget {
-  @override
-  _InitialScreenState createState() => _InitialScreenState();
-}
-
-class _InitialScreenState extends State<InitialScreen> {
-  //final ApiController controller = Get.put(ApiController());
-  //List<Product> myList = [];
-  @override
-  void initState() {
-    super.initState();
-    //myList = controller.productsList;
-  }
-
+class InitialScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +21,7 @@ class _InitialScreenState extends State<InitialScreen> {
           ),
         ),
         leading: IconButton(
-          onPressed: () {},
+          onPressed: null,
           icon: Icon(
             CupertinoIcons.list_bullet_indent,
             color: Colors.black54,
@@ -50,16 +39,16 @@ class _InitialScreenState extends State<InitialScreen> {
         ),
         actions: [
           IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ShoppingScreen(),
-                ),
-              );
-            },
+            onPressed: () => Get.to(() => ShoppingScreen()),
             icon: Icon(
               CupertinoIcons.cart_fill,
+              color: Colors.black54,
+            ),
+          ),
+          IconButton(
+            onPressed: () => Get.to(() => ProductsScreen(title: "WishList")),
+            icon: Icon(
+              CupertinoIcons.heart_fill,
               color: Colors.black54,
             ),
           ),
