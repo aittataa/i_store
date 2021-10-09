@@ -1,0 +1,19 @@
+------------------ Change The package name
+flutter pub get
+flutter pub run change_app_package_name:main com.wallet_manager.app
+
+------------------ Change The name
+flutter pub get
+flutter pub run flutter_launcher_name:main
+
+------------------ Change The icon
+flutter pub get
+flutter pub run flutter_launcher_icons:main
+
+------------------Build APK------------------------------------------------------------------------------------------------
+flutter clean
+flutter build apk --release
+flutter build apk --release --target-platform android-arm
+flutter build apk --release --target-platform android-arm --analyze-size
+
+------------------About KeyStore---------------------------------------------------------------------------------------------

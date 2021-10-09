@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+const String appTitle = "iStore";
+const String appIcon = "assets/images/app_icon.png";
+const String appIconRound = "assets/images/app_icon_round.png";
+
 void main() {
   runApp(MyApp());
 }
@@ -10,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      // title: Messages.APP_TITLE,
+      title: appTitle,
     );
   }
 }
