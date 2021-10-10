@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-const String appTitle = "iStore";
-const String appIcon = "assets/images/app_icon.png";
-const String appIconRound = "assets/images/app_icon_round.png";
+import 'app/routes/app_pages.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(iStore());
 }
 
-class MyApp extends StatelessWidget {
+class iStore extends StatelessWidget {
+  const iStore({
+    Key? key
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: appTitle,
+      title: "Application",
+      initialRoute: AppPages.INITIAL,
+      getPages: AppPages.routes,
     );
   }
 }
