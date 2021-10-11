@@ -4,36 +4,13 @@ description: Ecome App Store
 environment: 
   sdk: '>=2.12.0 <3.0.0'
 
-dependencies:
-  flutter:
-    sdk: flutter
-
-  # package
+dependencies: 
   cupertino_icons: ^1.0.2
   get: 4.3.8
-  # ionicons: ^0.1.2
-  # get_it: ^7.2.0
-  # flutter_hooks: ^0.18.0
-  # retrofit: ^2.0.1
-  # floor: ^1.2.0
-  # flutter_bloc: ^7.3.0
-  # equatable: ^2.0.3
-  # dio: ^4.0.0
-  # animated_splash_screen: ^1.1.0
-  # flutter_spinkit: ^5.0.0
-  # http: ^0.13.3
-  # intl: ^0.17.0
-  # provider: ^5.0.0
-  # google_fonts: ^2.0.0
+  flutter: 
+    sdk: flutter
 
 dev_dependencies: 
-  # retrofit_generator: ^2.0.1+1
-  # floor_generator: ^1.2.0
-  # build_runner: ^2.1.4
-  # lint: ^1.0.0
-  # flutter_lints: ^1.0.0
-  # flutter_launcher_icons: ^0.9.0
-  # flutter_launcher_name: ^0.0.1
   flutter_test: 
     sdk: flutter
 
@@ -45,8 +22,8 @@ flutter_icons:
   image_path: assets/images/app_icon_round.png
   ios: true
 
-flutter:
-  uses-material-design: true
-  assets:
+flutter: 
+  assets: 
     - assets/images/
+  uses-material-design: true
 
