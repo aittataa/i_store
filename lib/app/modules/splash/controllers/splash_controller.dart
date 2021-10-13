@@ -1,10 +1,9 @@
 import 'package:get/get.dart';
 
-class ShoppingController extends GetxController {
-  //TODO: Implement ShoppingController
+class SplashController extends GetxController {
+  //TODO: Implement SplashController
 
   final count = 0.obs;
-
   @override
   void onInit() {
     super.onInit();
@@ -17,6 +16,5 @@ class ShoppingController extends GetxController {
 
   @override
   void onClose() {}
-
   void increment() => count.value++;
 }

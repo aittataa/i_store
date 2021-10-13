@@ -8,13 +8,13 @@ class HomeProvider extends GetConnect {
     httpClient.baseUrl = AppConstant.baseUrl;
   }
 
-    loadData() async {
+  loadData() async {
     final response = await get(AppConstant.baseUrl);
     final String body = response.body;
     return productFromJson(body);
   }
 
-    loadByID(int id) async {
+  loadByID(int id) async {
     final response = await get("${AppConstant.baseUrl}/$id");
     final String body = response.body;
     return productFromJson(body);
