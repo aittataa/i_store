@@ -21,9 +21,7 @@ void main() {
 }
 
 class iStore extends StatelessWidget {
-  const iStore({
-    Key? key,
-  }) : super(key: key);
+  const iStore({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,4 +35,4 @@ class iStore extends StatelessWidget {
   }
 }
 
-configureDependencies(){}
+configureDependencies() {}

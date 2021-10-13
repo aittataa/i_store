@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:i_store/app/config/constants/app_constant.dart';
 import 'package:i_store/app/modules/home/bindings/home_binding.dart';
 import 'package:i_store/app/modules/home/views/home_view.dart';
 import 'package:i_store/app/modules/shopping/bindings/shopping_binding.dart';
@@ -18,16 +19,25 @@ class AppPages {
       name: _Paths.SPLASH,
       page: () => SplashView(),
       binding: SplashBinding(),
+      curve: AppConstant.curve,
+      transitionDuration: AppConstant.durationRoute,
+      transition: AppConstant.transitionRoute,
     ),
     GetPage(
       name: _Paths.HOME,
       page: () => HomeView(),
       binding: HomeBinding(),
+      curve: AppConstant.curve,
+      transitionDuration: AppConstant.durationRoute,
+      transition: AppConstant.transitionRoute,
     ),
     GetPage(
       name: _Paths.SHOPPING,
       page: () => ShoppingView(),
       binding: ShoppingBinding(),
+      curve: AppConstant.curve,
+      transitionDuration: AppConstant.durationRoute,
+      transition: AppConstant.transitionRoute,
     ),
   ];
 }
