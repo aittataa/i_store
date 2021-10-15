@@ -1,40 +1,57 @@
 import 'dart:convert';
 
-import 'package:i_store/app/data/models/specs.dart';
+import 'rating.dart';
 
-Product productFromJson(String str) => Product.fromJson(json.decode(str));
+List<Product> productFromJson(String str) {
+  final map = json.decode(str);
+  return List.generate(map.length, (i) => Product.fromJson(map[i]));
+  // return List<Product>.from(json.decode(str).map((x) => Product.fromJson(x)));
+}
+
+String productToJson(List<Product> data) {
+  return json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+}
 
 class Product {
   final int id;
-  final String manufacturer;
-  final String model;
-  final String image;
-  final int price;
+  final String title;
+  final double price;
   final String description;
-  final int stock;
-  final Specs specs;
+  final String category;
+  final String image;
+  final Rating rating;
 
   Product({
     required this.id,
-    required this.manufacturer,
-    required this.model,
-    required this.image,
+    required this.title,
     required this.price,
     required this.description,
-    required this.stock,
-    required this.specs,
+    required this.category,
+    required this.image,
+    required this.rating,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
-      id: int.parse(json["id"]),
-      manufacturer: json["manufacturer"],
-      model: json["model"],
-      image: json["image"],
-      price: json["price"],
+      id: json["id"],
+      title: json["title"],
+      price: json["price"].toDouble(),
       description: json["description"],
-      stock: json["stock"],
-      specs: Specs.fromJson(json["specs"]),
+      category: json["category"],
+      image: json["image"],
+      rating: Rating.fromJson(json["rating"]),
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "id": id,
+      "title": title,
+      "price": price,
+      "description": description,
+      "category": category,
+      "image": image,
+      "rating": rating.toJson(),
+    };
   }
 }

@@ -14,16 +14,20 @@ class AppTheme {
   static const Color iconWhiteColor = Color(0xFFFFFFFF);
   static const Color iconRedColor = Color(0xFFF44336);
 
-    /// App Colors
+  /// App Colors
   static const Color textBlackColor = Color(0xFF000000);
   static const Color textWhiteColor = Color(0xFFFFFFFF);
 
   static ThemeData get light {
     return ThemeData(
-      appBarTheme: const AppBarTheme(
-        elevation: 0,
-        color: AppTheme.mainColor,
-      ),
+      appBarTheme: AppBarTheme(
+          elevation: 0,
+          color: AppTheme.mainColor,
+          titleTextStyle: TextStyle(
+            color: AppTheme.textBlackColor.withOpacity(.65),
+            fontWeight: FontWeight.w900,
+            fontSize: 25,
+          )),
       scaffoldBackgroundColor: AppTheme.mainColor,
       primaryColor: AppTheme.mainColor,
       splashColor: AppTheme.mainColor,

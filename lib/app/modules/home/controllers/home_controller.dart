@@ -1,9 +1,10 @@
 import 'package:get/get.dart';
 import 'package:i_store/app/data/models/product.dart';
-import 'package:i_store/app/modules/home/providers/home_provider.dart';
+
+import '../providers/home_provider.dart';
 
 class HomeController extends GetxController {
-  HomeProvider _provider = Get.find<HomeProvider>();
+  final HomeProvider _provider = Get.put(HomeProvider());
   var productsList = <Product>[].obs;
   var state = false.obs;
 
@@ -16,10 +17,10 @@ class HomeController extends GetxController {
   loadData() async {
     var products = await _provider.loadData();
     if (products == null)
-      state.value = false;
+      state.value = true;
     else {
       productsList.value = products;
-      state.value = true;
+      state.value = false;
     }
   }
 }
