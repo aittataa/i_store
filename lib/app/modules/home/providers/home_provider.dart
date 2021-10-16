@@ -16,7 +16,8 @@ class HomeProvider extends GetConnect {
     final String body = response.body;
     // return productFromJson(body);
     final map = jsonDecode(body);
-    return List.generate(map.length, (i) => Product.fromJson(map[i]));
+    // return List.generate(map.length, (i) => Product.fromJson(map[i]));
+    return List<Product>.from(json.decode(body).map((x) => Product.fromJson(x)));
   }
 
   loadByID(int id) async {
