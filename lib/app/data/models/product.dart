@@ -1,57 +1,43 @@
 import 'dart:convert';
 
-import 'rating.dart';
+import 'specs.dart';
 
 List<Product> productFromJson(String str) {
-  final map = json.decode(str);
-  return List.generate(map.length, (i) => Product.fromJson(map[i]));
-  // return List<Product>.from(json.decode(str).map((x) => Product.fromJson(x)));
-}
-
-String productToJson(List<Product> data) {
-  return json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+  return List<Product>.from(json.decode(str).map((x) => Product.fromJson(x)));
 }
 
 class Product {
   final int id;
-  final String title;
-  final double price;
-  final String description;
-  final String category;
+  final String? manufacturer;
+  final String model;
   final String image;
-  final Rating rating;
+  final double price;
+  final String? description;
+  final int? stock;
+  final Specs? specs;
 
   Product({
     required this.id,
-    required this.title,
-    required this.price,
-    required this.description,
-    required this.category,
+    this.manufacturer,
+    required this.model,
     required this.image,
-    required this.rating,
+    required this.price,
+    this.description,
+    this.stock,
+    this.specs,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
       id: json["id"],
-      title: json["title"],
-      price: json["price"].toDouble(),
+      manufacturer: json["manufacturer"],
+      model: json["model"] == null ? "" : json["model"],
+      image: json["image"] == null ? "" : json["image"],
+      price: double.parse(json["price"].toString()),
       description: json["description"],
-      category: json["category"],
-      image: json["image"],
-      rating: Rating.fromJson(json["rating"]),
+      stock: json["stock"],
+      // specs: Specs.fromJson(json["specs"]),
+      specs: json["specs"] == null ? Specs() : Specs.fromJson(json["specs"]),
     );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      "id": id,
-      "title": title,
-      "price": price,
-      "description": description,
-      "category": category,
-      "image": image,
-      "rating": rating.toJson(),
-    };
   }
 }

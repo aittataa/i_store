@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:i_store/app/config/constants/app_constant.dart';
@@ -12,12 +10,13 @@ class HomeProvider extends GetConnect {
   }
 
   loadData() async {
-    final response = await http.get(Uri.parse(AppConstant.baseUrl));
-    final String body = response.body;
-    // return productFromJson(body);
-    final map = jsonDecode(body);
-    // return List.generate(map.length, (i) => Product.fromJson(map[i]));
-    return List<Product>.from(json.decode(body).map((x) => Product.fromJson(x)));
+    final response = await http.get(Uri.parse("${httpClient.baseUrl}"));
+    if (response.statusCode == 200) {
+      final String body = response.body;
+      return productFromJson(body);
+    } else {
+      throw Exception("No Data Found");
+    }
   }
 
   loadByID(int id) async {

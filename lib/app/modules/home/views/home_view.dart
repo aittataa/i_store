@@ -4,36 +4,40 @@ import 'package:get/get.dart';
 import 'package:i_store/app/config/messages/app_message.dart';
 import 'package:i_store/app/config/themes/app_theme.dart';
 import 'package:i_store/app/data/models/product.dart';
+import 'package:i_store/app/modules/home/controllers/home_controller.dart';
+import 'package:i_store/app/modules/home/widgets/featured_bar.dart';
 import 'package:i_store/app/shared/bounce_point.dart';
-
-import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
   final HomeController controller = Get.put(HomeController());
+  late int pageIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(AppMessage.appTitle),
-        centerTitle: true,
       ),
       body: Obx(() {
         final bool state = controller.state.value;
-        final List<Product> myList = controller.productsList.value.toList();
-        final bool isNotEmpty = myList.isNotEmpty;
+        final List<Product> myList = controller.productsList;
+        final bool isEmpty = myList.isEmpty;
         if (state) {
-          return SizedBox(child: BouncePoint(size: 30));
-        } else if (isNotEmpty) {
+          return BouncePoint(size: 30);
+        } else if (isEmpty) {
           return Center(
             child: Icon(
               CupertinoIcons.creditcard_fill,
-              size: 65,
               color: AppTheme.iconBlackColor.withOpacity(.5),
+              size: 65,
             ),
           );
         } else {
-          return SizedBox();
+          return ListView(
+            children: [
+              FeaturedBar(controller: controller, myList: myList),
+            ],
+          );
         }
       }),
     );
