@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:i_store/app/config/messages/app_message.dart';
 import 'package:i_store/app/data/models/product.dart';
 import 'package:i_store/app/modules/home/controllers/home_controller.dart';
-import 'package:i_store/app/modules/home/widgets/featured_bar.dart';
+import 'package:i_store/app/modules/home/widgets/vertical_bar.dart';
 import 'package:i_store/app/shared/bounce_point.dart';
 import 'package:i_store/app/shared/empty_box.dart';
 
@@ -29,6 +29,7 @@ class HomeView extends GetView<HomeController> {
             builder: (context, setState) {
               return ListView(
                 children: [
+                  /*
                   FeaturedBar(
                     index: pageIndex,
                     controller: controller,
@@ -38,6 +39,11 @@ class HomeView extends GetView<HomeController> {
                         pageIndex = index;
                       });
                     },
+                  ),
+                  */
+                  VerticalBar(
+                    controller: controller,
+                    myList: myList, //..sort((a, b) => b.price.compareTo(a.price)),
                   ),
                 ],
               );

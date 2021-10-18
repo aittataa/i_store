@@ -26,6 +26,7 @@ class FeaturedBar extends GetView<HomeController> {
         child: PageView.builder(
           onPageChanged: onPageChanged,
           padEnds: false,
+          physics: BouncingScrollPhysics(),
           controller: PageController(initialPage: index, viewportFraction: .64),
           itemCount: myList.length,
           itemBuilder: (context, i) {
