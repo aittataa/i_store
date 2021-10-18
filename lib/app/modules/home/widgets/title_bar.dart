@@ -28,8 +28,8 @@ class TitleBar extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(5),
             decoration: BoxDecoration(
-              color: AppTheme.blackBackColor.withOpacity(.5),
               shape: BoxShape.circle,
+              color: AppTheme.blackBackColor.withOpacity(.5),
             ),
             child: Icon(
               Icons.chevron_right,
