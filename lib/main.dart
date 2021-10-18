@@ -8,15 +8,6 @@ import 'package:i_store/app/routes/app_pages.dart';
 void main() {
   configureDependencies();
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      systemNavigationBarColor: AppTheme.whiteBackColor,
-      systemNavigationBarIconBrightness: Brightness.dark,
-      statusBarColor: AppTheme.transparentColor,
-      statusBarIconBrightness: Brightness.dark,
-    ),
-  );
   runApp(iStore());
 }
 
@@ -35,4 +26,14 @@ class iStore extends StatelessWidget {
   }
 }
 
-configureDependencies() {}
+configureDependencies() {
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      systemNavigationBarColor: AppTheme.whiteBackColor,
+      systemNavigationBarIconBrightness: Brightness.dark,
+      statusBarColor: AppTheme.transparentColor,
+      statusBarIconBrightness: Brightness.dark,
+    ),
+  );
+}

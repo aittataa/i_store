@@ -23,7 +23,7 @@ class FeaturedShape extends GetView<HomeController> {
       margin: EdgeInsets.only(
         left: 15,
         top: 15,
-        bottom: state ? 10 : 50,
+        bottom: state ? 10 : 60,
       ),
       decoration: BoxDecoration(
         color: AppTheme.whiteBackColor,
@@ -78,21 +78,18 @@ class FeaturedShape extends GetView<HomeController> {
                         ),
                       ),
                     ),
-                    Expanded(
-                      child: Container(
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: AppTheme.blackBackColor.withOpacity(.5),
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(25),
-                            bottomRight: Radius.circular(25),
-                          ),
+                    Container(
+                      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                      decoration: BoxDecoration(
+                        color: AppTheme.blackBackColor.withOpacity(.5),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(25),
+                          bottomRight: Radius.circular(25),
                         ),
-                        child: Icon(
-                          CupertinoIcons.cart_fill,
-                          color: AppTheme.iconWhiteColor,
-                          size: 25,
-                        ),
+                      ),
+                      child: Icon(
+                        CupertinoIcons.cart_fill,
+                        color: AppTheme.iconWhiteColor,
                       ),
                     ),
                   ],

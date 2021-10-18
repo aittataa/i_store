@@ -9,7 +9,7 @@ class TitleBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 20, right: 10, bottom: 5),
+      padding: const EdgeInsets.only(left: 20, right: 10, top: 5, bottom: 5),
       child: Row(
         children: [
           Expanded(

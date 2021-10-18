@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class AppTheme {
@@ -25,14 +27,21 @@ class AppTheme {
       primaryColor: AppTheme.mainColor,
       splashColor: AppTheme.mainColor,
       appBarTheme: AppBarTheme(
-        elevation: 0,
+        elevation: 1,
         centerTitle: true,
-        color: AppTheme.mainColor,
+        color: AppTheme.whiteBackColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(25),
+            bottomRight: Radius.circular(25),
+          ),
+        ),
         titleTextStyle: TextStyle(
           color: AppTheme.textBlackColor.withOpacity(.65),
           fontWeight: FontWeight.w900,
           fontSize: 25,
         ),
+        iconTheme: IconThemeData(color: AppTheme.iconBlackColor, opacity: .75),
       ),
     );
   }

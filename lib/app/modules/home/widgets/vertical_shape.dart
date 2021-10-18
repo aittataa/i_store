@@ -23,18 +23,6 @@ class VerticalShape extends GetView<HomeController> {
       ),
       child: Stack(
         children: [
-          Container(
-            margin: EdgeInsets.all(10),
-            padding: EdgeInsets.all(5),
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: AppTheme.blackBackColor.withOpacity(.5),
-            ),
-            child: Icon(
-              CupertinoIcons.heart_fill,
-              color: AppTheme.iconRedColor,
-            ),
-          ),
           Column(
             children: [
               Expanded(child: ImageNetwork(image: product.image)),
@@ -90,6 +78,18 @@ class VerticalShape extends GetView<HomeController> {
                 ),
               ),
             ],
+          ),
+          Container(
+            margin: EdgeInsets.all(10),
+            padding: EdgeInsets.all(5),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: AppTheme.blackBackColor.withOpacity(.5),
+            ),
+            child: Icon(
+              CupertinoIcons.heart_fill,
+              color: AppTheme.iconRedColor,
+            ),
           ),
         ],
       ),
