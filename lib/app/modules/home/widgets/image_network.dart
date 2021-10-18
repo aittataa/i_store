@@ -9,23 +9,12 @@ class ImageNetwork extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(5),
-      width: double.infinity,
-      height: double.infinity,
-      decoration: BoxDecoration(
-        color: AppTheme.whiteBackColor,
-        borderRadius: BorderRadius.circular(25),
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(25),
-        // child: Image.network(image),
-        // child: Image(image: CachedNetworkImageProvider(image)),
-        child: CachedNetworkImage(
-          imageUrl: image,
-          progressIndicatorBuilder: (context, url, progress) => const BouncePoint(size: 25),
-          errorWidget: (context, url, error) => Icon(Icons.error, color: AppTheme.iconRedColor),
-        ),
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: CachedNetworkImage(
+        imageUrl: image,
+        progressIndicatorBuilder: (context, url, progress) => const BouncePoint(size: 25),
+        errorWidget: (context, url, error) => Icon(Icons.error, color: AppTheme.iconRedColor),
       ),
     );
   }

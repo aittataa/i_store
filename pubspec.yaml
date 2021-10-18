@@ -11,8 +11,9 @@ dependencies:
   flutter_spinkit: ^5.1.0
   toast: ^0.1.5
   cached_network_image: ^3.1.0
+  auto_size_text: ^2.1.0
 
-  flutter: 
+  flutter:
     sdk: flutter
 
 dev_dependencies: 

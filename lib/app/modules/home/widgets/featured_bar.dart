@@ -6,25 +6,37 @@ import 'package:i_store/app/modules/home/widgets/featured_shape.dart';
 
 class FeaturedBar extends GetView<HomeController> {
   final HomeController controller;
+  final int index;
   final List<Product> myList;
-  FeaturedBar({Key? key, required this.controller, required this.myList}) : super(key: key);
-
-  late int pageIndex = 0;
+  final Function(int)? onPageChanged;
+  FeaturedBar({
+    Key? key,
+    required this.controller,
+    required this.index,
+    required this.myList,
+    this.onPageChanged,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 400,
-      child: PageView.builder(
-        onPageChanged: (index) {},
-        padEnds: false,
-        controller: PageController(viewportFraction: .75),
-        itemCount: myList.length,
-        itemBuilder: (context, i) {
-          final Product product = myList[i];
-          return FeaturedShape(product: product);
-        },
-      ),
-    );
+    final bool isNotEmpty = myList.isNotEmpty;
+    if (isNotEmpty) {
+      return SizedBox(
+        height: 400,
+        child: PageView.builder(
+          onPageChanged: onPageChanged,
+          padEnds: false,
+          controller: PageController(initialPage: index, viewportFraction: .64),
+          itemCount: myList.length,
+          itemBuilder: (context, i) {
+            final Product product = myList[i];
+            final bool state = index == i;
+            return FeaturedShape(product: product, state: state);
+          },
+        ),
+      );
+    } else {
+      return const SizedBox();
+    }
   }
 }
