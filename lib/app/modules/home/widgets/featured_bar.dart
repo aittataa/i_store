@@ -32,7 +32,11 @@ class FeaturedBar extends GetView<HomeController> {
           itemBuilder: (context, i) {
             final Product product = myList[i];
             final bool state = index == i;
-            return FeaturedShape(product: product, state: state);
+            return FeaturedShape(
+              controller: controller,
+              product: product,
+              state: state,
+            );
           },
         ),
       );

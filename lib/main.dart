@@ -5,9 +5,10 @@ import 'package:i_store/app/config/messages/app_message.dart';
 import 'package:i_store/app/config/themes/app_theme.dart';
 import 'package:i_store/app/routes/app_pages.dart';
 
-void main() {
-  configureDependencies();
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  configureDependencies();
+  //await GetStorage.init();
   runApp(iStore());
 }
 

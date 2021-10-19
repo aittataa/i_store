@@ -11,9 +11,15 @@ import 'package:i_store/app/modules/home/controllers/home_controller.dart';
 import 'package:i_store/app/modules/home/widgets/image_network.dart';
 
 class FeaturedShape extends GetView<HomeController> {
-  final bool state;
+  final HomeController controller;
   final Product product;
-  const FeaturedShape({Key? key, required this.product, required this.state}) : super(key: key);
+  final bool state;
+  const FeaturedShape({
+    Key? key,
+    required this.controller,
+    required this.product,
+    required this.state,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -78,18 +84,24 @@ class FeaturedShape extends GetView<HomeController> {
                         ),
                       ),
                     ),
-                    Container(
-                      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                      decoration: BoxDecoration(
-                        color: AppTheme.blackBackColor.withOpacity(.5),
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(25),
-                          bottomRight: Radius.circular(25),
+                    GestureDetector(
+                      onTap: () async {
+                        var data = await controller.setShopping(product);
+                        print(data);
+                      },
+                      child: Container(
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                        decoration: BoxDecoration(
+                          color: AppTheme.blackBackColor.withOpacity(.5),
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(25),
+                            bottomRight: Radius.circular(25),
+                          ),
                         ),
-                      ),
-                      child: Icon(
-                        CupertinoIcons.cart_fill,
-                        color: AppTheme.iconWhiteColor,
+                        child: Icon(
+                          CupertinoIcons.cart_fill,
+                          color: AppTheme.iconWhiteColor,
+                        ),
                       ),
                     ),
                   ],
