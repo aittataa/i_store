@@ -15,6 +15,7 @@ class Product {
   final String? description;
   final int? stock;
   final Specs? specs;
+  late bool status;
 
   Product({
     required this.id,
@@ -25,7 +26,12 @@ class Product {
     this.description,
     this.stock,
     this.specs,
+    this.status = false,
   });
+
+  void updateState() {
+    status = !status;
+  }
 
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
@@ -36,7 +42,6 @@ class Product {
       price: double.parse(json["price"].toString()),
       description: json["description"],
       stock: json["stock"],
-      // specs: Specs.fromJson(json["specs"]),
       specs: json["specs"] == null ? Specs() : Specs.fromJson(json["specs"]),
     );
   }

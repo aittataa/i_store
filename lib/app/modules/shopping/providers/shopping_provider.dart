@@ -19,10 +19,4 @@ class ShoppingProvider extends GetConnect {
     return shopping.setBool(product.id.toString(), true);
     //return await _store.write(product.id.toString(), product.id);
   }
-
-  setFavorite(Product product) async {
-    final SharedPreferences favorite = await SharedPreferences.getInstance();
-    return favorite.setBool(product.id.toString(), true);
-    //return await _store.write(product.id.toString(), product.id);
-  }
 }

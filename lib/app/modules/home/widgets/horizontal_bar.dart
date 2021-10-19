@@ -17,23 +17,28 @@ class HorizontalBar extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      contentPadding: EdgeInsets.zero,
-      title: TitleBar(label: AppMessage.brandNew),
-      subtitle: SizedBox(
-        height: 200,
-        child: PageView.builder(
-          //padding: EdgeInsets.all(10),
-          physics: BouncingScrollPhysics(),
-          scrollDirection: Axis.horizontal,
-          //gridDelegate: AppFunction.gridDelegate(childAspectRatio: 1.5),
-          itemCount: myList.length,
-          itemBuilder: (context, i) {
-            final Product product = myList[i];
-            return HorizontalShape(product: product);
-          },
-        ),
-      ),
+    return StatefulBuilder(
+      builder: (context, setState) {
+        return ListTile(
+          contentPadding: EdgeInsets.zero,
+          title: TitleBar(label: AppMessage.brandNew),
+          subtitle: SizedBox(
+            height: 200,
+            child: PageView.builder(
+              physics: BouncingScrollPhysics(),
+              scrollDirection: Axis.horizontal,
+              itemCount: myList.length,
+              itemBuilder: (context, i) {
+                final Product product = myList[i];
+                return HorizontalShape(
+                  controller: controller,
+                  product: product,
+                );
+              },
+            ),
+          ),
+        );
+      },
     );
   }
 }

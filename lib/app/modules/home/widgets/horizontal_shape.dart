@@ -10,94 +10,106 @@ import 'package:i_store/app/modules/home/controllers/home_controller.dart';
 import 'package:i_store/app/modules/home/widgets/image_network.dart';
 
 class HorizontalShape extends GetView<HomeController> {
+  final HomeController controller;
   final Product product;
-  const HorizontalShape({Key? key, required this.product}) : super(key: key);
+  const HorizontalShape({
+    Key? key,
+    required this.controller,
+    required this.product,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        color: AppTheme.whiteBackColor,
-        borderRadius: BorderRadius.circular(25),
-        boxShadow: [AppConstant.boxShadow],
-      ),
-      child: Row(
-        children: [
-          Expanded(child: ImageNetwork(image: product.image)),
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Container(
-                    margin: EdgeInsets.all(10),
-                    padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: AppTheme.blackBackColor.withOpacity(.5),
-                    ),
-                    child: Icon(
-                      CupertinoIcons.heart_fill,
-                      color: AppTheme.iconRedColor,
-                    ),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 10),
-                  child: AutoSizeText(
-                    "${product.model}",
-                    minFontSize: 15,
-                    maxFontSize: 20,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: AppTheme.textBlackColor.withOpacity(.75),
-                      fontWeight: FontWeight.w900,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: AutoSizeText(
-                          "${product.price.toStringAsFixed(2)} ${AppMessage.appCurrency}",
-                          minFontSize: 15,
-                          maxFontSize: 20,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: AppTheme.textBlackColor.withOpacity(.75),
-                            fontWeight: FontWeight.w900,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                        decoration: BoxDecoration(
-                          color: AppTheme.blackBackColor.withOpacity(.5),
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(25),
-                            bottomRight: Radius.circular(25),
-                          ),
-                        ),
-                        child: Icon(
-                          CupertinoIcons.cart_fill,
-                          color: AppTheme.iconWhiteColor,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+    return StatefulBuilder(
+      builder: (context, setState) {
+        return Container(
+          margin: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: AppTheme.whiteBackColor,
+            borderRadius: BorderRadius.circular(25),
+            boxShadow: [AppConstant.boxShadow],
           ),
-        ],
-      ),
+          child: Row(
+            children: [
+              Expanded(child: ImageNetwork(image: product.image)),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    GestureDetector(
+                      onTap: () => setState(() => {controller.setFavorite(product)}),
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Container(
+                          margin: EdgeInsets.all(10),
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: AppTheme.blackBackColor.withOpacity(.5),
+                          ),
+                          child: Icon(
+                            CupertinoIcons.heart_fill,
+                            color: product.status ? AppTheme.iconRedColor : AppTheme.iconWhiteColor,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      child: AutoSizeText(
+                        "${product.model}",
+                        minFontSize: 15,
+                        maxFontSize: 20,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color: AppTheme.textBlackColor.withOpacity(.75),
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: AutoSizeText(
+                              "${product.price.toStringAsFixed(2)} ${AppMessage.appCurrency}",
+                              minFontSize: 15,
+                              maxFontSize: 20,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: AppTheme.textBlackColor.withOpacity(.75),
+                                fontWeight: FontWeight.w900,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                            decoration: BoxDecoration(
+                              color: AppTheme.blackBackColor.withOpacity(.5),
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(25),
+                                bottomRight: Radius.circular(25),
+                              ),
+                            ),
+                            child: Icon(
+                              CupertinoIcons.cart_fill,
+                              color: AppTheme.iconWhiteColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

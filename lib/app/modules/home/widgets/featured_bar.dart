@@ -21,24 +21,28 @@ class FeaturedBar extends GetView<HomeController> {
   Widget build(BuildContext context) {
     final bool isNotEmpty = myList.isNotEmpty;
     if (isNotEmpty) {
-      return SizedBox(
-        height: 400,
-        child: PageView.builder(
-          onPageChanged: onPageChanged,
-          padEnds: false,
-          physics: BouncingScrollPhysics(),
-          controller: PageController(initialPage: index, viewportFraction: .64),
-          itemCount: myList.length,
-          itemBuilder: (context, i) {
-            final Product product = myList[i];
-            final bool state = index == i;
-            return FeaturedShape(
-              controller: controller,
-              product: product,
-              state: state,
-            );
-          },
-        ),
+      return StatefulBuilder(
+        builder: (context, setState) {
+          return SizedBox(
+            height: 400,
+            child: PageView.builder(
+              onPageChanged: onPageChanged,
+              padEnds: false,
+              physics: BouncingScrollPhysics(),
+              controller: PageController(initialPage: index, viewportFraction: .64),
+              itemCount: myList.length,
+              itemBuilder: (context, i) {
+                final Product product = myList[i];
+                final bool state = index == i;
+                return FeaturedShape(
+                  controller: controller,
+                  product: product,
+                  state: state,
+                );
+              },
+            ),
+          );
+        },
       );
     } else {
       return const SizedBox();
