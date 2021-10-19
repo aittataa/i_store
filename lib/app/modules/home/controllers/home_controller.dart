@@ -32,7 +32,11 @@ class HomeController extends GetxController {
     return await _favorite.setFavorite(product);
   }
 
-  getFavorite(int id) async {
-    return await _favorite.getFavorite(id);
+  getFavorite(int id) {
+    return _favorite.getFavorite(id);
+  }
+
+  get clearFavorite {
+    _favorite.clearFavorite;
   }
 }

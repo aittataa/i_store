@@ -21,11 +21,11 @@ class HomeView extends GetView<HomeController> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () => Get.toNamed(Routes.SHOPPING),
+          onPressed: () => {controller.clearFavorite},
           padding: EdgeInsets.zero,
           splashColor: AppTheme.transparentColor,
           highlightColor: AppTheme.transparentColor,
-          icon: Icon(CupertinoIcons.heart_fill),
+          icon: Icon(CupertinoIcons.list_bullet_indent),
         ),
         title: Text(AppMessage.appTitle, style: TextStyle(fontSize: 25)),
         actions: [
@@ -35,6 +35,13 @@ class HomeView extends GetView<HomeController> {
             splashColor: AppTheme.transparentColor,
             highlightColor: AppTheme.transparentColor,
             icon: Icon(CupertinoIcons.cart_fill),
+          ),
+          IconButton(
+            onPressed: () => Get.toNamed(Routes.FAVORITE),
+            padding: EdgeInsets.zero,
+            splashColor: AppTheme.transparentColor,
+            highlightColor: AppTheme.transparentColor,
+            icon: Icon(CupertinoIcons.heart_fill),
           ),
         ],
       ),

@@ -52,6 +52,7 @@ class FeaturedShape extends GetView<HomeController> {
                       maxFontSize: 20,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         color: AppTheme.textBlackColor.withOpacity(.75),
                         fontWeight: FontWeight.w900,

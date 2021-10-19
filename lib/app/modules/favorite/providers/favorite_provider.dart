@@ -13,7 +13,11 @@ class FavoriteProvider extends GetConnect {
     return await favorite.setBool("${product.id}", product.status);
   }
 
-  getFavorite(int id) async {
+  getFavorite(int id) {
     return favorite.getBool("$id");
+  }
+
+  get clearFavorite {
+    favorite.clear();
   }
 }

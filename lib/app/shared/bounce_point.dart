@@ -9,10 +9,18 @@ class BouncePoint extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SpinKitThreeBounce(
-      size: size,
-      color: AppTheme.blackBackColor.withOpacity(.5),
-      duration: AppConstant.durationSplash,
-    );
+    if (size < 50) {
+      return SpinKitSquareCircle(
+        size: size,
+        color: AppTheme.blackBackColor.withOpacity(.5),
+        duration: AppConstant.durationSplash,
+      );
+    } else {
+      return SpinKitThreeBounce(
+        size: size,
+        color: AppTheme.blackBackColor.withOpacity(.5),
+        duration: AppConstant.durationSplash,
+      );
+    }
   }
 }

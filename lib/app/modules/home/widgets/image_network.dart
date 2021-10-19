@@ -15,7 +15,7 @@ class ImageNetwork extends GetView<HomeController> {
       padding: const EdgeInsets.all(10),
       child: CachedNetworkImage(
         imageUrl: image,
-        progressIndicatorBuilder: (context, url, progress) => const BouncePoint(size: 25),
+        progressIndicatorBuilder: (context, url, progress) => const BouncePoint(size: 30),
         errorWidget: (context, url, error) => Icon(Icons.error, color: AppTheme.iconRedColor),
       ),
     );

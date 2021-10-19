@@ -11,4 +11,7 @@ class AppMessage {
 
   /// TODO : Shopping View
   static const String shopTitle = "My Cart";
+
+  /// TODO : Favorite View
+  static const String favTitle = "WishList";
 }
