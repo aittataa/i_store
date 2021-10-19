@@ -8,6 +8,7 @@ import 'package:i_store/app/modules/home/controllers/home_controller.dart';
 import 'package:i_store/app/modules/home/widgets/featured_bar.dart';
 import 'package:i_store/app/modules/home/widgets/horizontal_bar.dart';
 import 'package:i_store/app/modules/home/widgets/vertical_bar.dart';
+import 'package:i_store/app/routes/app_pages.dart';
 import 'package:i_store/app/shared/bounce_point.dart';
 import 'package:i_store/app/shared/empty_box.dart';
 
@@ -20,20 +21,20 @@ class HomeView extends GetView<HomeController> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {},
-          icon: Icon(
-            CupertinoIcons.heart_fill,
-            color: AppTheme.iconBlackColor,
-          ),
+          onPressed: () => Get.toNamed(Routes.SHOPPING),
+          padding: EdgeInsets.zero,
+          splashColor: AppTheme.transparentColor,
+          highlightColor: AppTheme.transparentColor,
+          icon: Icon(CupertinoIcons.heart_fill),
         ),
-        title: Text(AppMessage.appTitle),
+        title: Text(AppMessage.appTitle, style: TextStyle(fontSize: 25)),
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: Icon(
-              CupertinoIcons.cart_fill,
-              color: AppTheme.iconBlackColor,
-            ),
+            onPressed: () => Get.toNamed(Routes.SHOPPING),
+            padding: EdgeInsets.zero,
+            splashColor: AppTheme.transparentColor,
+            highlightColor: AppTheme.transparentColor,
+            icon: Icon(CupertinoIcons.cart_fill),
           ),
         ],
       ),
@@ -49,24 +50,25 @@ class HomeView extends GetView<HomeController> {
           return StatefulBuilder(
             builder: (context, setState) {
               return ListView(
+                physics: BouncingScrollPhysics(),
                 children: [
                   FeaturedBar(
                     index: pageIndex,
                     controller: controller,
-                    myList: myList,
+                    myList: myList.toList()..sort((a, b) => b.price.compareTo(a.price)),
                     onPageChanged: (index) {
                       setState(() {
                         pageIndex = index;
                       });
                     },
                   ),
-                  VerticalBar(
-                    controller: controller,
-                    myList: myList,
-                  ),
                   HorizontalBar(
                     controller: controller,
-                    myList: myList,
+                    myList: myList.toList()..sort((a, b) => a.price.compareTo(b.price)),
+                  ),
+                  VerticalBar(
+                    controller: controller,
+                    myList: myList.toList()..sort((a, b) => a.model.compareTo(b.model)),
                   ),
                 ],
               );

@@ -39,9 +39,12 @@ class AppTheme {
         titleTextStyle: TextStyle(
           color: AppTheme.textBlackColor.withOpacity(.65),
           fontWeight: FontWeight.w900,
-          fontSize: 25,
+          fontSize: 20,
         ),
-        iconTheme: IconThemeData(color: AppTheme.iconBlackColor, opacity: .75),
+        iconTheme: IconThemeData(
+          color: AppTheme.iconBlackColor,
+          opacity: .75,
+        ),
       ),
     );
   }

@@ -7,11 +7,11 @@ class AppConstant {
   static const String baseUrl = "https://the-mobile-store.herokuapp.com/api/phones/";
 
   static const Curve curve = Curves.linearToEaseOut;
-  static const Transition transitionRoute = Transition.native;
+  static const Transition transitionRoute = Transition.topLevel;
 
   /// TODO : Durations
   static const Duration durationSplash = Duration(milliseconds: 1500);
-  static const Duration durationRoute = Duration(milliseconds: 1000);
+  static const Duration durationRoute = Duration(milliseconds: 100);
   static const Duration durationAnimated = Duration(milliseconds: 1000);
 
   /// TODO : Screen Size

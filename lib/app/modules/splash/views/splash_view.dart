@@ -4,9 +4,8 @@ import 'package:get/get.dart';
 import 'package:i_store/app/config/constants/app_constant.dart';
 import 'package:i_store/app/config/themes/app_theme.dart';
 import 'package:i_store/app/modules/home/views/home_view.dart';
+import 'package:i_store/app/modules/splash/controllers/splash_controller.dart';
 import 'package:i_store/app/shared/bounce_point.dart';
-
-import '../controllers/splash_controller.dart';
 
 class SplashView extends GetView<SplashController> {
   const SplashView({Key? key});
