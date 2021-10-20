@@ -11,12 +11,22 @@ class ImageNetwork extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
+      margin: const EdgeInsets.all(5),
       padding: const EdgeInsets.all(10),
-      child: CachedNetworkImage(
-        imageUrl: image,
-        progressIndicatorBuilder: (context, url, progress) => const BouncePoint(size: 30),
-        errorWidget: (context, url, error) => Icon(Icons.error, color: AppTheme.iconRedColor),
+      decoration: BoxDecoration(
+        color: AppTheme.whiteBackColor,
+        borderRadius: BorderRadius.circular(25),
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(25),
+        // child: Image.network(image),
+        // child: Image(image: CachedNetworkImageProvider(image)),
+        child: CachedNetworkImage(
+          imageUrl: image,
+          progressIndicatorBuilder: (context, url, progress) => const BouncePoint(size: 30),
+          errorWidget: (context, url, error) => Icon(Icons.error, color: AppTheme.iconRedColor),
+        ),
       ),
     );
   }

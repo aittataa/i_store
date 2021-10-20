@@ -1,20 +1,37 @@
 import 'package:get/get.dart';
+import 'package:i_store/app/data/models/product.dart';
+import 'package:i_store/app/modules/favorite/providers/favorite_provider.dart';
+import 'package:i_store/app/modules/home/providers/home_provider.dart';
 
 class FavoriteController extends GetxController {
-  //TODO: Implement FavoriteController
+  final FavoriteProvider _provider = Get.put(FavoriteProvider());
+  final HomeProvider _home = Get.put(HomeProvider());
 
-  final count = 0.obs;
+  var productsList = <Product>[].obs;
+  var state = false.obs;
+
   @override
   void onInit() {
     super.onInit();
+    loadData();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  loadData() async {
+    var products = await _home.loadData();
+    if (products == null)
+      state.value = true;
+    else {
+      productsList.value = products;
+      state.value = false;
+    }
   }
 
-  @override
-  void onClose() {}
-  void increment() => count.value++;
+  setFavorite(Product product) async {
+    product.updateState();
+    return await _provider.setFavorite(product);
+  }
+
+  getFavorite(int id) => _provider.getFavorite(id);
+
+  get clearFavorite => {_provider.clearFavorite};
 }

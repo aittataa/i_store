@@ -25,11 +25,12 @@ class HorizontalShape extends GetView<HomeController> {
         return Container(
           margin: EdgeInsets.all(10),
           decoration: BoxDecoration(
-            color: AppTheme.whiteBackColor,
+            color: AppTheme.whiteBackColor.withOpacity(.85),
             borderRadius: BorderRadius.circular(25),
             boxShadow: [AppConstant.boxShadow],
           ),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Expanded(child: ImageNetwork(image: product.image)),
               Expanded(
@@ -56,7 +57,7 @@ class HorizontalShape extends GetView<HomeController> {
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.symmetric(vertical: 10),
+                      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                       child: AutoSizeText(
                         "${product.model}",
                         minFontSize: 15,

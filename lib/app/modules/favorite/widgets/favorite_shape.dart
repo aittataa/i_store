@@ -6,13 +6,13 @@ import 'package:i_store/app/config/constants/app_constant.dart';
 import 'package:i_store/app/config/messages/app_message.dart';
 import 'package:i_store/app/config/themes/app_theme.dart';
 import 'package:i_store/app/data/models/product.dart';
-import 'package:i_store/app/modules/home/controllers/home_controller.dart';
+import 'package:i_store/app/modules/favorite/controllers/favorite_controller.dart';
 import 'package:i_store/app/modules/home/widgets/image_network.dart';
 
-class VerticalShape extends GetView<HomeController> {
-  final HomeController controller;
+class FavoriteShape extends GetView<FavoriteController> {
+  final FavoriteController controller;
   final Product product;
-  const VerticalShape({
+  const FavoriteShape({
     Key? key,
     required this.controller,
     required this.product,

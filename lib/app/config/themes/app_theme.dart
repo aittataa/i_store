@@ -6,7 +6,8 @@ class AppTheme {
   AppTheme._();
 
   /// App Colors
-  static const Color mainColor = Color(0xFFF0F0F0);
+  //static const Color mainColor = Color(0xFF757575);
+  static const Color backColor = Color(0xFFF0F0F0);
   static const Color blackBackColor = Color(0xFF000000);
   static const Color whiteBackColor = Color(0xFFFFFFFF);
   static const Color transparentColor = Color(0x00000000);
@@ -23,9 +24,9 @@ class AppTheme {
 
   static ThemeData get light {
     return ThemeData(
-      scaffoldBackgroundColor: AppTheme.mainColor,
-      primaryColor: AppTheme.mainColor,
-      splashColor: AppTheme.mainColor,
+      scaffoldBackgroundColor: AppTheme.backColor,
+      primaryColor: AppTheme.backColor,
+      splashColor: AppTheme.backColor,
       appBarTheme: AppBarTheme(
         elevation: 1,
         centerTitle: true,

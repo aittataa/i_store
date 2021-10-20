@@ -8,10 +8,10 @@ import 'package:i_store/app/routes/app_pages.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
-  runApp(iStore());
+  runApp(IStore());
 }
 
-class iStore extends StatelessWidget {
+class IStore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
