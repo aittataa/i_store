@@ -6,6 +6,7 @@ import 'package:i_store/app/data/models/product.dart';
 import 'package:i_store/app/modules/home/controllers/home_controller.dart';
 import 'package:i_store/app/modules/home/widgets/title_bar.dart';
 import 'package:i_store/app/modules/home/widgets/vertical_shape.dart';
+import 'package:i_store/app/modules/product/views/product_view.dart';
 
 class VerticalBar extends GetView<HomeController> {
   final HomeController controller;
@@ -24,7 +25,11 @@ class VerticalBar extends GetView<HomeController> {
         builder: (context, setState) {
           return ListTile(
             contentPadding: EdgeInsets.zero,
-            title: TitleBar(label: AppMessage.bestSelling),
+            minVerticalPadding: 1,
+            title: TitleBar(
+              label: AppMessage.bestSelling + " : ${myList.length} Items",
+              onTap: () => {Get.to(() => ProductView(title: AppMessage.bestSelling, myList: myList))},
+            ),
             subtitle: SizedBox(
               height: 300,
               child: GridView.builder(
