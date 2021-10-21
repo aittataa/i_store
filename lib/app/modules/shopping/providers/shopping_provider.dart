@@ -1,22 +1,27 @@
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:i_store/app/data/models/product.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ShoppingProvider extends GetConnect {
-  final GetStorage _store = GetStorage();
-  //final SharedPreferences session = SharedPreferences();
-
+  late SharedPreferences shopping;
   @override
-  void onInit() {
-    _store.listen(() {
-      print("Listen");
-    });
+  void onInit() async {
+    shopping = await SharedPreferences.getInstance();
   }
 
-  setShopping(Product product) async {
-    final SharedPreferences shopping = await SharedPreferences.getInstance();
-    return shopping.setBool(product.id.toString(), true);
-    //return await _store.write(product.id.toString(), product.id);
+  setShopping(Product product, int quantity) async {
+    return await shopping.setInt("${product.id}", quantity);
+  }
+
+  getShopping(int id) {
+    return shopping.getInt("$id");
+  }
+
+  delShopping(int id) {
+    return shopping.remove("$id");
+  }
+
+  get clearShopping {
+    return shopping.clear();
   }
 }

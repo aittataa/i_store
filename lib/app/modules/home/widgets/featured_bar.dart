@@ -29,13 +29,15 @@ class FeaturedBar extends GetView<HomeController> {
               onPageChanged: onPageChanged,
               padEnds: false,
               physics: BouncingScrollPhysics(),
-              controller: PageController(initialPage: index, viewportFraction: .64),
+              controller: PageController(
+                initialPage: index,
+                viewportFraction: .64,
+              ),
               itemCount: myList.length,
               itemBuilder: (context, i) {
                 final Product product = myList[i];
                 final bool state = index == i;
-                final int id = product.id;
-                product.status = controller.getFavorite(id) ?? false;
+                product.status = controller.getFavorite(product.id) ?? false;
                 return FeaturedShape(
                   controller: controller,
                   product: product,

@@ -7,6 +7,7 @@ import 'package:i_store/app/modules/home/controllers/home_controller.dart';
 import 'package:i_store/app/modules/home/widgets/horizontal_bar.dart';
 import 'package:i_store/app/modules/home/widgets/menu_button.dart';
 import 'package:i_store/app/modules/home/widgets/vertical_bar.dart';
+import 'package:i_store/app/routes/app_pages.dart';
 import 'package:i_store/app/routes/header_button.dart';
 import 'package:i_store/app/shared/bounce_point.dart';
 import 'package:i_store/app/shared/empty_box.dart';
@@ -22,8 +23,14 @@ class HomeView extends GetView<HomeController> {
         leading: MenuButton(controller: controller),
         title: Text(AppMessage.appTitle, style: TextStyle(fontSize: 25)),
         actions: [
-          HeaderButton(icon: CupertinoIcons.cart_fill),
-          HeaderButton(icon: CupertinoIcons.heart_fill),
+          HeaderButton(
+            onPressed: () => Get.toNamed(Routes.SHOPPING),
+            icon: CupertinoIcons.cart_fill,
+          ),
+          HeaderButton(
+            onPressed: () => Get.toNamed(Routes.FAVORITE),
+            icon: CupertinoIcons.heart_fill,
+          ),
         ],
       ),
       body: Obx(() {

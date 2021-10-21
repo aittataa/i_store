@@ -87,7 +87,10 @@ class FavoriteShape extends GetView<FavoriteController> {
                 ],
               ),
               GestureDetector(
-                onTap: () => setState(() => {controller.setFavorite(product)}),
+                onTap: () => setState(() {
+                  controller.setFavorite(product);
+                  controller.onInit();
+                }),
                 child: Container(
                   margin: EdgeInsets.all(10),
                   padding: EdgeInsets.all(5),

@@ -66,18 +66,24 @@ class VerticalShape extends GetView<HomeController> {
                           ),
                         ),
                         Expanded(
-                          child: Container(
-                            padding: EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                              color: AppTheme.blackBackColor.withOpacity(.5),
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(25),
-                                bottomRight: Radius.circular(25),
+                          child: GestureDetector(
+                            onTap: () {
+                              var data = controller.setShopping(product, 0);
+                              print(data);
+                            },
+                            child: Container(
+                              padding: EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                color: AppTheme.blackBackColor.withOpacity(.5),
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(25),
+                                  bottomRight: Radius.circular(25),
+                                ),
                               ),
-                            ),
-                            child: Icon(
-                              CupertinoIcons.cart_fill,
-                              color: AppTheme.iconWhiteColor,
+                              child: Icon(
+                                CupertinoIcons.cart_fill,
+                                color: AppTheme.iconWhiteColor,
+                              ),
                             ),
                           ),
                         ),
@@ -87,7 +93,12 @@ class VerticalShape extends GetView<HomeController> {
                 ],
               ),
               GestureDetector(
-                onTap: () => setState(() => {controller.setFavorite(product)}),
+                onTap: () {
+                  setState(() {
+                    var data = controller.setFavorite(product);
+                    print(data);
+                  });
+                },
                 child: Container(
                   margin: EdgeInsets.all(10),
                   padding: EdgeInsets.all(5),

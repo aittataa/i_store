@@ -17,7 +17,11 @@ class FavoriteProvider extends GetConnect {
     return favorite.getBool("$id");
   }
 
+  delFavorite(int id) {
+    return favorite.remove("$id");
+  }
+
   get clearFavorite {
-    favorite.clear();
+    return favorite.clear();
   }
 }

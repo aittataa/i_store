@@ -40,8 +40,7 @@ class VerticalBar extends GetView<HomeController> {
                 itemCount: myList.length,
                 itemBuilder: (context, i) {
                   final Product product = myList[i];
-                  final int id = product.id;
-                  product.status = controller.getFavorite(id) ?? false;
+                  product.status = controller.getFavorite(product.id) ?? false;
                   return VerticalShape(
                     controller: controller,
                     product: product,

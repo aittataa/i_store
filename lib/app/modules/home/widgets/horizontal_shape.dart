@@ -39,7 +39,12 @@ class HorizontalShape extends GetView<HomeController> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     GestureDetector(
-                      onTap: () => setState(() => {controller.setFavorite(product)}),
+                      onTap: () async {
+                        //setState(() {
+                        var data = await controller.getFavorite(product.id);
+                        print(data);
+                        //});
+                      },
                       child: Align(
                         alignment: Alignment.centerRight,
                         child: Container(
@@ -87,18 +92,24 @@ class HorizontalShape extends GetView<HomeController> {
                               ),
                             ),
                           ),
-                          Container(
-                            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                            decoration: BoxDecoration(
-                              color: AppTheme.blackBackColor.withOpacity(.5),
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(25),
-                                bottomRight: Radius.circular(25),
+                          GestureDetector(
+                            onTap: () async {
+                              var data = await controller.getShopping(product.id);
+                              print(data);
+                            },
+                            child: Container(
+                              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                              decoration: BoxDecoration(
+                                color: AppTheme.blackBackColor.withOpacity(.5),
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(25),
+                                  bottomRight: Radius.circular(25),
+                                ),
                               ),
-                            ),
-                            child: Icon(
-                              CupertinoIcons.cart_fill,
-                              color: AppTheme.iconWhiteColor,
+                              child: Icon(
+                                CupertinoIcons.cart_fill,
+                                color: AppTheme.iconWhiteColor,
+                              ),
                             ),
                           ),
                         ],

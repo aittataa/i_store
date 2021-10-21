@@ -1,54 +1,53 @@
-import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:i_store/app/config/constants/app_constant.dart';
-import 'package:i_store/app/config/messages/app_message.dart';
 import 'package:i_store/app/config/themes/app_theme.dart';
 import 'package:i_store/app/data/models/product.dart';
-import 'package:i_store/app/modules/home/controllers/home_controller.dart';
-import 'package:i_store/app/modules/home/widgets/image_network.dart';
+import 'package:i_store/app/modules/shopping/controllers/shopping_controller.dart';
 
-class FeaturedShape extends GetView<HomeController> {
-  final HomeController controller;
+class CartShape extends GetView<ShoppingController> {
+  final ShoppingController controller;
   final Product product;
-  final bool state;
-  const FeaturedShape({
+  const CartShape({
     Key? key,
     required this.controller,
     required this.product,
-    required this.state,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return StatefulBuilder(
       builder: (context, setState) {
-        return AnimatedContainer(
-          duration: AppConstant.durationAnimated,
-          curve: AppConstant.curve,
-          margin: EdgeInsets.only(
-            left: 15,
-            top: 15,
-            bottom: state ? 10 : 60,
-          ),
+        return Container(
+          margin: EdgeInsets.symmetric(vertical: 5),
           decoration: BoxDecoration(
-            color: AppTheme.whiteBackColor,
-            borderRadius: BorderRadius.circular(25),
+            color: AppTheme.whiteBackColor.withOpacity(.85),
+            borderRadius: BorderRadius.circular(10),
             boxShadow: [AppConstant.boxShadow],
           ),
+          child: ListTile(
+            contentPadding: EdgeInsets.zero,
+            leading: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: CachedNetworkImageProvider(product.image),
+                ),
+              ),
+            ),
+          ),
+          /*
           child: Stack(
             children: [
-              Expanded(child: Center(child: ImageNetwork(image: product.image))),
               Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  ListTile(
-                    contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                    title: AutoSizeText(
+                  Expanded(child: ImageNetwork(image: product.image)),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    child: AutoSizeText(
                       "${product.model}",
-                      minFontSize: 10,
+                      minFontSize: 15,
                       maxFontSize: 20,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -56,25 +55,6 @@ class FeaturedShape extends GetView<HomeController> {
                       style: TextStyle(
                         color: AppTheme.textBlackColor.withOpacity(.75),
                         fontWeight: FontWeight.w900,
-                      ),
-                    ),
-                    trailing: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          var data = controller.setFavorite(product);
-                          print(data);
-                        });
-                      },
-                      child: Container(
-                        padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          color: AppTheme.blackBackColor.withOpacity(.5),
-                          shape: BoxShape.circle,
-                        ),
-                        child: Icon(
-                          CupertinoIcons.heart_fill,
-                          color: product.status ? AppTheme.iconRedColor : AppTheme.iconWhiteColor,
-                        ),
                       ),
                     ),
                   ),
@@ -95,13 +75,9 @@ class FeaturedShape extends GetView<HomeController> {
                             ),
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            var data = controller.setShopping(product, 0);
-                            print(data);
-                          },
+                        Expanded(
                           child: Container(
-                            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                            padding: EdgeInsets.all(10),
                             decoration: BoxDecoration(
                               color: AppTheme.blackBackColor.withOpacity(.5),
                               borderRadius: BorderRadius.only(
@@ -120,8 +96,27 @@ class FeaturedShape extends GetView<HomeController> {
                   ),
                 ],
               ),
+              GestureDetector(
+                onTap: () => setState(() {
+                  controller.setFavorite(product);
+                  controller.onInit();
+                }),
+                child: Container(
+                  margin: EdgeInsets.all(10),
+                  padding: EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: AppTheme.blackBackColor.withOpacity(.5),
+                  ),
+                  child: Icon(
+                    CupertinoIcons.heart_fill,
+                    color: product.status ? AppTheme.iconRedColor : AppTheme.iconWhiteColor,
+                  ),
+                ),
+              ),
             ],
           ),
+          */
         );
       },
     );

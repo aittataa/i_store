@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:i_store/app/config/functions/app_function.dart';
 import 'package:i_store/app/config/messages/app_message.dart';
-import 'package:i_store/app/config/themes/app_theme.dart';
 import 'package:i_store/app/data/models/product.dart';
 import 'package:i_store/app/modules/favorite/controllers/favorite_controller.dart';
 import 'package:i_store/app/modules/favorite/widgets/favorite_shape.dart';
 import 'package:i_store/app/routes/app_pages.dart';
+import 'package:i_store/app/routes/header_button.dart';
 import 'package:i_store/app/shared/back_icon.dart';
 import 'package:i_store/app/shared/bounce_point.dart';
 import 'package:i_store/app/shared/empty_box.dart';
@@ -21,12 +21,9 @@ class FavoriteView extends GetView<FavoriteController> {
         leading: BackIcon(),
         title: Text(AppMessage.favTitle),
         actions: [
-          IconButton(
+          HeaderButton(
             onPressed: () => Get.offNamed(Routes.SHOPPING),
-            padding: EdgeInsets.zero,
-            splashColor: AppTheme.transparentColor,
-            highlightColor: AppTheme.transparentColor,
-            icon: Icon(CupertinoIcons.cart_fill),
+            icon: CupertinoIcons.cart_fill,
           ),
         ],
       ),
@@ -53,16 +50,10 @@ class FavoriteView extends GetView<FavoriteController> {
                 itemCount: myList.length,
                 itemBuilder: (context, i) {
                   final Product product = myList[i];
-                  // final int id = product.id;
-                  // product.status = controller.getFavorite(id) ?? false;
-                  // if (product.status) {
                   return FavoriteShape(
                     controller: controller,
                     product: product,
                   );
-                  // } else {
-                  //   return SizedBox();
-                  // }
                 },
               );
             },
