@@ -8,6 +8,7 @@ import 'package:i_store/app/data/models/product.dart';
 import 'package:i_store/app/modules/favorite/controllers/favorite_controller.dart';
 import 'package:i_store/app/modules/favorite/widgets/favorite_shape.dart';
 import 'package:i_store/app/routes/app_pages.dart';
+import 'package:i_store/app/shared/back_icon.dart';
 import 'package:i_store/app/shared/bounce_point.dart';
 import 'package:i_store/app/shared/empty_box.dart';
 
@@ -17,13 +18,7 @@ class FavoriteView extends GetView<FavoriteController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () => Get.back(),
-          padding: EdgeInsets.zero,
-          splashColor: AppTheme.transparentColor,
-          highlightColor: AppTheme.transparentColor,
-          icon: Icon(CupertinoIcons.back),
-        ),
+        leading: BackIcon(),
         title: Text(AppMessage.favTitle),
         actions: [
           IconButton(
@@ -37,8 +32,12 @@ class FavoriteView extends GetView<FavoriteController> {
       ),
       body: Obx(() {
         final bool state = controller.state.value;
-        final List<Product> myList = controller.productsList;
-        final bool isEmpty = controller.productsList.isEmpty;
+        final List<Product> myList = controller.productsList.where((product) {
+          final int id = product.id;
+          product.status = controller.getFavorite(id) ?? false;
+          return product.status == true;
+        }).toList();
+        final bool isEmpty = myList.isEmpty;
         if (state) {
           return BouncePoint(size: 30);
         } else if (isEmpty) {
@@ -54,16 +53,16 @@ class FavoriteView extends GetView<FavoriteController> {
                 itemCount: myList.length,
                 itemBuilder: (context, i) {
                   final Product product = myList[i];
-                  final int id = product.id;
-                  product.status = controller.getFavorite(id) ?? false;
-                  if (product.status) {
-                    return FavoriteShape(
-                      controller: controller,
-                      product: product,
-                    );
-                  } else {
-                    return SizedBox();
-                  }
+                  // final int id = product.id;
+                  // product.status = controller.getFavorite(id) ?? false;
+                  // if (product.status) {
+                  return FavoriteShape(
+                    controller: controller,
+                    product: product,
+                  );
+                  // } else {
+                  //   return SizedBox();
+                  // }
                 },
               );
             },

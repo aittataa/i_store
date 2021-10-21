@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:i_store/app/config/messages/app_message.dart';
-import 'package:i_store/app/config/themes/app_theme.dart';
 import 'package:i_store/app/data/models/product.dart';
 import 'package:i_store/app/modules/home/controllers/home_controller.dart';
 import 'package:i_store/app/modules/home/widgets/horizontal_bar.dart';
+import 'package:i_store/app/modules/home/widgets/menu_button.dart';
 import 'package:i_store/app/modules/home/widgets/vertical_bar.dart';
-import 'package:i_store/app/routes/app_pages.dart';
+import 'package:i_store/app/routes/header_button.dart';
 import 'package:i_store/app/shared/bounce_point.dart';
 import 'package:i_store/app/shared/empty_box.dart';
 
@@ -19,29 +19,11 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () => {controller.clearFavorite},
-          padding: EdgeInsets.zero,
-          splashColor: AppTheme.transparentColor,
-          highlightColor: AppTheme.transparentColor,
-          icon: Icon(CupertinoIcons.list_bullet_indent),
-        ),
+        leading: MenuButton(controller: controller),
         title: Text(AppMessage.appTitle, style: TextStyle(fontSize: 25)),
         actions: [
-          IconButton(
-            onPressed: () => Get.toNamed(Routes.SHOPPING),
-            padding: EdgeInsets.zero,
-            splashColor: AppTheme.transparentColor,
-            highlightColor: AppTheme.transparentColor,
-            icon: Icon(CupertinoIcons.cart_fill),
-          ),
-          IconButton(
-            onPressed: () => Get.toNamed(Routes.FAVORITE),
-            padding: EdgeInsets.zero,
-            splashColor: AppTheme.transparentColor,
-            highlightColor: AppTheme.transparentColor,
-            icon: Icon(CupertinoIcons.heart_fill),
-          ),
+          HeaderButton(icon: CupertinoIcons.cart_fill),
+          HeaderButton(icon: CupertinoIcons.heart_fill),
         ],
       ),
       body: Obx(() {

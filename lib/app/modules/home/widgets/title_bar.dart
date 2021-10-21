@@ -12,7 +12,6 @@ class TitleBar extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: onTap,
       contentPadding: EdgeInsets.symmetric(horizontal: 10),
       minVerticalPadding: 1,
       leading: Container(
@@ -34,15 +33,18 @@ class TitleBar extends GetView<HomeController> {
           fontWeight: FontWeight.w900,
         ),
       ),
-      trailing: Container(
-        padding: const EdgeInsets.all(5),
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: AppTheme.blackBackColor.withOpacity(.5),
-        ),
-        child: Icon(
-          Icons.chevron_right,
-          color: AppTheme.iconWhiteColor,
+      trailing: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          padding: const EdgeInsets.all(5),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: AppTheme.blackBackColor.withOpacity(.5),
+          ),
+          child: Icon(
+            Icons.chevron_right,
+            color: AppTheme.iconWhiteColor,
+          ),
         ),
       ),
     );
