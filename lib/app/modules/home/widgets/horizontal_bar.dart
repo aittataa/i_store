@@ -27,7 +27,9 @@ class HorizontalBar extends GetView<HomeController> {
             minVerticalPadding: 1,
             title: TitleBar(
               label: AppMessage.brandNew + " : ${myList.length} Items",
-              onTap: () => {Get.to(() => ProductView(title: AppMessage.brandNew, myList: myList))},
+              onTap: () {
+                Get.to(() => ProductView(title: AppMessage.brandNew, myList: myList));
+              },
             ),
             subtitle: SizedBox(
               height: 200,
@@ -37,7 +39,8 @@ class HorizontalBar extends GetView<HomeController> {
                 itemCount: myList.length,
                 itemBuilder: (context, i) {
                   final Product product = myList[i];
-                  product.status = /*true;*/ controller.getFavorite(product.id) ?? false;
+                  var data = controller.getFavorite(product.id) as bool;
+                  product.status = data; //controller.getFavorite(product.id) as bool; // ?? false;
                   return HorizontalShape(
                     controller: controller,
                     product: product,

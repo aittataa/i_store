@@ -6,7 +6,6 @@ import 'package:i_store/app/data/models/product.dart';
 import 'package:i_store/app/modules/home/controllers/home_controller.dart';
 import 'package:i_store/app/modules/home/widgets/horizontal_bar.dart';
 import 'package:i_store/app/modules/home/widgets/menu_button.dart';
-import 'package:i_store/app/modules/home/widgets/vertical_bar.dart';
 import 'package:i_store/app/routes/app_pages.dart';
 import 'package:i_store/app/routes/header_button.dart';
 import 'package:i_store/app/shared/bounce_point.dart';
@@ -46,6 +45,7 @@ class HomeView extends GetView<HomeController> {
             builder: (context, setState) {
               return ListView(
                 physics: BouncingScrollPhysics(),
+                shrinkWrap: true,
                 children: [
                   /*
                   FeaturedBar(
@@ -63,10 +63,12 @@ class HomeView extends GetView<HomeController> {
                     controller: controller,
                     myList: myList.toList()..sort((a, b) => a.price.compareTo(b.price)),
                   ),
+                  /*
                   VerticalBar(
                     controller: controller,
                     myList: myList.toList()..sort((a, b) => a.model.compareTo(b.model)),
                   ),
+                  */
                 ],
               );
             },

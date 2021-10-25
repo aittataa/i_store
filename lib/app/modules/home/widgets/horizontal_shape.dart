@@ -41,7 +41,8 @@ class HorizontalShape extends GetView<HomeController> {
                     GestureDetector(
                       onTap: () async {
                         //setState(() {
-                        var data = await controller.getFavorite(product.id);
+                        bool data = await controller.getFavorite(product.id);
+                        //print("${product.id} ${product.status}");
                         print(data);
                         //});
                       },

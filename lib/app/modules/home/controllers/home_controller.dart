@@ -7,7 +7,7 @@ import '../providers/home_provider.dart';
 
 class HomeController extends GetxController {
   final HomeProvider _provider = Get.put(HomeProvider());
-  final FavoriteProvider _favorite = Get.put(FavoriteProvider());
+  final FavoriteProvider favorite = Get.put(FavoriteProvider());
   final ShoppingProvider _shopping = Get.put(ShoppingProvider());
 
   var productsList = <Product>[].obs;
@@ -32,19 +32,19 @@ class HomeController extends GetxController {
   /// TODO : Favorite Operation
   setFavorite(Product product) async {
     product.updateState();
-    return await _favorite.setFavorite(product);
+    return await favorite.setFavorite(product);
   }
 
   getFavorite(int id) {
-    return _favorite.getFavorite(id);
+    return favorite.getFavorite(id) ?? false;
   }
 
-  delFavorite(int id) {
-    return _favorite.delFavorite(id);
+  delFavorite(int id) async {
+    return favorite.delFavorite(id);
   }
 
-  get clearFavorite {
-    return _favorite.clearFavorite;
+  get clearFavorite async {
+    return favorite.clearFavorite;
   }
 
   /// TODO : Shopping Operation
@@ -52,15 +52,15 @@ class HomeController extends GetxController {
     return await _shopping.setShopping(product, quantity);
   }
 
-  getShopping(int id) {
+  getShopping(int id) async {
     return _shopping.getShopping(id);
   }
 
-  delShopping(int id) {
+  delShopping(int id) async {
     return _shopping.delShopping(id);
   }
 
-  get clearShopping {
+  get clearShopping async {
     return _shopping.clearShopping;
   }
 }
