@@ -7,7 +7,7 @@ import '../providers/home_provider.dart';
 
 class HomeController extends GetxController {
   final HomeProvider _provider = Get.put(HomeProvider());
-  final FavoriteProvider favorite = Get.put(FavoriteProvider());
+  final FavoriteProvider _favorite = Get.put(FavoriteProvider());
   final ShoppingProvider _shopping = Get.put(ShoppingProvider());
 
   var productsList = <Product>[].obs;
@@ -20,10 +20,9 @@ class HomeController extends GetxController {
   }
 
   loadData() async {
+    state.value = true;
     var products = await _provider.loadData();
-    if (products == null)
-      state.value = true;
-    else {
+    if (products != null) {
       productsList.value = products;
       state.value = false;
     }
@@ -31,36 +30,35 @@ class HomeController extends GetxController {
 
   /// TODO : Favorite Operation
   setFavorite(Product product) async {
-    product.updateState();
-    return await favorite.setFavorite(product);
+    return await _favorite.setFavorite(product);
   }
 
   getFavorite(int id) {
-    return favorite.getFavorite(id) ?? false;
+    return _favorite.getFavorite(id);
   }
 
   delFavorite(int id) async {
-    return favorite.delFavorite(id);
+    return await _favorite.delFavorite(id);
   }
 
   get clearFavorite async {
-    return favorite.clearFavorite;
+    return await _favorite.clearFavorite;
   }
 
   /// TODO : Shopping Operation
   setShopping(Product product, int quantity) async {
-    return await _shopping.setShopping(product, quantity);
+    return await _shopping.setShopping(product);
   }
 
-  getShopping(int id) async {
+  getShopping(int id) {
     return _shopping.getShopping(id);
   }
 
   delShopping(int id) async {
-    return _shopping.delShopping(id);
+    return await _shopping.delShopping(id);
   }
 
   get clearShopping async {
-    return _shopping.clearShopping;
+    return await _shopping.clearShopping;
   }
 }

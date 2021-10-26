@@ -3,25 +3,25 @@ import 'package:i_store/app/data/models/product.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ShoppingProvider extends GetConnect {
-  late SharedPreferences shopping;
+  late SharedPreferences _shopping;
   @override
   void onInit() async {
-    shopping = await SharedPreferences.getInstance();
+    _shopping = await SharedPreferences.getInstance();
   }
 
-  setShopping(Product product, int quantity) async {
-    return await shopping.setInt("${product.id}", quantity);
+  setShopping(Product product) async {
+    return await _shopping.setInt(product.id.toString(), product.id);
   }
 
   getShopping(int id) {
-    return shopping.getInt("$id");
+    return _shopping.getInt(id.toString());
   }
 
-  delShopping(int id) {
-    return shopping.remove("$id");
+  delShopping(int id) async {
+    return await _shopping.remove(id.toString());
   }
 
-  get clearShopping {
-    return shopping.clear();
+  get clearShopping async {
+    return await _shopping.clear();
   }
 }

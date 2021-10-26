@@ -7,7 +7,7 @@ import 'package:i_store/app/config/messages/app_message.dart';
 import 'package:i_store/app/config/themes/app_theme.dart';
 import 'package:i_store/app/data/models/product.dart';
 import 'package:i_store/app/modules/home/controllers/home_controller.dart';
-import 'package:i_store/app/modules/home/widgets/image_network.dart';
+import 'package:i_store/app/shared/image_network.dart';
 
 class HorizontalShape extends GetView<HomeController> {
   final HomeController controller;
@@ -40,11 +40,9 @@ class HorizontalShape extends GetView<HomeController> {
                   children: [
                     GestureDetector(
                       onTap: () async {
-                        //setState(() {
-                        bool data = await controller.getFavorite(product.id);
-                        //print("${product.id} ${product.status}");
+                        setState(() => {product.updateStatus});
+                        var data = await controller.setFavorite(product);
                         print(data);
-                        //});
                       },
                       child: Align(
                         alignment: Alignment.centerRight,
@@ -95,7 +93,7 @@ class HorizontalShape extends GetView<HomeController> {
                           ),
                           GestureDetector(
                             onTap: () async {
-                              var data = await controller.getShopping(product.id);
+                              var data = await controller.setShopping(product, 0);
                               print(data);
                             },
                             child: Container(

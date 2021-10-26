@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:i_store/app/data/models/product.dart';
+import 'package:i_store/app/modules/detail/views/detail_view.dart';
 import 'package:i_store/app/modules/home/controllers/home_controller.dart';
 import 'package:i_store/app/modules/home/widgets/featured_shape.dart';
 
@@ -39,6 +40,12 @@ class FeaturedBar extends GetView<HomeController> {
                 final bool state = index == i;
                 product.status = controller.getFavorite(product.id) ?? false;
                 return FeaturedShape(
+                  onTap: () {
+                    Get.to(() => DetailView(
+                          myList: myList,
+                          product: product,
+                        ));
+                  },
                   controller: controller,
                   product: product,
                   state: state,

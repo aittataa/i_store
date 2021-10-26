@@ -29,9 +29,7 @@ class Product {
     this.status = false,
   });
 
-  void updateState() {
-    status = !status;
-  }
+  void get updateStatus => {status = !status};
 
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(

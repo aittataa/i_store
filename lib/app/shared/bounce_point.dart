@@ -9,7 +9,7 @@ class BouncePoint extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (size < 50) {
+    if (size < 32) {
       return SpinKitSquareCircle(
         size: size,
         color: AppTheme.blackBackColor.withOpacity(.5),

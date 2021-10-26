@@ -19,7 +19,7 @@ class ProductView extends GetView<ProductController> {
     return Scaffold(
       appBar: AppBar(
         leading: BackIcon(),
-        title: Text("$title", style: TextStyle(fontSize: 25)),
+        title: Text("$title"),
         actions: [
           IconButton(
             onPressed: () => Get.toNamed(Routes.SHOPPING),

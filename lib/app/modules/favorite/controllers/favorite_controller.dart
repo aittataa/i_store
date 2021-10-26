@@ -19,10 +19,9 @@ class FavoriteController extends GetxController {
   }
 
   loadData() async {
+    state.value = true;
     var products = await _home.loadData();
-    if (products == null)
-      state.value = true;
-    else {
+    if (products != null) {
       productsList.value = products;
       state.value = false;
     }
@@ -30,7 +29,6 @@ class FavoriteController extends GetxController {
 
   /// TODO : Favorite Operation
   setFavorite(Product product) async {
-    product.updateState();
     return await _provider.setFavorite(product);
   }
 
@@ -38,28 +36,28 @@ class FavoriteController extends GetxController {
     return _provider.getFavorite(id);
   }
 
-  delFavorite(int id) {
-    return _provider.delFavorite(id);
+  delFavorite(int id) async {
+    return await _provider.delFavorite(id);
   }
 
-  get clearFavorite {
-    return _provider.clearFavorite;
+  get clearFavorite async {
+    return await _provider.clearFavorite;
   }
 
   /// TODO : Shopping Operation
   setShopping(Product product, int quantity) async {
-    return await _shopping.setShopping(product, quantity);
+    return await _shopping.setShopping(product);
   }
 
   getShopping(int id) {
     return _shopping.getShopping(id);
   }
 
-  delShopping(int id) {
-    return _shopping.delShopping(id);
+  delShopping(int id) async {
+    return await _shopping.delShopping(id);
   }
 
-  get clearShopping {
-    return _shopping.clearShopping;
+  get clearShopping async {
+    return await _shopping.clearShopping;
   }
 }

@@ -29,12 +29,12 @@ class ShoppingView extends GetView<ShoppingController> {
       body: Obx(() {
         final bool state = controller.state.value;
         final List<Product> myList = controller.productsList.where((product) {
-          final int id = controller.getShopping(product.id) ?? 0;
+          final int id = controller.getShopping(product.id);
           return product.id == id;
         }).toList();
         final bool isEmpty = myList.isEmpty;
         if (state) {
-          return BouncePoint(size: 30);
+          return BouncePoint(size: 32);
         } else if (isEmpty) {
           return EmptyBox();
         } else {
@@ -44,7 +44,6 @@ class ShoppingView extends GetView<ShoppingController> {
                 padding: EdgeInsets.all(10),
                 physics: BouncingScrollPhysics(),
                 scrollDirection: Axis.vertical,
-                //gridDelegate: AppFunction.gridDelegate(crossAxisCount: 2, childAspectRatio: .75),
                 itemCount: myList.length,
                 itemBuilder: (context, i) {
                   final Product product = myList[i];

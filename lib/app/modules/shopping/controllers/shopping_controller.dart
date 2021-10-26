@@ -17,10 +17,9 @@ class ShoppingController extends GetxController {
   }
 
   loadData() async {
+    state.value = true;
     var products = await _home.loadData();
-    if (products == null)
-      state.value = true;
-    else {
+    if (products != null) {
       productsList.value = products;
       state.value = false;
     }
@@ -28,18 +27,18 @@ class ShoppingController extends GetxController {
 
   /// TODO : Shopping Operation
   setShopping(Product product, int quantity) async {
-    return await _provider.setShopping(product, quantity);
+    return await _provider.setShopping(product);
   }
 
   getShopping(int id) {
     return _provider.getShopping(id);
   }
 
-  delShopping(int id) {
-    return _provider.delShopping(id);
+  delShopping(int id) async {
+    return await _provider.delShopping(id);
   }
 
-  get clearShopping {
-    return _provider.clearShopping;
+  get clearShopping async {
+    return await _provider.clearShopping;
   }
 }

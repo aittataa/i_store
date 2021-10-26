@@ -6,7 +6,7 @@ class AppTheme {
   AppTheme._();
 
   /// App Colors
-  //static const Color mainColor = Color(0xFF757575);
+  static const Color mainColor = Color(0xFF757575);
   static const Color backColor = Color(0xFFF0F0F0);
   static const Color blackBackColor = Color(0xFF000000);
   static const Color whiteBackColor = Color(0xFFFFFFFF);

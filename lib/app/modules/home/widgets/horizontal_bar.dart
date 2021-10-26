@@ -39,8 +39,7 @@ class HorizontalBar extends GetView<HomeController> {
                 itemCount: myList.length,
                 itemBuilder: (context, i) {
                   final Product product = myList[i];
-                  var data = controller.getFavorite(product.id) as bool;
-                  product.status = data; //controller.getFavorite(product.id) as bool; // ?? false;
+                  product.status = controller.getFavorite(product.id) ?? false;
                   return HorizontalShape(
                     controller: controller,
                     product: product,

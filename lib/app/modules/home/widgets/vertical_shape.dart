@@ -7,7 +7,7 @@ import 'package:i_store/app/config/messages/app_message.dart';
 import 'package:i_store/app/config/themes/app_theme.dart';
 import 'package:i_store/app/data/models/product.dart';
 import 'package:i_store/app/modules/home/controllers/home_controller.dart';
-import 'package:i_store/app/modules/home/widgets/image_network.dart';
+import 'package:i_store/app/shared/image_network.dart';
 
 class VerticalShape extends GetView<HomeController> {
   final HomeController controller;
@@ -67,8 +67,8 @@ class VerticalShape extends GetView<HomeController> {
                         ),
                         Expanded(
                           child: GestureDetector(
-                            onTap: () {
-                              var data = controller.setShopping(product, 0);
+                            onTap: () async {
+                              var data = await controller.setShopping(product, 0);
                               print(data);
                             },
                             child: Container(
@@ -93,11 +93,10 @@ class VerticalShape extends GetView<HomeController> {
                 ],
               ),
               GestureDetector(
-                onTap: () {
-                  setState(() {
-                    var data = controller.setFavorite(product);
-                    print(data);
-                  });
+                onTap: () async {
+                  setState(() => {product.updateStatus});
+                  var data = await controller.setFavorite(product);
+                  print(data);
                 },
                 child: Container(
                   margin: EdgeInsets.all(10),

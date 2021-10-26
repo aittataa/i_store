@@ -14,7 +14,6 @@ class ProductController extends GetxController {
 
   /// TODO : Favorite Operation
   setFavorite(Product product) async {
-    product.updateState();
     return await _favorite.setFavorite(product);
   }
 
@@ -22,28 +21,28 @@ class ProductController extends GetxController {
     return _favorite.getFavorite(id);
   }
 
-  delFavorite(int id) {
-    return _favorite.delFavorite(id);
+  delFavorite(int id) async {
+    return await _favorite.delFavorite(id);
   }
 
-  get clearFavorite {
-    return _favorite.clearFavorite;
+  get clearFavorite async {
+    return await _favorite.clearFavorite;
   }
 
   /// TODO : Shopping Operation
   setShopping(Product product, int quantity) async {
-    return await _shopping.setShopping(product, quantity);
+    return await _shopping.setShopping(product);
   }
 
   getShopping(int id) {
     return _shopping.getShopping(id);
   }
 
-  delShopping(int id) {
-    return _shopping.delShopping(id);
+  delShopping(int id) async {
+    return await _shopping.delShopping(id);
   }
 
-  get clearShopping {
-    return _shopping.clearShopping;
+  get clearShopping async {
+    return await _shopping.clearShopping;
   }
 }

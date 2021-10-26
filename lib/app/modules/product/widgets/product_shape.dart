@@ -6,8 +6,8 @@ import 'package:i_store/app/config/constants/app_constant.dart';
 import 'package:i_store/app/config/messages/app_message.dart';
 import 'package:i_store/app/config/themes/app_theme.dart';
 import 'package:i_store/app/data/models/product.dart';
-import 'package:i_store/app/modules/home/widgets/image_network.dart';
 import 'package:i_store/app/modules/product/controllers/product_controller.dart';
+import 'package:i_store/app/shared/image_network.dart';
 
 class ProductShape extends GetView<ProductController> {
   final ProductController controller;
@@ -66,18 +66,24 @@ class ProductShape extends GetView<ProductController> {
                           ),
                         ),
                         Expanded(
-                          child: Container(
-                            padding: EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                              color: AppTheme.blackBackColor.withOpacity(.5),
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(25),
-                                bottomRight: Radius.circular(25),
+                          child: GestureDetector(
+                            onTap: () async {
+                              var data = await controller.setShopping(product, 0);
+                              print(data);
+                            },
+                            child: Container(
+                              padding: EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                color: AppTheme.blackBackColor.withOpacity(.5),
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(25),
+                                  bottomRight: Radius.circular(25),
+                                ),
                               ),
-                            ),
-                            child: Icon(
-                              CupertinoIcons.cart_fill,
-                              color: AppTheme.iconWhiteColor,
+                              child: Icon(
+                                CupertinoIcons.cart_fill,
+                                color: AppTheme.iconWhiteColor,
+                              ),
                             ),
                           ),
                         ),
@@ -87,7 +93,11 @@ class ProductShape extends GetView<ProductController> {
                 ],
               ),
               GestureDetector(
-                onTap: () => setState(() => {controller.setFavorite(product)}),
+                onTap: () async {
+                  setState(() => {product.updateStatus});
+                  var data = await controller.setFavorite(product);
+                  print(data);
+                },
                 child: Container(
                   margin: EdgeInsets.all(10),
                   padding: EdgeInsets.all(5),

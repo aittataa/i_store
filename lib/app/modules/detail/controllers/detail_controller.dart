@@ -14,7 +14,6 @@ class DetailController extends GetxController {
 
   /// TODO : Favorite Operation
   setFavorite(Product product) async {
-    product.updateState();
     return await _favorite.setFavorite(product);
   }
 
@@ -32,7 +31,7 @@ class DetailController extends GetxController {
 
   /// TODO : Shopping Operation
   setShopping(Product product, int quantity) async {
-    return await _shopping.setShopping(product, quantity);
+    return await _shopping.setShopping(product);
   }
 
   getShopping(int id) {

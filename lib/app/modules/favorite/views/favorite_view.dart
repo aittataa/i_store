@@ -36,7 +36,7 @@ class FavoriteView extends GetView<FavoriteController> {
         }).toList();
         final bool isEmpty = myList.isEmpty;
         if (state) {
-          return BouncePoint(size: 30);
+          return BouncePoint(size: 32);
         } else if (isEmpty) {
           return EmptyBox();
         } else {

@@ -4,8 +4,10 @@ import 'package:get/get.dart';
 import 'package:i_store/app/config/messages/app_message.dart';
 import 'package:i_store/app/data/models/product.dart';
 import 'package:i_store/app/modules/home/controllers/home_controller.dart';
+import 'package:i_store/app/modules/home/widgets/featured_bar.dart';
 import 'package:i_store/app/modules/home/widgets/horizontal_bar.dart';
 import 'package:i_store/app/modules/home/widgets/menu_button.dart';
+import 'package:i_store/app/modules/home/widgets/vertical_bar.dart';
 import 'package:i_store/app/routes/app_pages.dart';
 import 'package:i_store/app/routes/header_button.dart';
 import 'package:i_store/app/shared/bounce_point.dart';
@@ -37,7 +39,7 @@ class HomeView extends GetView<HomeController> {
         final List<Product> myList = controller.productsList;
         final bool isEmpty = myList.isEmpty;
         if (state) {
-          return BouncePoint(size: 30);
+          return BouncePoint(size: 32);
         } else if (isEmpty) {
           return EmptyBox();
         } else {
@@ -47,7 +49,6 @@ class HomeView extends GetView<HomeController> {
                 physics: BouncingScrollPhysics(),
                 shrinkWrap: true,
                 children: [
-                  /*
                   FeaturedBar(
                     index: pageIndex,
                     controller: controller,
@@ -58,17 +59,14 @@ class HomeView extends GetView<HomeController> {
                       });
                     },
                   ),
-                  */
                   HorizontalBar(
                     controller: controller,
                     myList: myList.toList()..sort((a, b) => a.price.compareTo(b.price)),
                   ),
-                  /*
                   VerticalBar(
                     controller: controller,
                     myList: myList.toList()..sort((a, b) => a.model.compareTo(b.model)),
                   ),
-                  */
                 ],
               );
             },
