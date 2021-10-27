@@ -7,6 +7,7 @@ import 'package:i_store/app/config/constants/app_constant.dart';
 import 'package:i_store/app/config/messages/app_message.dart';
 import 'package:i_store/app/config/themes/app_theme.dart';
 import 'package:i_store/app/data/models/product.dart';
+import 'package:i_store/app/modules/detail/views/detail_view.dart';
 import 'package:i_store/app/modules/home/controllers/home_controller.dart';
 import 'package:i_store/app/shared/image_network.dart';
 
@@ -29,7 +30,10 @@ class FeaturedShape extends GetView<HomeController> {
     return StatefulBuilder(
       builder: (context, setState) {
         return GestureDetector(
-          onTap: onTap,
+          onTap: () async {
+            Product value = await controller.findByID(product.id);
+            Get.to(() => DetailView(product: value));
+          },
           child: AnimatedContainer(
             duration: AppConstant.durationAnimated,
             curve: AppConstant.curve,
@@ -39,13 +43,13 @@ class FeaturedShape extends GetView<HomeController> {
               bottom: state ? 10 : 60,
             ),
             decoration: BoxDecoration(
-              color: AppTheme.whiteBackColor,
+              color: AppTheme.iconRedColor,
               borderRadius: BorderRadius.circular(25),
               boxShadow: [AppConstant.boxShadow],
             ),
             child: Stack(
               children: [
-                Expanded(child: Center(child: ImageNetwork(image: product.image))),
+                SizedBox(child: ImageNetwork(image: product.image)),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

@@ -10,14 +10,8 @@ import 'package:i_store/app/shared/back_icon.dart';
 
 class DetailView extends GetView<DetailController> {
   final DetailController controller = Get.put(DetailController());
-  final List<Product>? myList;
   final Product? product;
-  DetailView({
-    this.myList,
-    this.product,
-  });
-
-  late int index = 0;
+  DetailView({this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +19,7 @@ class DetailView extends GetView<DetailController> {
       appBar: AppBar(
         elevation: 0,
         leading: BackIcon(),
-        title: Text(myList![index].model),
+        title: Text(product!.model),
         actions: [
           IconButton(
             onPressed: () => Get.toNamed(Routes.SHOPPING),
@@ -43,25 +37,7 @@ class DetailView extends GetView<DetailController> {
           ),
         ],
       ),
-      body: StatefulBuilder(
-        builder: (context, setState) {
-          return PageView.builder(
-            onPageChanged: (i) {
-              setState(() {
-                index = i;
-                print(myList![index].model);
-              });
-            },
-            controller: PageController(initialPage: myList!.indexOf(product!)),
-            physics: BouncingScrollPhysics(),
-            itemCount: myList!.length,
-            itemBuilder: (context, i) {
-              final Product product = myList![i];
-              return DetailShape(controller: controller, product: product);
-            },
-          );
-        },
-      ),
+      body: DetailShape(controller: controller, product: product!),
     );
   }
 }

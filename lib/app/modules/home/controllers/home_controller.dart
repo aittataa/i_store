@@ -28,6 +28,14 @@ class HomeController extends GetxController {
     }
   }
 
+  findByID(int id) async {
+    var products = await _provider.loadByID(id);
+    if (products != null) {
+      final Product product = products;
+      return product;
+    }
+  }
+
   /// TODO : Favorite Operation
   setFavorite(Product product) async {
     return await _favorite.setFavorite(product);

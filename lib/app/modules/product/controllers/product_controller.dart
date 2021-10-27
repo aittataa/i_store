@@ -1,15 +1,25 @@
 import 'package:get/get.dart';
 import 'package:i_store/app/data/models/product.dart';
 import 'package:i_store/app/modules/favorite/providers/favorite_provider.dart';
+import 'package:i_store/app/modules/home/providers/home_provider.dart';
 import 'package:i_store/app/modules/shopping/providers/shopping_provider.dart';
 
 class ProductController extends GetxController {
+  final HomeProvider _home = Get.put(HomeProvider());
   final FavoriteProvider _favorite = Get.put(FavoriteProvider());
   final ShoppingProvider _shopping = Get.put(ShoppingProvider());
 
   @override
   void onInit() {
     super.onInit();
+  }
+
+  findByID(int id) async {
+    var products = await _home.loadByID(id);
+    if (products != null) {
+      final Product product = products;
+      return product;
+    }
   }
 
   /// TODO : Favorite Operation

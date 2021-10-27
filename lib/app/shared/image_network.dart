@@ -12,7 +12,8 @@ class ImageNetwork extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(5),
+      width: double.infinity,
+      height: double.infinity,
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: AppTheme.whiteBackColor,

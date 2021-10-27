@@ -4,7 +4,7 @@ import 'package:i_store/app/config/themes/app_theme.dart';
 
 class AppConstant {
   AppConstant._();
-  static const String baseUrl = "https://the-mobile-store.herokuapp.com/api/phones/";
+  static const String baseUrl = "https://the-mobile-store.herokuapp.com/api/phones";
 
   static const Curve curve = Curves.linearToEaseOut;
   static const Transition transitionRoute = Transition.topLevel;
