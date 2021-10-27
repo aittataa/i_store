@@ -26,7 +26,7 @@ class HorizontalBar extends GetView<HomeController> {
             contentPadding: EdgeInsets.zero,
             minVerticalPadding: 1,
             title: TitleBar(
-              label: AppMessage.brandNew + " : ${myList.length} Items",
+              label: AppMessage.brandNew,
               onTap: () {
                 Get.to(() => ProductView(title: AppMessage.brandNew, myList: myList));
               },

@@ -27,7 +27,7 @@ class VerticalBar extends GetView<HomeController> {
             contentPadding: EdgeInsets.zero,
             minVerticalPadding: 1,
             title: TitleBar(
-              label: AppMessage.bestSelling + " : ${myList.length} Items",
+              label: AppMessage.bestSelling,
               onTap: () => {Get.to(() => ProductView(title: AppMessage.bestSelling, myList: myList))},
             ),
             subtitle: SizedBox(

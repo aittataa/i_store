@@ -14,6 +14,7 @@ class TitleBar extends GetView<HomeController> {
     return ListTile(
       contentPadding: EdgeInsets.symmetric(horizontal: 10),
       minVerticalPadding: 1,
+      minLeadingWidth: 0,
       leading: Container(
         width: 10,
         height: 50,

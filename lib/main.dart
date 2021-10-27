@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:i_store/app/config/functions/app_function.dart';
 import 'package:i_store/app/config/messages/app_message.dart';
 import 'package:i_store/app/config/themes/app_theme.dart';
 import 'package:i_store/app/routes/app_pages.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  configureDependencies();
+  AppFunction.configureDependencies();
   runApp(IStore());
 }
 
@@ -22,16 +22,4 @@ class IStore extends StatelessWidget {
       getPages: AppPages.routes,
     );
   }
-}
-
-configureDependencies() {
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      systemNavigationBarColor: AppTheme.whiteBackColor,
-      systemNavigationBarIconBrightness: Brightness.dark,
-      statusBarColor: AppTheme.transparentColor,
-      statusBarIconBrightness: Brightness.dark,
-    ),
-  );
 }

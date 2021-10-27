@@ -9,9 +9,9 @@ import 'package:i_store/app/modules/home/widgets/horizontal_bar.dart';
 import 'package:i_store/app/modules/home/widgets/menu_button.dart';
 import 'package:i_store/app/modules/home/widgets/vertical_bar.dart';
 import 'package:i_store/app/routes/app_pages.dart';
-import 'package:i_store/app/routes/header_button.dart';
 import 'package:i_store/app/shared/bounce_point.dart';
 import 'package:i_store/app/shared/empty_box.dart';
+import 'package:i_store/app/shared/header_button.dart';
 
 class HomeView extends GetView<HomeController> {
   final HomeController controller = Get.put(HomeController());

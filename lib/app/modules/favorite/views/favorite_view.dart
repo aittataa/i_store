@@ -7,10 +7,10 @@ import 'package:i_store/app/data/models/product.dart';
 import 'package:i_store/app/modules/favorite/controllers/favorite_controller.dart';
 import 'package:i_store/app/modules/favorite/widgets/favorite_shape.dart';
 import 'package:i_store/app/routes/app_pages.dart';
-import 'package:i_store/app/routes/header_button.dart';
 import 'package:i_store/app/shared/back_icon.dart';
 import 'package:i_store/app/shared/bounce_point.dart';
 import 'package:i_store/app/shared/empty_box.dart';
+import 'package:i_store/app/shared/header_button.dart';
 
 class FavoriteView extends GetView<FavoriteController> {
   final FavoriteController controller = Get.put(FavoriteController());
