@@ -17,8 +17,6 @@ import 'package:i_store/app/shared/header_button.dart';
 
 class ShoppingView extends GetView<ShoppingController> {
   final ShoppingController controller = Get.put(ShoppingController());
-
-  late double total = 0.0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,8 +33,8 @@ class ShoppingView extends GetView<ShoppingController> {
       body: Obx(() {
         final bool state = controller.state.value;
         final List<Product> myList = controller.productsList.where((product) {
-          final int id = controller.getShopping(product.id);
-          return product.id == id;
+          product.quantity = controller.getShopping(product.id) ?? 0;
+          return product.quantity > 0;
         }).toList();
         final bool isEmpty = myList.isEmpty;
         if (state) {
@@ -44,84 +42,95 @@ class ShoppingView extends GetView<ShoppingController> {
         } else if (isEmpty) {
           return EmptyBox();
         } else {
-          total = myList.toList().fold(0, (a, b) => a + b.price);
+          final double total = myList.toList().fold(0, (a, b) => a + (b.price * b.quantity));
           return StatefulBuilder(
             builder: (context, setState) {
-              return ListView.builder(
-                padding: EdgeInsets.all(10),
-                physics: BouncingScrollPhysics(),
-                scrollDirection: Axis.vertical,
-                itemCount: myList.length,
-                itemBuilder: (context, i) {
-                  final Product product = myList[i];
-                  return CartShape(
-                    controller: controller,
-                    product: product,
-                  );
-                },
+              return Column(
+                children: [
+                  Expanded(
+                    child: ListView.builder(
+                      padding: EdgeInsets.all(10),
+                      physics: BouncingScrollPhysics(),
+                      scrollDirection: Axis.vertical,
+                      itemCount: myList.length,
+                      itemBuilder: (context, i) {
+                        final Product product = myList[i];
+                        product.quantity = controller.getShopping(product.id) ?? 0;
+                        return CartShape(
+                          controller: controller,
+                          product: product,
+                          count: 10,
+                        );
+                      },
+                    ),
+                  ),
+                  BalanceShape(total: total),
+                ],
               );
             },
           );
         }
       }),
-      bottomNavigationBar: Obx(() {
-        final bool state = controller.state.value;
-        if (state) {
-          return SizedBox();
-        } else {
-          return Container(
-            margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-            decoration: BoxDecoration(
-              color: AppTheme.whiteBackColor,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [AppConstant.boxShadow],
-            ),
-            child: ListTile(
-              contentPadding: EdgeInsets.only(left: 10),
-              title: Row(
-                children: [
-                  AutoSizeText(
-                    "Total Balance : ",
-                    minFontSize: 15,
-                    maxFontSize: 20,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: AppTheme.textBlackColor.withOpacity(.75),
-                      fontWeight: FontWeight.w900,
-                    ),
-                  ),
-                  Expanded(
-                    child: AutoSizeText(
-                      "${total.toStringAsFixed(2)} ${AppMessage.appCurrency}",
-                      minFontSize: 15,
-                      maxFontSize: 20,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: AppTheme.textBlackColor.withOpacity(.75),
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
-                  ),
-                ],
+    );
+  }
+}
+
+class BalanceShape extends StatelessWidget {
+  final double total;
+  const BalanceShape({Key? key, required this.total}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: AppTheme.whiteBackColor,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [AppConstant.boxShadow],
+      ),
+      child: ListTile(
+        contentPadding: EdgeInsets.only(left: 10),
+        title: Row(
+          children: [
+            AutoSizeText(
+              "Total Balance : ",
+              minFontSize: 15,
+              maxFontSize: 20,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                color: AppTheme.textBlackColor.withOpacity(.75),
+                fontWeight: FontWeight.w900,
               ),
-              trailing: Container(
-                margin: const EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                  color: AppTheme.backColor,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: HeaderButton(
-                  onPressed: () {},
-                  icon: CupertinoIcons.chevron_right_2,
+            ),
+            Expanded(
+              child: AutoSizeText(
+                "${total.toStringAsFixed(2)} ${AppMessage.appCurrency}",
+                minFontSize: 15,
+                maxFontSize: 20,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: AppTheme.textBlackColor.withOpacity(.75),
+                  fontWeight: FontWeight.w900,
                 ),
               ),
             ),
-          );
-        }
-      }),
+          ],
+        ),
+        trailing: Container(
+          margin: const EdgeInsets.all(5),
+          decoration: BoxDecoration(
+            color: AppTheme.backColor,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: HeaderButton(
+            onPressed: () {},
+            icon: CupertinoIcons.chevron_right_2,
+          ),
+        ),
+      ),
     );
   }
 }

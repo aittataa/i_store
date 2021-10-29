@@ -10,7 +10,8 @@ class ShoppingProvider extends GetConnect {
   }
 
   setShopping(Product product) async {
-    return await _shopping.setInt(product.id.toString(), product.id);
+    product.updateQuantity;
+    return await _shopping.setInt(product.id.toString(), product.quantity);
   }
 
   getShopping(int id) {

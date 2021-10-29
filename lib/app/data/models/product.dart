@@ -16,6 +16,7 @@ class Product {
   final int? stock;
   final Specs? specs;
   late bool status;
+  late int quantity;
 
   Product({
     required this.id,
@@ -27,9 +28,12 @@ class Product {
     this.stock,
     this.specs,
     this.status = false,
+    this.quantity = 0,
   });
 
   void get updateStatus => {status = !status};
+
+  void get updateQuantity => {quantity++};
 
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
