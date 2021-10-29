@@ -126,11 +126,113 @@ class BalanceShape extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           child: HeaderButton(
-            onPressed: () {},
-            icon: CupertinoIcons.chevron_right_2,
+            onPressed: () => showCupertinoModalPopup(
+              barrierColor: AppTheme.blackBackColor.withOpacity(.25),
+              context: context,
+              builder: (context) => MessageBox(),
+            ),
+            icon: CupertinoIcons.checkmark_alt,
           ),
         ),
       ),
     );
   }
 }
+
+class MessageBox extends StatelessWidget {
+  const MessageBox({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      contentPadding: EdgeInsets.zero,
+      insetPadding: EdgeInsets.zero,
+      titlePadding: EdgeInsets.all(10),
+      actionsPadding: EdgeInsets.zero,
+      buttonPadding: EdgeInsets.zero,
+      backgroundColor: AppTheme.backColor,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+      title: Padding(
+        padding: const EdgeInsets.all(10),
+        child: Text(
+          AppMessage.appTitle,
+          overflow: TextOverflow.ellipsis,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: AppTheme.textBlackColor.withOpacity(.75),
+            fontWeight: FontWeight.w900,
+            fontSize: 20,
+          ),
+        ),
+      ),
+      content: Padding(
+        padding: const EdgeInsets.all(10),
+        child: Text(
+          "Verify You Order",
+          overflow: TextOverflow.ellipsis,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: AppTheme.textBlackColor.withOpacity(.75),
+            fontWeight: FontWeight.w900,
+            fontSize: 15,
+          ),
+        ),
+      ),
+      actions: [
+        Row(
+          children: [
+            Expanded(
+                child: Container(
+              child: IconButton(onPressed: () {}, icon: Text("")),
+            ))
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+/*
+snackBar({required String title, required String message}) {
+  return Get.snackbar(
+    title,
+    message,
+    backgroundColor: Colors.red,
+    titleText: Text(title, style: TextStyle(fontWeight: FontWeight.w900)),
+    messageText: Text(message, style: TextStyle(fontWeight: FontWeight.bold)),
+    icon: Icon(Icons.error, color: Colors.red.shade900, size: 36),
+    margin: EdgeInsets.all(10),
+    snackStyle: SnackStyle.FLOATING,
+  );
+}
+
+isWillPop(context) {
+  return showCupertinoModalPopup(
+    context: context,
+    builder: (context) => CupertinoAlertDialog(
+      insetAnimationDuration: Duration(milliseconds: 1500),
+      insetAnimationCurve: Curves.linearToEaseOut,
+      title: Text(
+        "iStore",
+        style: TextStyle(color: Colors.red, fontWeight: FontWeight.w900, fontSize: 20),
+      ),
+      content: Text(
+        "Are You Sure You Want To Exit ?",
+        style: TextStyle(color: Colors.white54, fontWeight: FontWeight.bold, fontSize: 15),
+      ),
+      actions: <Widget>[
+        CupertinoDialogAction(
+          child: Text("No"),
+          textStyle: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+          onPressed: () => Navigator.of(context).pop(false),
+        ),
+        CupertinoDialogAction(
+          child: Text("Yes"),
+          textStyle: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+          onPressed: () => Navigator.of(context).pop(true),
+        ),
+      ],
+    ),
+  );
+}
+ */
