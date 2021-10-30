@@ -25,7 +25,8 @@ class CartShape extends GetView<ShoppingController> {
   Widget build(BuildContext context) {
     return StatefulBuilder(
       builder: (context, setState) {
-        if (product.id % 2 == 0)
+        final bool state = true;
+        if (!state) {
           return Container(
             margin: EdgeInsets.symmetric(vertical: 5),
             padding: EdgeInsets.symmetric(horizontal: 10),
@@ -86,12 +87,9 @@ class CartShape extends GetView<ShoppingController> {
                   fontWeight: FontWeight.w900,
                 ),
               ),
-              // children: [
-              //   ListTile(),
-              // ],
             ),
           );
-        else
+        } else {
           return Container(
             margin: EdgeInsets.symmetric(vertical: 5),
             padding: EdgeInsets.symmetric(horizontal: 10),
@@ -167,6 +165,7 @@ class CartShape extends GetView<ShoppingController> {
               ),
             ),
           );
+        }
       },
     );
   }

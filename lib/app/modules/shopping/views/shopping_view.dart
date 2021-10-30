@@ -64,7 +64,7 @@ class ShoppingView extends GetView<ShoppingController> {
                       },
                     ),
                   ),
-                  BalanceShape(total: total),
+                  BalanceShape(controller: controller, total: total),
                 ],
               );
             },
@@ -76,8 +76,9 @@ class ShoppingView extends GetView<ShoppingController> {
 }
 
 class BalanceShape extends StatelessWidget {
+  final ShoppingController controller;
   final double total;
-  const BalanceShape({Key? key, required this.total}) : super(key: key);
+  const BalanceShape({Key? key, required this.controller, required this.total}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -129,7 +130,7 @@ class BalanceShape extends StatelessWidget {
             onPressed: () => showCupertinoModalPopup(
               barrierColor: AppTheme.blackBackColor.withOpacity(.25),
               context: context,
-              builder: (context) => MessageBox(),
+              builder: (context) => MessageBox(controller: controller),
             ),
             icon: CupertinoIcons.checkmark_alt,
           ),
@@ -140,41 +141,50 @@ class BalanceShape extends StatelessWidget {
 }
 
 class MessageBox extends StatelessWidget {
-  const MessageBox({Key? key}) : super(key: key);
+  final ShoppingController controller;
+  const MessageBox({Key? key, required this.controller}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      titlePadding: EdgeInsets.zero,
       contentPadding: EdgeInsets.zero,
-      insetPadding: EdgeInsets.zero,
-      titlePadding: EdgeInsets.all(10),
-      actionsPadding: EdgeInsets.zero,
-      buttonPadding: EdgeInsets.zero,
-      backgroundColor: AppTheme.backColor,
+      backgroundColor: AppTheme.whiteBackColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-      title: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Text(
-          AppMessage.appTitle,
-          overflow: TextOverflow.ellipsis,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: AppTheme.textBlackColor.withOpacity(.75),
-            fontWeight: FontWeight.w900,
-            fontSize: 20,
+      title: Container(
+        margin: EdgeInsets.all(10),
+        padding: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          border: Border.all(color: AppTheme.blackBackColor, width: .75),
+        ),
+        child: Icon(CupertinoIcons.checkmark_alt),
+      ),
+      content: ListTile(
+        title: Container(
+          padding: const EdgeInsets.all(5),
+          child: Text(
+            "Order Successful",
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: AppTheme.textBlackColor.withOpacity(.75),
+              fontWeight: FontWeight.w900,
+              fontSize: 20,
+            ),
           ),
         ),
-      ),
-      content: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Text(
-          "Verify You Order",
-          overflow: TextOverflow.ellipsis,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: AppTheme.textBlackColor.withOpacity(.75),
-            fontWeight: FontWeight.w900,
-            fontSize: 15,
+        subtitle: Container(
+          padding: const EdgeInsets.all(5),
+          child: Text(
+            "Thank you for your order.",
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: AppTheme.textBlackColor.withOpacity(.75),
+              fontWeight: FontWeight.w900,
+              fontSize: 15,
+            ),
           ),
         ),
       ),
@@ -182,57 +192,34 @@ class MessageBox extends StatelessWidget {
         Row(
           children: [
             Expanded(
-                child: Container(
-              child: IconButton(onPressed: () {}, icon: Text("")),
-            ))
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: AppTheme.blackBackColor, width: .5),
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                child: IconButton(
+                  onPressed: () async {
+                    var data = await controller.clearShopping;
+                    print(data);
+                    Get.back();
+                  },
+                  icon: AutoSizeText(
+                    "Confirm",
+                    minFontSize: 10,
+                    maxFontSize: 20,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: AppTheme.textBlackColor.withOpacity(.75),
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ],
     );
   }
 }
-
-/*
-snackBar({required String title, required String message}) {
-  return Get.snackbar(
-    title,
-    message,
-    backgroundColor: Colors.red,
-    titleText: Text(title, style: TextStyle(fontWeight: FontWeight.w900)),
-    messageText: Text(message, style: TextStyle(fontWeight: FontWeight.bold)),
-    icon: Icon(Icons.error, color: Colors.red.shade900, size: 36),
-    margin: EdgeInsets.all(10),
-    snackStyle: SnackStyle.FLOATING,
-  );
-}
-
-isWillPop(context) {
-  return showCupertinoModalPopup(
-    context: context,
-    builder: (context) => CupertinoAlertDialog(
-      insetAnimationDuration: Duration(milliseconds: 1500),
-      insetAnimationCurve: Curves.linearToEaseOut,
-      title: Text(
-        "iStore",
-        style: TextStyle(color: Colors.red, fontWeight: FontWeight.w900, fontSize: 20),
-      ),
-      content: Text(
-        "Are You Sure You Want To Exit ?",
-        style: TextStyle(color: Colors.white54, fontWeight: FontWeight.bold, fontSize: 15),
-      ),
-      actions: <Widget>[
-        CupertinoDialogAction(
-          child: Text("No"),
-          textStyle: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
-          onPressed: () => Navigator.of(context).pop(false),
-        ),
-        CupertinoDialogAction(
-          child: Text("Yes"),
-          textStyle: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
-          onPressed: () => Navigator.of(context).pop(true),
-        ),
-      ],
-    ),
-  );
-}
- */
