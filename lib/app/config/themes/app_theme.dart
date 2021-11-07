@@ -12,6 +12,8 @@ class AppTheme {
   static const Color whiteBackColor = Color(0xFFFFFFFF);
   static const Color transparentColor = Color(0x00000000);
   static const Color blackShadowColor = Color(0xFF000000);
+  static const Color blackBorderColor = Color(0xFF000000);
+  static const Color whiteBorderColor = Color(0xFFFFFFFF);
 
   /// Icon Colors
   static const Color iconBlackColor = Color(0xFF000000);

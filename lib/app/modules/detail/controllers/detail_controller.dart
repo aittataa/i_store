@@ -9,7 +9,6 @@ class DetailController extends GetxController {
   final FavoriteProvider _favorite = Get.put(FavoriteProvider());
   final ShoppingProvider _shopping = Get.put(ShoppingProvider());
 
-  //var product = <Product>[].obs;
   var state = false.obs;
 
   @override
@@ -21,7 +20,6 @@ class DetailController extends GetxController {
     state.value = true;
     var products = await _provider.loadByID(id);
     if (products != null) {
-      //product.add(products);
       final Product product = products;
       state.value = false;
       return product;

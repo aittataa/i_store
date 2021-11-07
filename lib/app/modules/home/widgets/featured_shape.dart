@@ -30,8 +30,7 @@ class FeaturedShape extends StatelessWidget {
     return StatefulBuilder(
       builder: (context, setState) {
         return GestureDetector(
-          onTap: () async {
-            //Product value = await controller.findByID(product.id);
+          onTap: () {
             Get.to(() => DetailView(product: product));
           },
           child: AnimatedContainer(

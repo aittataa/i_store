@@ -7,7 +7,7 @@ class DividerLine extends StatelessWidget {
   Widget build(BuildContext context) {
     return Divider(
       height: 5,
-      thickness: 1.5,
+      thickness: 2.5,
       color: AppTheme.whiteBackColor,
       indent: 10,
       endIndent: 10,
