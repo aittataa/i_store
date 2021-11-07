@@ -3,14 +3,13 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
 import 'package:i_store/app/config/constants/app_constant.dart';
 import 'package:i_store/app/config/messages/app_message.dart';
 import 'package:i_store/app/config/themes/app_theme.dart';
 import 'package:i_store/app/data/models/product.dart';
 import 'package:i_store/app/modules/shopping/controllers/shopping_controller.dart';
 
-class CartShape extends GetView<ShoppingController> {
+class CartShape extends StatelessWidget {
   final ShoppingController controller;
   final Product product;
   final int count;

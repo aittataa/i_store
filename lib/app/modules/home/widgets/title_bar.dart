@@ -1,10 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:i_store/app/config/themes/app_theme.dart';
-import 'package:i_store/app/modules/home/controllers/home_controller.dart';
 
-class TitleBar extends GetView<HomeController> {
+class TitleBar extends StatelessWidget {
   final String label;
   final Function()? onTap;
   const TitleBar({Key? key, required this.label, this.onTap}) : super(key: key);

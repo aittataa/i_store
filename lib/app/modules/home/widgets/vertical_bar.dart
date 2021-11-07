@@ -8,7 +8,7 @@ import 'package:i_store/app/modules/home/widgets/title_bar.dart';
 import 'package:i_store/app/modules/home/widgets/vertical_shape.dart';
 import 'package:i_store/app/modules/product/views/product_view.dart';
 
-class VerticalBar extends GetView<HomeController> {
+class VerticalBar extends StatelessWidget {
   final HomeController controller;
   final List<Product> myList;
   const VerticalBar({

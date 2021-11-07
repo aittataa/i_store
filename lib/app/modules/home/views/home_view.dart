@@ -13,7 +13,7 @@ import 'package:i_store/app/shared/bounce_point.dart';
 import 'package:i_store/app/shared/empty_box.dart';
 import 'package:i_store/app/shared/header_button.dart';
 
-class HomeView extends GetView<HomeController> {
+class HomeView extends StatelessWidget {
   final HomeController controller = Get.put(HomeController());
   late int pageIndex = 0;
 

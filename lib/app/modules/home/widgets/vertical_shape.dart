@@ -10,7 +10,7 @@ import 'package:i_store/app/modules/detail/views/detail_view.dart';
 import 'package:i_store/app/modules/home/controllers/home_controller.dart';
 import 'package:i_store/app/shared/image_network.dart';
 
-class VerticalShape extends GetView<HomeController> {
+class VerticalShape extends StatelessWidget {
   final HomeController controller;
   final Product product;
   const VerticalShape({

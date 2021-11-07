@@ -12,7 +12,7 @@ import 'package:i_store/app/shared/bounce_point.dart';
 import 'package:i_store/app/shared/empty_box.dart';
 import 'package:i_store/app/shared/header_button.dart';
 
-class FavoriteView extends GetView<FavoriteController> {
+class FavoriteView extends StatelessWidget {
   final FavoriteController controller = Get.put(FavoriteController());
   @override
   Widget build(BuildContext context) {

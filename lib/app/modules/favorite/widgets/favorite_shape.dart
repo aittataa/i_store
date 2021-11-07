@@ -10,7 +10,7 @@ import 'package:i_store/app/modules/detail/views/detail_view.dart';
 import 'package:i_store/app/modules/favorite/controllers/favorite_controller.dart';
 import 'package:i_store/app/shared/image_network.dart';
 
-class FavoriteShape extends GetView<FavoriteController> {
+class FavoriteShape extends StatelessWidget {
   final FavoriteController controller;
   final Product product;
   const FavoriteShape({

@@ -11,7 +11,7 @@ import 'package:i_store/app/modules/detail/views/detail_view.dart';
 import 'package:i_store/app/modules/home/controllers/home_controller.dart';
 import 'package:i_store/app/shared/image_network.dart';
 
-class FeaturedShape extends GetView<HomeController> {
+class FeaturedShape extends StatelessWidget {
   final HomeController controller;
   final Product product;
   final bool state;
@@ -31,8 +31,8 @@ class FeaturedShape extends GetView<HomeController> {
       builder: (context, setState) {
         return GestureDetector(
           onTap: () async {
-            Product value = await controller.findByID(product.id);
-            Get.to(() => DetailView(product: value));
+            //Product value = await controller.findByID(product.id);
+            Get.to(() => DetailView(product: product));
           },
           child: AnimatedContainer(
             duration: AppConstant.durationAnimated,

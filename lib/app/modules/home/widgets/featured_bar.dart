@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:i_store/app/data/models/product.dart';
 import 'package:i_store/app/modules/home/controllers/home_controller.dart';
 import 'package:i_store/app/modules/home/widgets/featured_shape.dart';
 
-class FeaturedBar extends GetView<HomeController> {
+class FeaturedBar extends StatelessWidget {
   final HomeController controller;
   final int index;
   final List<Product> myList;

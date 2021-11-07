@@ -26,7 +26,6 @@ class HomeProvider extends GetConnect {
     if (response.statusCode == 200) {
       final String body = response.body;
       final json = jsonDecode(body);
-      //print(json);
       return Product.fromJson(json);
     } else {
       throw Exception("No Data Found");

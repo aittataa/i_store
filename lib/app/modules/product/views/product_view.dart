@@ -9,7 +9,7 @@ import 'package:i_store/app/routes/app_pages.dart';
 import 'package:i_store/app/shared/back_icon.dart';
 import 'package:i_store/app/shared/header_button.dart';
 
-class ProductView extends GetView<ProductController> {
+class ProductView extends StatelessWidget {
   final ProductController controller = Get.put(ProductController());
   final String? title;
   final List<Product>? myList;

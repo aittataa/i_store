@@ -15,7 +15,7 @@ import 'package:i_store/app/shared/bounce_point.dart';
 import 'package:i_store/app/shared/empty_box.dart';
 import 'package:i_store/app/shared/header_button.dart';
 
-class ShoppingView extends GetView<ShoppingController> {
+class ShoppingView extends StatelessWidget {
   final ShoppingController controller = Get.put(ShoppingController());
   @override
   Widget build(BuildContext context) {

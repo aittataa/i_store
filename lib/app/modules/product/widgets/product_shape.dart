@@ -10,7 +10,7 @@ import 'package:i_store/app/modules/detail/views/detail_view.dart';
 import 'package:i_store/app/modules/product/controllers/product_controller.dart';
 import 'package:i_store/app/shared/image_network.dart';
 
-class ProductShape extends GetView<ProductController> {
+class ProductShape extends StatelessWidget {
   final ProductController controller;
   final Product product;
   const ProductShape({
