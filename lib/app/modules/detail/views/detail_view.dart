@@ -25,15 +25,11 @@ class _DetailViewState extends State<DetailView> {
   late int item = 1;
 
   get increaseItem {
-    setState(() {
-      item++;
-    });
+    setState(() => {item++});
   }
 
   get decreaseItem {
-    setState(() {
-      if (item > 1) item--;
-    });
+    setState(() => {if (item > 1) item--});
   }
 
   @override
@@ -92,7 +88,7 @@ class _DetailViewState extends State<DetailView> {
               highlightColor: AppTheme.transparentColor,
               icon: Icon(
                 CupertinoIcons.heart_fill,
-                color: AppTheme.iconWhiteColor,
+                color: product.status ? AppTheme.iconRedColor : AppTheme.iconWhiteColor,
               ),
             ),
           ),
