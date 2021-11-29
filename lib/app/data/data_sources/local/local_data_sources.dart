@@ -11,12 +11,13 @@ class LocalDataSources extends GetConnect {
     _shopping = await SharedPreferences.getInstance();
   }
 
+  /// TODO : Favorite Operation
   setFavorite(Product product) async {
     return await _favorite.setBool(product.id.toString(), product.status);
   }
 
   getFavorite(int id) {
-    return _favorite.getBool(id.toString());
+    return _favorite.getBool("$id") as bool;
   }
 
   delFavorite(int id) async {
@@ -27,6 +28,7 @@ class LocalDataSources extends GetConnect {
     return await _favorite.clear();
   }
 
+  /// TODO : Shopping Operation
   setShopping(Product product) async {
     product.updateQuantity;
     return await _shopping.setInt(product.id.toString(), product.quantity);

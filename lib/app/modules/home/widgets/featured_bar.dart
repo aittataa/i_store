@@ -36,7 +36,8 @@ class FeaturedBar extends StatelessWidget {
               itemBuilder: (context, i) {
                 final Product product = myList[i];
                 final bool state = index == i;
-                product.status = controller.getFavorite(product.id) ?? false;
+                var status = controller.getFavorite(product.id) ?? false;
+                product.status = status;
                 return FeaturedShape(
                   controller: controller,
                   product: product,

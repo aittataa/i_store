@@ -10,7 +10,10 @@ class MenuButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: () async {},
+      onPressed: () async {
+        print(await controller.clearFavorite);
+        print(await controller.clearShopping);
+      },
       padding: EdgeInsets.zero,
       splashColor: AppTheme.transparentColor,
       highlightColor: AppTheme.transparentColor,

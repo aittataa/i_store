@@ -48,7 +48,7 @@ class FeaturedShape extends StatelessWidget {
             ),
             child: Stack(
               children: [
-                SizedBox(child: ImageNetwork(image: product.image)),
+                ImageNetwork(image: product.image),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

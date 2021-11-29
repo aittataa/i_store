@@ -37,6 +37,8 @@ class HomeController extends GetxController {
     return _localData.getFavorite(id);
   }
 
+  get clearFavorite async => await _localData.clearFavorite;
+
   /// TODO : Shopping Operation
   setShopping(Product product, int quantity) async {
     return await _localData.setShopping(product);
@@ -45,4 +47,6 @@ class HomeController extends GetxController {
   getShopping(int id) {
     return _localData.getShopping(id);
   }
+
+  get clearShopping async => await _localData.clearShopping;
 }

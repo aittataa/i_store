@@ -12,12 +12,12 @@ import 'package:i_store/app/modules/shopping/controllers/shopping_controller.dar
 class CartShape extends StatelessWidget {
   final ShoppingController controller;
   final Product product;
-  final int count;
+  //final int count;
   CartShape({
     Key? key,
     required this.controller,
     required this.product,
-    required this.count,
+    //required this.count,
   }) : super(key: key);
 
   @override
