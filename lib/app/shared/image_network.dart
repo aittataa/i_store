@@ -21,11 +21,9 @@ class ImageNetwork extends GetView<HomeController> {
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(25),
-        // child: Image.network(image),
-        // child: Image(image: CachedNetworkImageProvider(image)),
         child: CachedNetworkImage(
           imageUrl: image,
-          progressIndicatorBuilder: (context, url, progress) => const BouncePoint(size: 30),
+          progressIndicatorBuilder: (context, url, progress) => const BouncePoint(size: 30, state: true),
           errorWidget: (context, url, error) => Icon(Icons.error, color: AppTheme.iconRedColor),
         ),
       ),

@@ -5,7 +5,7 @@ import 'package:i_store/app/config/responses/app_response.dart';
 import 'package:i_store/app/config/themes/app_theme.dart';
 import 'package:i_store/app/data/models/product.dart';
 import 'package:i_store/app/modules/detail/controllers/detail_controller.dart';
-import 'package:i_store/app/modules/detail/widgets/detail_shape.dart';
+import 'package:i_store/app/modules/detail/widgets/detail_body.dart';
 import 'package:i_store/app/routes/app_pages.dart';
 import 'package:i_store/app/shared/back_icon.dart';
 import 'package:i_store/app/shared/bounce_point.dart';
@@ -57,95 +57,100 @@ class _DetailViewState extends State<DetailView> {
           ),
         ],
       ),
-      bottomNavigationBar: Container(
-        margin: EdgeInsets.all(10).copyWith(top: 2.5),
-        decoration: BoxDecoration(
-          color: AppTheme.blackBackColor.withOpacity(.5),
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: ListTile(
-          contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-          leading: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: AppTheme.whiteBorderColor, width: 1.5),
-            ),
-            child: IconButton(
-              onPressed: () async {
-                setState(() => {widget.product!.updateStatus});
-                var data = await controller.setFavorite(widget.product!);
-                print(data);
-              },
-              padding: EdgeInsets.zero,
-              splashColor: AppTheme.transparentColor,
-              highlightColor: AppTheme.transparentColor,
-              icon: Icon(
-                CupertinoIcons.heart_fill,
-                color: widget.product!.status ? AppTheme.iconRedColor : AppTheme.iconWhiteColor,
-              ),
-            ),
-          ),
-          title: Container(
-            decoration: BoxDecoration(
-              color: AppTheme.whiteBackColor,
-              border: Border.all(color: AppTheme.whiteBorderColor, width: 1.5),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: IconButton(
-                    onPressed: () => decreaseItem,
-                    icon: Icon(CupertinoIcons.minus),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    item < 10 ? "0$item" : "$item",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: AppTheme.textBlackColor.withOpacity(.75),
-                      fontWeight: FontWeight.w900,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: IconButton(
-                    onPressed: () => increaseItem,
-                    icon: Icon(CupertinoIcons.plus),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          trailing: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: AppTheme.whiteBorderColor, width: 1.5),
-            ),
-            child: IconButton(
-              onPressed: () async {
-                var data = await controller.setShopping(widget.product!, 0);
-                print(data);
-              },
-              padding: EdgeInsets.zero,
-              splashColor: AppTheme.transparentColor,
-              highlightColor: AppTheme.transparentColor,
-              icon: Icon(
-                CupertinoIcons.cart_fill,
-                color: AppTheme.iconWhiteColor,
-              ),
-            ),
-          ),
-        ),
-      ),
       body: Obx(() {
         final bool state = controller.state.value;
         if (!state) {
           if (appResponse.success) {
             final Product product = appResponse.response;
-            return DetailShape(controller: controller, product: product);
+            product.status = controller.getFavorite(product.id) ?? false;
+            return Column(
+              children: [
+                Expanded(child: DetailBody(controller: controller, product: product)),
+                Container(
+                  margin: EdgeInsets.all(10).copyWith(top: 2.5),
+                  decoration: BoxDecoration(
+                    color: AppTheme.blackBackColor.withOpacity(.5),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: ListTile(
+                    contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    leading: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: AppTheme.whiteBorderColor, width: 1.5),
+                      ),
+                      child: IconButton(
+                        onPressed: () async {
+                          setState(() => {product.updateStatus});
+                          var data = await controller.setFavorite(product);
+                          print(data);
+                        },
+                        padding: EdgeInsets.zero,
+                        splashColor: AppTheme.transparentColor,
+                        highlightColor: AppTheme.transparentColor,
+                        icon: Icon(
+                          CupertinoIcons.heart_fill,
+                          color: product.status ? AppTheme.iconRedColor : AppTheme.iconWhiteColor,
+                        ),
+                      ),
+                    ),
+                    title: Container(
+                      decoration: BoxDecoration(
+                        color: AppTheme.whiteBackColor,
+                        border: Border.all(color: AppTheme.whiteBorderColor, width: 1.5),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: IconButton(
+                              onPressed: () => decreaseItem,
+                              icon: Icon(CupertinoIcons.minus),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 2,
+                            child: Text(
+                              item < 10 ? "0$item" : "$item",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: AppTheme.textBlackColor.withOpacity(.75),
+                                fontWeight: FontWeight.w900,
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: IconButton(
+                              onPressed: () => increaseItem,
+                              icon: Icon(CupertinoIcons.plus),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    trailing: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: AppTheme.whiteBorderColor, width: 1.5),
+                      ),
+                      child: IconButton(
+                        onPressed: () async {
+                          var data = await controller.setShopping(product, 0);
+                          print(data);
+                        },
+                        padding: EdgeInsets.zero,
+                        splashColor: AppTheme.transparentColor,
+                        highlightColor: AppTheme.transparentColor,
+                        icon: Icon(
+                          CupertinoIcons.cart_fill,
+                          color: AppTheme.iconWhiteColor,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            );
           } else {
             return ResponseError(response: appResponse);
           }

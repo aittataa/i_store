@@ -11,11 +11,11 @@ import 'package:i_store/app/modules/detail/widgets/divider_line.dart';
 import 'package:i_store/app/modules/detail/widgets/specs_shape.dart';
 import 'package:i_store/app/shared/image_network.dart';
 
-class DetailShape extends StatelessWidget {
+class DetailBody extends StatelessWidget {
   final DetailController controller;
   final Product product;
 
-  const DetailShape({
+  const DetailBody({
     Key? key,
     required this.controller,
     required this.product,

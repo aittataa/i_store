@@ -82,45 +82,6 @@ class HomeView extends StatelessWidget {
           return BouncePoint();
         }
       }),
-      // body: Obx(() {
-      //   final bool state = controller.state.value;
-      //   final List<Product> myList = controller.productsList;
-      //   final bool isEmpty = myList.isEmpty;
-      //   if (state) {
-      //     return BouncePoint(size: 32);
-      //   } else if (isEmpty) {
-      //     return EmptyBox();
-      //   } else {
-      //     return StatefulBuilder(
-      //       builder: (context, setState) {
-      //         return ListView(
-      //           physics: BouncingScrollPhysics(),
-      //           shrinkWrap: true,
-      //           children: [
-      //             FeaturedBar(
-      //               index: pageIndex,
-      //               controller: controller,
-      //               myList: myList.toList()..sort((a, b) => b.price.compareTo(a.price)),
-      //               onPageChanged: (index) {
-      //                 setState(() {
-      //                   pageIndex = index;
-      //                 });
-      //               },
-      //             ),
-      //             HorizontalBar(
-      //               controller: controller,
-      //               myList: myList.toList()..sort((a, b) => a.price.compareTo(b.price)),
-      //             ),
-      //             VerticalBar(
-      //               controller: controller,
-      //               myList: myList.toList()..sort((a, b) => a.model.compareTo(b.model)),
-      //             ),
-      //           ],
-      //         );
-      //       },
-      //     );
-      //   }
-      // }),
     );
   }
 }
