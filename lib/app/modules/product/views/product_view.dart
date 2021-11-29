@@ -34,10 +34,14 @@ class ProductView extends StatelessWidget {
       body: StatefulBuilder(
         builder: (context, setState) {
           return GridView.builder(
+            shrinkWrap: true,
             padding: EdgeInsets.all(10),
             physics: BouncingScrollPhysics(),
             scrollDirection: Axis.vertical,
-            gridDelegate: AppFunction.gridDelegate(crossAxisCount: 2, childAspectRatio: .75),
+            gridDelegate: AppFunction.gridDelegate(
+              crossAxisCount: 2,
+              childAspectRatio: .75,
+            ),
             itemCount: myList!.length,
             itemBuilder: (context, i) {
               final Product product = myList![i];

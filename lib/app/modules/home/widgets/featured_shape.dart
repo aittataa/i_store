@@ -58,9 +58,8 @@ class FeaturedShape extends StatelessWidget {
                         "${product.model}",
                         minFontSize: 10,
                         maxFontSize: 20,
-                        // maxLines: 1,
+                        maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        // textAlign: TextAlign.center,
                         style: TextStyle(
                           color: AppTheme.textBlackColor.withOpacity(.75),
                           fontWeight: FontWeight.w900,

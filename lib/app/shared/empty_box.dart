@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:i_store/app/config/themes/app_theme.dart';
 
@@ -7,10 +6,13 @@ class EmptyBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Icon(
-        CupertinoIcons.creditcard_fill,
-        color: AppTheme.iconBlackColor.withOpacity(.5),
-        size: 65,
+      child: Text(
+        "No Data Found",
+        style: TextStyle(
+          color: AppTheme.textBlackColor,
+          fontWeight: FontWeight.w900,
+          fontSize: 16,
+        ),
       ),
     );
   }

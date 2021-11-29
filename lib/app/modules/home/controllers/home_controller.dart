@@ -1,72 +1,48 @@
 import 'package:get/get.dart';
+import 'package:i_store/app/config/responses/app_response.dart';
+import 'package:i_store/app/data/data_sources/local/local_data_sources.dart';
+import 'package:i_store/app/data/data_sources/remote/remote_data_sources.dart';
 import 'package:i_store/app/data/models/product.dart';
-import 'package:i_store/app/modules/favorite/providers/favorite_provider.dart';
-import 'package:i_store/app/modules/shopping/providers/shopping_provider.dart';
-
-import '../providers/home_provider.dart';
 
 class HomeController extends GetxController {
-  final HomeProvider _provider = Get.put(HomeProvider());
-  final FavoriteProvider _favorite = Get.put(FavoriteProvider());
-  final ShoppingProvider _shopping = Get.put(ShoppingProvider());
+  final RemoteDataSources _remoteData = Get.put(RemoteDataSources());
+  final LocalDataSources _localData = Get.put(LocalDataSources());
 
+  var appResponse = AppResponse().obs;
   var productsList = <Product>[].obs;
   var state = false.obs;
 
   @override
   void onInit() {
     super.onInit();
-    loadData();
+    _loadAll;
   }
 
-  loadData() async {
+  get _loadAll async {
     state.value = true;
-    var products = await _provider.loadData();
-    if (products != null) {
-      productsList.value = products;
-      state.value = false;
+    final AppResponse response = await _remoteData.getAll;
+    if (response.success) {
+      productsList.value = response.response;
     }
-  }
-
-  findByID(int id) async {
-    var products = await _provider.loadByID(id);
-    if (products != null) {
-      final Product product = products;
-      return product;
-    }
+    appResponse.value = response;
+    state.value = false;
   }
 
   /// TODO : Favorite Operation
   setFavorite(Product product) async {
-    return await _favorite.setFavorite(product);
+    return await _localData.setFavorite(product);
   }
 
   getFavorite(int id) {
-    return _favorite.getFavorite(id);
-  }
-
-  delFavorite(int id) async {
-    return await _favorite.delFavorite(id);
-  }
-
-  get clearFavorite async {
-    return await _favorite.clearFavorite;
+    return _localData.getFavorite(id);
   }
 
   /// TODO : Shopping Operation
   setShopping(Product product, int quantity) async {
-    return await _shopping.setShopping(product);
+    return await _localData.setShopping(product);
   }
 
   getShopping(int id) {
-    return _shopping.getShopping(id);
-  }
-
-  delShopping(int id) async {
-    return await _shopping.delShopping(id);
-  }
-
-  get clearShopping async {
-    return await _shopping.clearShopping;
+    return _localData.getShopping(id);
   }
 }

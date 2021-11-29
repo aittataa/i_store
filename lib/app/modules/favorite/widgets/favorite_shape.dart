@@ -25,8 +25,7 @@ class FavoriteShape extends StatelessWidget {
       builder: (context, setState) {
         return GestureDetector(
           onTap: () async {
-            Product value = await controller.findByID(product.id);
-            Get.to(() => DetailView(product: value));
+            Get.to(() => DetailView(product: product));
           },
           child: Container(
             decoration: BoxDecoration(

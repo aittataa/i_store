@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:i_store/app/config/responses/app_response.dart';
 import 'package:i_store/app/config/themes/app_theme.dart';
 import 'package:i_store/app/data/models/product.dart';
 import 'package:i_store/app/modules/detail/controllers/detail_controller.dart';
@@ -9,6 +10,7 @@ import 'package:i_store/app/routes/app_pages.dart';
 import 'package:i_store/app/shared/back_icon.dart';
 import 'package:i_store/app/shared/bounce_point.dart';
 import 'package:i_store/app/shared/header_button.dart';
+import 'package:i_store/app/shared/response_error.dart';
 
 class DetailView extends StatefulWidget {
   final Product? product;
@@ -19,11 +21,10 @@ class DetailView extends StatefulWidget {
 
 class _DetailViewState extends State<DetailView> {
   final DetailController controller = Get.put(DetailController());
-  late Product product;
-  get getProduct async => {product = await controller.findByID(widget.product!.id)};
+  late AppResponse appResponse = AppResponse();
+  _loadById(int id) async => {appResponse = await controller.loadById(id)};
 
   late int item = 1;
-
   get increaseItem {
     setState(() => {item++});
   }
@@ -35,7 +36,7 @@ class _DetailViewState extends State<DetailView> {
   @override
   void initState() {
     super.initState();
-    getProduct;
+    _loadById(widget.product!.id);
   }
 
   @override
@@ -56,14 +57,6 @@ class _DetailViewState extends State<DetailView> {
           ),
         ],
       ),
-      body: Obx(() {
-        final bool state = controller.state.value;
-        if (state) {
-          return BouncePoint(size: 30);
-        } else {
-          return DetailShape(controller: controller, product: product);
-        }
-      }),
       bottomNavigationBar: Container(
         margin: EdgeInsets.all(10).copyWith(top: 2.5),
         decoration: BoxDecoration(
@@ -79,8 +72,8 @@ class _DetailViewState extends State<DetailView> {
             ),
             child: IconButton(
               onPressed: () async {
-                setState(() => {product.updateStatus});
-                var data = await controller.setFavorite(product);
+                setState(() => {widget.product!.updateStatus});
+                var data = await controller.setFavorite(widget.product!);
                 print(data);
               },
               padding: EdgeInsets.zero,
@@ -88,7 +81,7 @@ class _DetailViewState extends State<DetailView> {
               highlightColor: AppTheme.transparentColor,
               icon: Icon(
                 CupertinoIcons.heart_fill,
-                color: product.status ? AppTheme.iconRedColor : AppTheme.iconWhiteColor,
+                color: widget.product!.status ? AppTheme.iconRedColor : AppTheme.iconWhiteColor,
               ),
             ),
           ),
@@ -133,7 +126,7 @@ class _DetailViewState extends State<DetailView> {
             ),
             child: IconButton(
               onPressed: () async {
-                var data = await controller.setShopping(product, 0);
+                var data = await controller.setShopping(widget.product!, 0);
                 print(data);
               },
               padding: EdgeInsets.zero,
@@ -147,6 +140,19 @@ class _DetailViewState extends State<DetailView> {
           ),
         ),
       ),
+      body: Obx(() {
+        final bool state = controller.state.value;
+        if (!state) {
+          if (appResponse.success) {
+            final Product product = appResponse.response;
+            return DetailShape(controller: controller, product: product);
+          } else {
+            return ResponseError(response: appResponse);
+          }
+        } else {
+          return BouncePoint();
+        }
+      }),
     );
   }
 }
