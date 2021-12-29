@@ -1,8 +1,8 @@
 # i_store
 
-iStore Ecomerce App Store Module with REST API and Getx State Manaegement and Get_CLI Clean Code Pattern
+iStore.
 
-## Screen Shots
+## Screen Shots :
 
 ![item](https://user-images.githubusercontent.com/39503536/143945419-f88ff99e-0f88-4d79-b5f2-9a0bb4cd06bd.png)
 ![Screenshot_01](https://user-images.githubusercontent.com/39503536/143945492-b8b71d10-aeef-4f76-a591-d9dad62c6a00.png)
